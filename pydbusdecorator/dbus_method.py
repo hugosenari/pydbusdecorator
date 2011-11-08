@@ -14,14 +14,14 @@ class DbusMethod(DbusDecorator):
     Wrapps some method calling dbus method
     '''
 
-
-    def __init__(self, meth=None, *args, **kw):
+    def __init__(self, meth=None, produces=None, *args, **kw):
         '''
         Wrapps some method calling dbus method
         '''
         super(DbusMethod, self).__init__(*args, **kw)
         self.meth = meth
-        self._obj = None
+        self.obj = None
+        self.produces = produces
     
     def _call_dbus(self, obj, *args, **kw):
         bus_obj = DbusInterface.get_bus_obj(obj)
@@ -31,12 +31,12 @@ class DbusMethod(DbusDecorator):
         return self.meth(obj, *args, **kw) or result
      
     def __call__(self, __call__meth=None, *args, **kw):
-        if self.meth and self._obj:
+        if self.meth and self.obj:
             if __call__meth:
                 largs = list(args)
                 largs.insert(0, __call__meth)
                 args = tuple(largs)
-            return self._call_dbus(self._obj, *args, **kw)
+            return self._call_dbus(self.obj, *args, **kw)
         else:
             self.meth = __call__meth
             @wraps(self.meth)
@@ -47,6 +47,5 @@ class DbusMethod(DbusDecorator):
     def __get__(self, obj, objtype=None):
         if obj is None:
             return self
-        self._obj = obj
+        self.obj = obj
         return self.__call__
-        

@@ -8,15 +8,13 @@ from pydbusdecorator.dbus_decorator import DbusDecorator
 from pydbusdecorator.undefined_param import UndefinedParam
 from pydbusdecorator.dbus_interface import DbusInterface
 
-from functools import wraps
-
 class DbusAttr(DbusDecorator):
     '''
     Wrap some method as attribute
     '''
 
 
-    def __init__(self, meth=None, iface=None, override_none_val=UndefinedParam,
+    def __init__(self, meth=None, iface=None, produces=None,override_none_val=UndefinedParam,
                   override_none_return=True, *args, **kw):
         '''
             Instantiate one new DbusAttr decoreator
@@ -29,15 +27,13 @@ class DbusAttr(DbusDecorator):
         super(DbusAttr, self).__init__(*args, **kw)
         self.meth = meth
         self.iface = iface
+        self.produces = produces
         self.override_val = override_none_val
         self.override_return = override_none_return
 
     def __call__(self, meth, *args, **kw):
         self.meth=meth
-        @wraps(meth)
-        def dbusWrapedAttr(obj, val=UndefinedParam, *args, **kw):
-            return self._get_set_dbus(obj, val, *args, **kw)
-        return dbusWrapedAttr
+        return self
 
     def _get_set_dbus(self, obj, val=UndefinedParam, *args, **kw):
         properties = DbusInterface.get_bus_properties(obj)
@@ -50,11 +46,11 @@ class DbusAttr(DbusDecorator):
                 val = mval
         else:
             properties.Set(iface, self.meth.__name__, val)
-            DbusInterface.store_result(self, val)
-        yval = self.meth(val, *args, **kw)
-        if yval is None and self.override_return is not UndefinedParam:
-            return properties.Get(iface, self.meth.__name__)
-        return yval
+            DbusInterface.store_result(obj, val)
+        result = self.meth(val, *args, **kw)
+        if result is None and self.override_return is not UndefinedParam:
+            result =  properties.Get(iface, self.meth.__name__)
+        return self.produces(result) if self.produces else result
 
     def __get__(self, obj, objtype=None):
         if obj is None:

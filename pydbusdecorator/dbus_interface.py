@@ -21,7 +21,7 @@ class DbusInterface(DbusDecorator):
                    session=None,
                    retur=None,
                    on_change=None,
-                   prop_iface=None,
+                   prop_iface='org.freedesktop.DBus.Properties',
                    #defalt var names in object 
                    iface_at='dbus_iface',
                    path_at='dbus_path',
