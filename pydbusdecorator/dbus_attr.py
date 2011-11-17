@@ -58,7 +58,10 @@ class DbusAttr(DbusDecorator):
         return self._get_set_dbus(obj)
 
     def __set__(self, obj, value):
-        return self._get_set_dbus(obj, value)
+        if obj:
+            self._get_set_dbus(obj, value)
+        else:
+            self.meth=value
 
     def __delete__(self, obj):
         raise AttributeError, "can't delete attribute"
