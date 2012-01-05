@@ -8,7 +8,7 @@ from distutils.core import setup
 
 
 setup(name='pydbusdecorator',
-      version='0.9.2',
+      version='1.0',
       description='Python decorator for dbus interface definition',
       author='hugosenari',
       author_email='hugosenari@gmail.com',
