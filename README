@@ -1,23 +1,23 @@
 Python decorator for dbus interfaces
 
-For examples see mpris2 (https://github.com/hugosenari/mpris2)
+For examples see tests (pydbusdecorator/tests) or mpris2 (https://github.com/hugosenari/mpris2)
 
-#defining
+# importing
+from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
+
+# defining
 @DbusInterface('org.mpris.MediaPlayer2', '/org/mpris/MediaPlayer2')
-class Player(Interfaces):
-
+class Player(object):
     @DbusMethod
     def Next(self):
         pass
-
     @DbusAttr
     def Volume(self):
 	pass
-
-#using
-if __name__ == '__main__':
-    mediaplayer2 = Player(dbus_interface_info={'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
-    mediaplayer2.Next()
-    print mediaplayer2.Volume
-    mediaplayer2.Volume = 1
-    print mediaplayer2.Volume #integer = 1 :P
+	
+# using
+mediaplayer2 = Player(dbus_interface_info={'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
+mediaplayer2.Next()
+print mediaplayer2.Volume
+mediaplayer2.Volume = 1
+print mediaplayer2.Volume # integer = 1 :P
