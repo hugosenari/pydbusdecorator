@@ -31,7 +31,7 @@ class BasicInterfaceTest(unittest.TestCase):
         Test simple interface with no parameters and no keywords
         but now changing default DbusDecorator value
         '''
-        biface = BasicInterface(dbus_uri=OBJECT_URI_TOO)
+        biface = BasicInterface(dbus_interface_info={'dbus_uri':OBJECT_URI_TOO})
         dbus_interface_info = getattr(biface, DBUS_INJECTED_ATTRS.dbus_interface_info_at)
         self.assertEqual(dbus_interface_info.dbus_obj_uri, OBJECT_URI_TOO)
         
@@ -49,7 +49,7 @@ class BasicInterfaceTest(unittest.TestCase):
         test simple interface that receives a param
         but now changing default DbusDecorator value
         '''
-        bifaceWP = BasicInterfaceWithParamInConstructor(None, dbus_uri=OBJECT_URI_TOO)
+        bifaceWP = BasicInterfaceWithParamInConstructor(None, dbus_interface_info={'dbus_uri':OBJECT_URI_TOO})
         dbus_interface_info = getattr(bifaceWP, DBUS_INJECTED_ATTRS.dbus_interface_info_at)
         self.assertEqual(dbus_interface_info.dbus_obj_uri, OBJECT_URI_TOO)
         
@@ -67,7 +67,7 @@ class BasicInterfaceTest(unittest.TestCase):
         test simple interface that receives a keyword param
         but now changing default DbusDecorator value
         '''
-        bifaceWK = BasicInterfaceWithKeywordsInConstructor(keyword=None, dbus_uri=OBJECT_URI_TOO)
+        bifaceWK = BasicInterfaceWithKeywordsInConstructor(keyword=None, dbus_interface_info={'dbus_uri':OBJECT_URI_TOO})
         dbus_interface_info = getattr(bifaceWK, DBUS_INJECTED_ATTRS.dbus_interface_info_at)
         self.assertEqual(dbus_interface_info.dbus_obj_uri, OBJECT_URI_TOO)
                 
@@ -85,7 +85,7 @@ class BasicInterfaceTest(unittest.TestCase):
         test simple interface that receives a param and keyword param
         but now changing default DbusDecorator value 
         '''
-        bifaceWPK = BasicInterfaceWithParamAndKeywordsInConstructor(None, keyword=None, dbus_uri=OBJECT_URI_TOO)
+        bifaceWPK = BasicInterfaceWithParamAndKeywordsInConstructor(None, keyword=None, dbus_interface_info={'dbus_uri':OBJECT_URI_TOO})
         dbus_interface_info = getattr(bifaceWPK, DBUS_INJECTED_ATTRS.dbus_interface_info_at)
         self.assertEqual(dbus_interface_info.dbus_obj_uri, OBJECT_URI_TOO)
 

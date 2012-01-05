@@ -172,16 +172,15 @@ class DbusInterface(DbusDecorator):
         self._dbus_default_keys = keys_for_keys # 'from to' for kw and constructor_keys
         has_same_key_in_kw = False # infor if this constructor changes dbus_interface_info
         not_user_interface_info = True # inform if this constructor NOT pass dbus_interface_info param
-        #remove dbus_interface keywords from kw for constructor 
+        #remove dbus interface info keyword from kw for constructor
+        dbus_interface_info = kw.get(dbus_info_at)
+        if dbus_interface_info:
+            del kw[dbus_info_at]
         for key in attr_keys:
             default_val = self._dbus_default_attrs.get(key)
-            if key in kw and kw[key] is not default_val:
+            if dbus_interface_info and key in dbus_interface_info and dbus_interface_info[key] is not default_val:
                 has_same_key_in_kw = True
-                constructor_keys[keys_for_keys[key]] = kw[key]
-                del kw[key]
-                if not_user_interface_info and key is dbus_info_at:
-                    not_user_interface_info = False
-                    self._dbus_interface_info = kw[dbus_info_at]
+                constructor_keys[keys_for_keys[key]] = dbus_interface_info[key]
             else:
                 constructor_keys[keys_for_keys[key]] = self._dbus_default_attrs.get(key)
         
@@ -325,7 +324,7 @@ class DbusInterface(DbusDecorator):
             result  = dbus_interface_info.dbus_interfaces.get(dbus_str_iface)
             if not result:
                 result = DbusInterface.dbus_lib.Interface(
-                    dbus_obj or dbus_interface_info.dbus_obj,
+                    dbus_obj or DbusInterface.get_bus_obj(at),
                     dbus_str_iface)
                 dbus_interface_info.dbus_interfaces[dbus_str_iface] = result
             return result

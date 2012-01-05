@@ -16,7 +16,7 @@ class Player(Interfaces):
 
 #using
 if __name__ == '__main__':
-    mediaplayer2 = Player(dbus_uri='org.mpris.MediaPlayer2.gmusicbrowser')
+    mediaplayer2 = Player(dbus_interface_info={'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
     mediaplayer2.Next()
     print mediaplayer2.Volume
     mediaplayer2.Volume = 1

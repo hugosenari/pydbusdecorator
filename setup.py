@@ -14,4 +14,5 @@ setup(name='pydbusdecorator',
       author_email='hugosenari@gmail.com',
       url='https://github.com/hugosenari/pydbusdecorator',
       packages=('pydbusdecorator',),
+      requires=('dbus',),
      )

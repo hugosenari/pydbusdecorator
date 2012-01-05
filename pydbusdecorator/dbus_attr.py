@@ -53,6 +53,7 @@ class DbusAttr(DbusDecorator):
         iface = self.iface or DbusInterface.get_bus_iface(obj)
         #vals is UndefinedParam, try to get val from object
         if val is UNDEFINED_PARAM:
+            print iface, self.attr.__name__
             mval = properties.Get(iface, self.attr.__name__)
             DbusInterface.store_result(obj, mval)
             if self.override_val:
