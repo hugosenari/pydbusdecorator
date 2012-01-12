@@ -4,8 +4,8 @@ Created on Nov 6, 2011
 
 @author: hugosenari
 '''
-from distutils.core import setup
 
+from distutils.core import setup
 
 setup(name='pydbusdecorator',
       version='1.0',
@@ -26,32 +26,51 @@ setup(name='pydbusdecorator',
             "Topic :: Software Development :: Libraries :: Python Modules",
       ],
       long_description = """\
+=====================================================
 Python decorator for dbus interface client definition
+=====================================================
 
------------------------------------------------------
-Python decorator for dbus interfaces
+Python decorators to define dbus
+interface, then use it as lib.
 
-For examples see tests (pydbusdecorator/tests) or mpris2 (https://github.com/hugosenari/mpris2)
+For examples see tests or mpris2
+(https://github.com/hugosenari/mpris2)
 
-# importing
-from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
 
-# defining
-@DbusInterface('org.mpris.MediaPlayer2', '/org/mpris/MediaPlayer2')
-class Player(object):
-    @DbusMethod
-    def Next(self):
-        pass
-    @DbusAttr
-    def Volume(self):
-    pass
+Require:
+========
+
+Python dbus
+
+
+Example:
+========
+
+Import decorators
+-----------------
+>>> from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
+
+Define dbus interface
+---------------------
+
+>>> @DbusInterface('org.mpris.MediaPlayer2', '/org/mpris/MediaPlayer2')
+>>> class Player(object):
+>>>    @DbusMethod
+>>>    def Next(self):
+>>>       pass
+>>>    @DbusAttr
+>>>    def Volume(self): 
+>>>       pass
     
-# using
-mediaplayer2 = Player(dbus_interface_info={'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
-mediaplayer2.Next()
-print mediaplayer2.Volume
-mediaplayer2.Volume = 1
-print mediaplayer2.Volume # integer = 1 :P
+Use your definition
+-------------------
+>>> mediaplayer2 = Player(
+>>>    dbus_interface_info={
+>>>       'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
+>>> mediaplayer2.Next()
+>>> print mediaplayer2.Volume
+>>> mediaplayer2.Volume = 1
+>>> print mediaplayer2.Volume # integer = 1 :P
 
 """
 )
