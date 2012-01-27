@@ -124,3 +124,16 @@ class DbusMethod(DbusDecorator):
                 if key in to_dbus_keys:
                     kw[key] = kw_to_dbus[key](kw[key])
         return kw
+    
+    @property
+    def meth(self):
+        return self._meth
+    
+    @meth.setter
+    def meth(self, value):
+        self._meth = value
+        if hasattr(value, "__doc__"):
+            self.__doc__ = value.__doc__
+    
+    
+    

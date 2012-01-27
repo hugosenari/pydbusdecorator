@@ -11,6 +11,7 @@ from pydbusdecorator.dbus_interface import DbusInterface
 class DbusAttr(DbusDecorator):
     '''
     Wrap some method as attribute
+    
     Works like @property, but for dbus
     '''
     
@@ -82,4 +83,15 @@ class DbusAttr(DbusDecorator):
 
     def __delete__(self, obj):
         raise AttributeError, "can't delete attribute"
-        
+    
+    @property
+    def attr(self):
+        return self._attr
+    
+    @attr.setter
+    def attr(self, value):
+        self._attr = value
+        if hasattr(value, "__doc__"):
+            self.__doc__ = value.__doc__
+            
+            

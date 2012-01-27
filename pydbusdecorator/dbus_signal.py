@@ -74,3 +74,13 @@ class DbusSignal(DbusDecorator):
         self._obj = obj
         self._handler = handler
         self._watch_dbus(obj, *args, **kw)
+    
+    @property
+    def meth(self):
+        return self._meth
+    
+    @meth.setter
+    def meth(self, value):
+        self._meth = value
+        if hasattr(value, "__doc__"):
+            self.__doc__ = value.__doc__
