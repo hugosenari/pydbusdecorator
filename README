@@ -23,6 +23,7 @@ Import decorators
 
 >>> from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
 
+
 Define dbus interface
 ---------------------
 
