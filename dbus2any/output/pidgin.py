@@ -19,44 +19,44 @@ from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
 
   
 class PurpleInterface(object):
-    '''
-    PurpleInterface
-    
-    Usage:
-    ------
-    
-    >> myPurpleInterface = PurpleInterface()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myPurpleInterface.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myPurpleInterface.bar
-    >>> myPurpleInterface.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myPurpleInterface.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	PurpleInterface
+	
+	Usage:
+	------
+	
+	>> myPurpleInterface = PurpleInterface()
+	since this you can access any method, attribute or signal defined below this.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myPurpleInterface.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myPurpleInterface.bar
+	>>> myPurpleInterface.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myPurpleInterface.spam = lambda eggs: do_something(eggs)
+	
+	'''
 	@DbusInterface("im.pidgin.purple.PurpleInterface", "/im/pidgin/purple/PurpleObject", "im.pidgin.purple.PurpleService")
 	def __init__(self, *arg, **kw):
 		pass
-    
-        @DbusMethod
+
+	@DbusMethod
 	def PurpleAccountsFindAny(self, arg_name, arg_protocol, *arg, **kw):
 		"""
 		PurpleAccountsFindAny method:
@@ -69,8 +69,8 @@ class PurpleInterface(object):
 		
 		"""
 		pass
-    
-        @DbusMethod
+
+	@DbusMethod
 	def PurpleAccountsFindConnected(self, arg_name, arg_protocol, *arg, **kw):
 		"""
 		PurpleAccountsFindConnected method:

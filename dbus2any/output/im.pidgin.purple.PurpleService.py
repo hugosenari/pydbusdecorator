@@ -15,41 +15,42 @@ Parameters:
 
 '''
 from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
-        
+		
 class Introspectable(object):
-    '''
-    Introspectable
-    
-    Usage:
-    ------
-    
-    >> myIntrospectable = Introspectable()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myIntrospectable.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myIntrospectable.bar
-    >>> myIntrospectable.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	Introspectable
+
+	Usage:
+	------
+
+	>> myIntrospectable = Introspectable()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myIntrospectable.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myIntrospectable.bar
+	>>> myIntrospectable.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myIntrospectable.spam = lambda eggs: do_something(eggs)
+	every time that Introspectable
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/im/pidgin/purple/PurpleObject", "im.pidgin.purple.PurpleService")
 	def __init__(self, *arg, **kw):
 		pass
@@ -58,48 +59,51 @@ class Introspectable(object):
 	def Introspect(self, *arg, **kw):
 		"""
 		Introspect method:
-		
+
 		Parameters
 		----------
-		data: s, direction: out,
+		data:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
   
 class PurpleInterface(object):
-    '''
-    PurpleInterface
-    
-    Usage:
-    ------
-    
-    >> myPurpleInterface = PurpleInterface()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myPurpleInterface.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myPurpleInterface.bar
-    >>> myPurpleInterface.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myPurpleInterface.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	PurpleInterface
+
+	Usage:
+	------
+
+	>> myPurpleInterface = PurpleInterface()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myPurpleInterface.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myPurpleInterface.bar
+	>>> myPurpleInterface.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myPurpleInterface.spam = lambda eggs: do_something(eggs)
+	every time that PurpleInterface
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("im.pidgin.purple.PurpleInterface", "/im/pidgin/purple/PurpleObject", "im.pidgin.purple.PurpleService")
 	def __init__(self, *arg, **kw):
 		pass
@@ -108,12 +112,18 @@ class PurpleInterface(object):
 	def PurpleAccountsFindAny(self, arg_name, arg_protocol, *arg, **kw):
 		"""
 		PurpleAccountsFindAny method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		protocol: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		protocol:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -122,12 +132,18 @@ class PurpleInterface(object):
 	def PurpleAccountsFindConnected(self, arg_name, arg_protocol, *arg, **kw):
 		"""
 		PurpleAccountsFindConnected method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		protocol: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		protocol:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -136,11 +152,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeIsChat(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeIsChat method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -149,11 +169,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeIsBuddy(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeIsBuddy method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -162,11 +186,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeIsContact(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeIsContact method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -175,11 +203,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeIsGroup(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeIsGroup method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -188,11 +220,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIsOnline(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyIsOnline method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -201,12 +237,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeHasFlag(self, arg_node, arg_flags, *arg, **kw):
 		"""
 		PurpleBlistNodeHasFlag method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		flags: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -215,11 +257,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeShouldSave(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeShouldSave method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -228,11 +274,15 @@ class PurpleInterface(object):
 	def PurpleConnectionIsConnected(self, arg_connection, *arg, **kw):
 		"""
 		PurpleConnectionIsConnected method:
-		
+
 		Parameters
 		----------
-		connection: i, direction: in,
-		RESULT: i, direction: out,
+		connection:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -241,11 +291,15 @@ class PurpleInterface(object):
 	def PurpleConnectionIsValid(self, arg_connection, *arg, **kw):
 		"""
 		PurpleConnectionIsValid method:
-		
+
 		Parameters
 		----------
-		connection: i, direction: in,
-		RESULT: i, direction: out,
+		connection:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -254,11 +308,15 @@ class PurpleInterface(object):
 	def PurpleConvIm(self, arg_conversation, *arg, **kw):
 		"""
 		PurpleConvIm method:
-		
+
 		Parameters
 		----------
-		conversation: i, direction: in,
-		RESULT: i, direction: out,
+		conversation:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -267,11 +325,15 @@ class PurpleInterface(object):
 	def PurpleConvChat(self, arg_conversation, *arg, **kw):
 		"""
 		PurpleConvChat method:
-		
+
 		Parameters
 		----------
-		conversation: i, direction: in,
-		RESULT: i, direction: out,
+		conversation:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -280,12 +342,18 @@ class PurpleInterface(object):
 	def PurpleAccountNew(self, arg_username, arg_protocol_id, *arg, **kw):
 		"""
 		PurpleAccountNew method:
-		
+
 		Parameters
 		----------
-		username: s, direction: in,
-		protocol_id: s, direction: in,
-		RESULT: i, direction: out,
+		username:
+			type: s,
+			direction: in;
+		protocol_id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -294,10 +362,12 @@ class PurpleInterface(object):
 	def PurpleAccountDestroy(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountDestroy method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -306,10 +376,12 @@ class PurpleInterface(object):
 	def PurpleAccountConnect(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountConnect method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -318,10 +390,12 @@ class PurpleInterface(object):
 	def PurpleAccountRegister(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountRegister method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -330,10 +404,12 @@ class PurpleInterface(object):
 	def PurpleAccountDisconnect(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountDisconnect method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -342,14 +418,24 @@ class PurpleInterface(object):
 	def PurpleAccountNotifyAdded(self, arg_account, arg_remote_user, arg_id, arg_alias, arg_message, *arg, **kw):
 		"""
 		PurpleAccountNotifyAdded method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		remote_user: s, direction: in,
-		id: s, direction: in,
-		alias: s, direction: in,
-		message: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		remote_user:
+			type: s,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -358,14 +444,24 @@ class PurpleInterface(object):
 	def PurpleAccountRequestAdd(self, arg_account, arg_remote_user, arg_id, arg_alias, arg_message, *arg, **kw):
 		"""
 		PurpleAccountRequestAdd method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		remote_user: s, direction: in,
-		id: s, direction: in,
-		alias: s, direction: in,
-		message: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		remote_user:
+			type: s,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -374,10 +470,12 @@ class PurpleInterface(object):
 	def PurpleAccountRequestCloseWithAccount(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountRequestCloseWithAccount method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -386,10 +484,12 @@ class PurpleInterface(object):
 	def PurpleAccountRequestClose(self, arg_ui_handle, *arg, **kw):
 		"""
 		PurpleAccountRequestClose method:
-		
+
 		Parameters
 		----------
-		ui_handle: i, direction: in,
+		ui_handle:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -398,10 +498,12 @@ class PurpleInterface(object):
 	def PurpleAccountRequestChangePassword(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountRequestChangePassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -410,10 +512,12 @@ class PurpleInterface(object):
 	def PurpleAccountRequestChangeUserInfo(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountRequestChangeUserInfo method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -422,11 +526,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetUsername(self, arg_account, arg_username, *arg, **kw):
 		"""
 		PurpleAccountSetUsername method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		username: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		username:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -435,11 +543,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetPassword(self, arg_account, arg_password, *arg, **kw):
 		"""
 		PurpleAccountSetPassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		password: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		password:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -448,11 +560,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetAlias(self, arg_account, arg_alias, *arg, **kw):
 		"""
 		PurpleAccountSetAlias method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		alias: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -461,11 +577,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetUserInfo(self, arg_account, arg_user_info, *arg, **kw):
 		"""
 		PurpleAccountSetUserInfo method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		user_info: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		user_info:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -474,11 +594,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetBuddyIconPath(self, arg_account, arg_path, *arg, **kw):
 		"""
 		PurpleAccountSetBuddyIconPath method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		path: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		path:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -487,11 +611,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetProtocolId(self, arg_account, arg_protocol_id, *arg, **kw):
 		"""
 		PurpleAccountSetProtocolId method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		protocol_id: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		protocol_id:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -500,11 +628,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetConnection(self, arg_account, arg_gc, *arg, **kw):
 		"""
 		PurpleAccountSetConnection method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		gc: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		gc:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -513,11 +645,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetRememberPassword(self, arg_account, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetRememberPassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -526,11 +662,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetCheckMail(self, arg_account, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetCheckMail method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -539,12 +679,18 @@ class PurpleInterface(object):
 	def PurpleAccountSetEnabled(self, arg_account, arg_ui, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetEnabled method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -553,11 +699,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetProxyInfo(self, arg_account, arg_info, *arg, **kw):
 		"""
 		PurpleAccountSetProxyInfo method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		info: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		info:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -566,11 +716,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetPrivacyType(self, arg_account, arg_privacy_type, *arg, **kw):
 		"""
 		PurpleAccountSetPrivacyType method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		privacy_type: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		privacy_type:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -579,11 +733,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetStatusTypes(self, arg_account, arg_status_types, *arg, **kw):
 		"""
 		PurpleAccountSetStatusTypes method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		status_types: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		status_types:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -592,13 +750,21 @@ class PurpleInterface(object):
 	def PurpleAccountSetStatusList(self, arg_account, arg_status_id, arg_active, arg_attrs, *arg, **kw):
 		"""
 		PurpleAccountSetStatusList method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		status_id: s, direction: in,
-		active: i, direction: in,
-		attrs: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		active:
+			type: i,
+			direction: in;
+		attrs:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -607,11 +773,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetSilenceSuppression(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetSilenceSuppression method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -620,11 +790,15 @@ class PurpleInterface(object):
 	def PurpleAccountSetSilenceSuppression(self, arg_account, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetSilenceSuppression method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -633,10 +807,12 @@ class PurpleInterface(object):
 	def PurpleAccountClearSettings(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountClearSettings method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -645,11 +821,15 @@ class PurpleInterface(object):
 	def PurpleAccountRemoveSetting(self, arg_account, arg_setting, *arg, **kw):
 		"""
 		PurpleAccountRemoveSetting method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		setting: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		setting:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -658,12 +838,18 @@ class PurpleInterface(object):
 	def PurpleAccountSetInt(self, arg_account, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetInt method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -672,12 +858,18 @@ class PurpleInterface(object):
 	def PurpleAccountSetString(self, arg_account, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetString method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		value: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -686,12 +878,18 @@ class PurpleInterface(object):
 	def PurpleAccountSetBool(self, arg_account, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetBool method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -700,13 +898,21 @@ class PurpleInterface(object):
 	def PurpleAccountSetUiInt(self, arg_account, arg_ui, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetUiInt method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -715,13 +921,21 @@ class PurpleInterface(object):
 	def PurpleAccountSetUiString(self, arg_account, arg_ui, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetUiString method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		value: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -730,13 +944,21 @@ class PurpleInterface(object):
 	def PurpleAccountSetUiBool(self, arg_account, arg_ui, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleAccountSetUiBool method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		value: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -745,11 +967,15 @@ class PurpleInterface(object):
 	def PurpleAccountIsConnected(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountIsConnected method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -758,11 +984,15 @@ class PurpleInterface(object):
 	def PurpleAccountIsConnecting(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountIsConnecting method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -771,11 +1001,15 @@ class PurpleInterface(object):
 	def PurpleAccountIsDisconnected(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountIsDisconnected method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -784,11 +1018,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetUsername(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetUsername method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -797,11 +1035,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetPassword(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetPassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -810,11 +1052,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetAlias(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetAlias method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -823,11 +1069,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetUserInfo(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetUserInfo method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -836,11 +1086,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetBuddyIconPath(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetBuddyIconPath method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -849,11 +1103,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetProtocolId(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetProtocolId method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -862,11 +1120,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetProtocolName(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetProtocolName method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -875,11 +1137,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetConnection(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetConnection method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -888,11 +1154,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetNameForDisplay(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetNameForDisplay method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -901,11 +1171,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetRememberPassword(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetRememberPassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -914,11 +1188,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetCheckMail(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetCheckMail method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -927,12 +1205,18 @@ class PurpleInterface(object):
 	def PurpleAccountGetEnabled(self, arg_account, arg_ui, *arg, **kw):
 		"""
 		PurpleAccountGetEnabled method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -941,11 +1225,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetProxyInfo(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetProxyInfo method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -954,11 +1242,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetPrivacyType(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetPrivacyType method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -967,11 +1259,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetActiveStatus(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetActiveStatus method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -980,12 +1276,18 @@ class PurpleInterface(object):
 	def PurpleAccountGetStatus(self, arg_account, arg_status_id, *arg, **kw):
 		"""
 		PurpleAccountGetStatus method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		status_id: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -994,12 +1296,18 @@ class PurpleInterface(object):
 	def PurpleAccountGetStatusType(self, arg_account, arg_id, *arg, **kw):
 		"""
 		PurpleAccountGetStatusType method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1008,12 +1316,18 @@ class PurpleInterface(object):
 	def PurpleAccountGetStatusTypeWithPrimitive(self, arg_account, arg_primitive, *arg, **kw):
 		"""
 		PurpleAccountGetStatusTypeWithPrimitive method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		primitive: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		primitive:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1022,11 +1336,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetPresence(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetPresence method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1035,12 +1353,18 @@ class PurpleInterface(object):
 	def PurpleAccountIsStatusActive(self, arg_account, arg_status_id, *arg, **kw):
 		"""
 		PurpleAccountIsStatusActive method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		status_id: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1049,11 +1373,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetStatusTypes(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetStatusTypes method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: ai, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -1062,13 +1390,21 @@ class PurpleInterface(object):
 	def PurpleAccountGetInt(self, arg_account, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetInt method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		default_value: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1077,13 +1413,21 @@ class PurpleInterface(object):
 	def PurpleAccountGetString(self, arg_account, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetString method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		default_value: s, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -1092,13 +1436,21 @@ class PurpleInterface(object):
 	def PurpleAccountGetBool(self, arg_account, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetBool method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		default_value: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1107,14 +1459,24 @@ class PurpleInterface(object):
 	def PurpleAccountGetUiInt(self, arg_account, arg_ui, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetUiInt method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		default_value: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1123,14 +1485,24 @@ class PurpleInterface(object):
 	def PurpleAccountGetUiString(self, arg_account, arg_ui, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetUiString method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		default_value: s, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -1139,14 +1511,24 @@ class PurpleInterface(object):
 	def PurpleAccountGetUiBool(self, arg_account, arg_ui, arg_name, arg_default_value, *arg, **kw):
 		"""
 		PurpleAccountGetUiBool method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		ui: s, direction: in,
-		name: s, direction: in,
-		default_value: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		ui:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		default_value:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1155,12 +1537,18 @@ class PurpleInterface(object):
 	def PurpleAccountGetLog(self, arg_account, arg_create, *arg, **kw):
 		"""
 		PurpleAccountGetLog method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		create: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		create:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1169,10 +1557,12 @@ class PurpleInterface(object):
 	def PurpleAccountDestroyLog(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountDestroyLog method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1181,11 +1571,15 @@ class PurpleInterface(object):
 	def PurpleAccountAddBuddy(self, arg_account, arg_buddy, *arg, **kw):
 		"""
 		PurpleAccountAddBuddy method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddy: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddy:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1194,12 +1588,18 @@ class PurpleInterface(object):
 	def PurpleAccountAddBuddyWithInvite(self, arg_account, arg_buddy, arg_message, *arg, **kw):
 		"""
 		PurpleAccountAddBuddyWithInvite method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddy: i, direction: in,
-		message: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddy:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1208,11 +1608,15 @@ class PurpleInterface(object):
 	def PurpleAccountAddBuddies(self, arg_account, arg_buddies, *arg, **kw):
 		"""
 		PurpleAccountAddBuddies method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddies: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddies:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1221,12 +1625,18 @@ class PurpleInterface(object):
 	def PurpleAccountAddBuddiesWithInvite(self, arg_account, arg_buddies, arg_message, *arg, **kw):
 		"""
 		PurpleAccountAddBuddiesWithInvite method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddies: i, direction: in,
-		message: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddies:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1235,12 +1645,18 @@ class PurpleInterface(object):
 	def PurpleAccountRemoveBuddy(self, arg_account, arg_buddy, arg_group, *arg, **kw):
 		"""
 		PurpleAccountRemoveBuddy method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddy: i, direction: in,
-		group: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddy:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1249,12 +1665,18 @@ class PurpleInterface(object):
 	def PurpleAccountRemoveBuddies(self, arg_account, arg_buddies, arg_groups, *arg, **kw):
 		"""
 		PurpleAccountRemoveBuddies method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddies: i, direction: in,
-		groups: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		buddies:
+			type: i,
+			direction: in;
+		groups:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1263,11 +1685,15 @@ class PurpleInterface(object):
 	def PurpleAccountRemoveGroup(self, arg_account, arg_group, *arg, **kw):
 		"""
 		PurpleAccountRemoveGroup method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		group: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1276,12 +1702,18 @@ class PurpleInterface(object):
 	def PurpleAccountChangePassword(self, arg_account, arg_orig_pw, arg_new_pw, *arg, **kw):
 		"""
 		PurpleAccountChangePassword method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		orig_pw: s, direction: in,
-		new_pw: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		orig_pw:
+			type: s,
+			direction: in;
+		new_pw:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1290,12 +1722,18 @@ class PurpleInterface(object):
 	def PurpleAccountSupportsOfflineMessage(self, arg_account, arg_buddy, *arg, **kw):
 		"""
 		PurpleAccountSupportsOfflineMessage method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1304,11 +1742,15 @@ class PurpleInterface(object):
 	def PurpleAccountGetCurrentError(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountGetCurrentError method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1317,10 +1759,12 @@ class PurpleInterface(object):
 	def PurpleAccountClearCurrentError(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountClearCurrentError method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1329,10 +1773,12 @@ class PurpleInterface(object):
 	def PurpleAccountsAdd(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountsAdd method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1341,10 +1787,12 @@ class PurpleInterface(object):
 	def PurpleAccountsRemove(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountsRemove method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1353,10 +1801,12 @@ class PurpleInterface(object):
 	def PurpleAccountsDelete(self, arg_account, *arg, **kw):
 		"""
 		PurpleAccountsDelete method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1365,11 +1815,15 @@ class PurpleInterface(object):
 	def PurpleAccountsReorder(self, arg_account, arg_new_index, *arg, **kw):
 		"""
 		PurpleAccountsReorder method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		new_index: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		new_index:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1378,10 +1832,12 @@ class PurpleInterface(object):
 	def PurpleAccountsGetAll(self, *arg, **kw):
 		"""
 		PurpleAccountsGetAll method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -1390,10 +1846,12 @@ class PurpleInterface(object):
 	def PurpleAccountsGetAllActive(self, *arg, **kw):
 		"""
 		PurpleAccountsGetAllActive method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -1402,12 +1860,18 @@ class PurpleInterface(object):
 	def PurpleAccountsFind(self, arg_name, arg_protocol, *arg, **kw):
 		"""
 		PurpleAccountsFind method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		protocol: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		protocol:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1423,10 +1887,12 @@ class PurpleInterface(object):
 	def PurpleAccountsSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleAccountsSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1435,10 +1901,12 @@ class PurpleInterface(object):
 	def PurpleAccountsGetUiOps(self, *arg, **kw):
 		"""
 		PurpleAccountsGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1461,10 +1929,12 @@ class PurpleInterface(object):
 	def PurpleBlistNew(self, *arg, **kw):
 		"""
 		PurpleBlistNew method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1473,10 +1943,12 @@ class PurpleInterface(object):
 	def PurpleSetBlist(self, arg_blist, *arg, **kw):
 		"""
 		PurpleSetBlist method:
-		
+
 		Parameters
 		----------
-		blist: i, direction: in,
+		blist:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1485,10 +1957,12 @@ class PurpleInterface(object):
 	def PurpleGetBlist(self, *arg, **kw):
 		"""
 		PurpleGetBlist method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1497,10 +1971,12 @@ class PurpleInterface(object):
 	def PurpleBlistGetRoot(self, *arg, **kw):
 		"""
 		PurpleBlistGetRoot method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1509,10 +1985,12 @@ class PurpleInterface(object):
 	def PurpleBlistGetBuddies(self, *arg, **kw):
 		"""
 		PurpleBlistGetBuddies method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -1521,12 +1999,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeNext(self, arg_node, arg_offline, *arg, **kw):
 		"""
 		PurpleBlistNodeNext method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		offline: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		offline:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1535,11 +2019,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetParent(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetParent method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1548,11 +2036,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetFirstChild(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetFirstChild method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1561,11 +2053,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetSiblingNext(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetSiblingNext method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1574,11 +2070,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetSiblingPrev(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetSiblingPrev method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1601,10 +2101,12 @@ class PurpleInterface(object):
 	def PurpleBlistSetVisible(self, arg_show, *arg, **kw):
 		"""
 		PurpleBlistSetVisible method:
-		
+
 		Parameters
 		----------
-		show: i, direction: in,
+		show:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1613,11 +2115,15 @@ class PurpleInterface(object):
 	def PurpleBlistUpdateBuddyStatus(self, arg_buddy, arg_old_status, *arg, **kw):
 		"""
 		PurpleBlistUpdateBuddyStatus method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		old_status: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		old_status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1626,10 +2132,12 @@ class PurpleInterface(object):
 	def PurpleBlistUpdateNodeIcon(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistUpdateNodeIcon method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1638,10 +2146,12 @@ class PurpleInterface(object):
 	def PurpleBlistUpdateBuddyIcon(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBlistUpdateBuddyIcon method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1650,11 +2160,15 @@ class PurpleInterface(object):
 	def PurpleBlistRenameBuddy(self, arg_buddy, arg_name, *arg, **kw):
 		"""
 		PurpleBlistRenameBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		name: s, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1663,11 +2177,15 @@ class PurpleInterface(object):
 	def PurpleBlistAliasContact(self, arg_contact, arg_alias, *arg, **kw):
 		"""
 		PurpleBlistAliasContact method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		alias: s, direction: in,
+		contact:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1676,11 +2194,15 @@ class PurpleInterface(object):
 	def PurpleBlistAliasBuddy(self, arg_buddy, arg_alias, *arg, **kw):
 		"""
 		PurpleBlistAliasBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		alias: s, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1689,11 +2211,15 @@ class PurpleInterface(object):
 	def PurpleBlistServerAliasBuddy(self, arg_buddy, arg_alias, *arg, **kw):
 		"""
 		PurpleBlistServerAliasBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		alias: s, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1702,11 +2228,15 @@ class PurpleInterface(object):
 	def PurpleBlistAliasChat(self, arg_chat, arg_alias, *arg, **kw):
 		"""
 		PurpleBlistAliasChat method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		alias: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1715,11 +2245,15 @@ class PurpleInterface(object):
 	def PurpleBlistRenameGroup(self, arg_group, arg_name, *arg, **kw):
 		"""
 		PurpleBlistRenameGroup method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
-		name: s, direction: in,
+		group:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -1728,13 +2262,21 @@ class PurpleInterface(object):
 	def PurpleChatNew(self, arg_account, arg_alias, arg_components, *arg, **kw):
 		"""
 		PurpleChatNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		alias: s, direction: in,
-		components: a{ss}, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		components:
+			type: a{ss},
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1743,10 +2285,12 @@ class PurpleInterface(object):
 	def PurpleChatDestroy(self, arg_chat, *arg, **kw):
 		"""
 		PurpleChatDestroy method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1755,12 +2299,18 @@ class PurpleInterface(object):
 	def PurpleBlistAddChat(self, arg_chat, arg_group, arg_node, *arg, **kw):
 		"""
 		PurpleBlistAddChat method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		group: i, direction: in,
-		node: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1769,13 +2319,21 @@ class PurpleInterface(object):
 	def PurpleBuddyNew(self, arg_account, arg_name, arg_alias, *arg, **kw):
 		"""
 		PurpleBuddyNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		alias: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1784,10 +2342,12 @@ class PurpleInterface(object):
 	def PurpleBuddyDestroy(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyDestroy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1796,11 +2356,15 @@ class PurpleInterface(object):
 	def PurpleBuddySetIcon(self, arg_buddy, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddySetIcon method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		icon: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		icon:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1809,11 +2373,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetAccount(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetAccount method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1822,11 +2390,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetName(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetName method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -1835,11 +2407,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetIcon(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetIcon method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1848,11 +2424,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetContact(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetContact method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1861,11 +2441,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetPresence(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetPresence method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1874,11 +2458,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetMediaCaps(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetMediaCaps method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1887,11 +2475,15 @@ class PurpleInterface(object):
 	def PurpleBuddySetMediaCaps(self, arg_buddy, arg_media_caps, *arg, **kw):
 		"""
 		PurpleBuddySetMediaCaps method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		media_caps: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		media_caps:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1900,13 +2492,21 @@ class PurpleInterface(object):
 	def PurpleBlistAddBuddy(self, arg_buddy, arg_contact, arg_group, arg_node, *arg, **kw):
 		"""
 		PurpleBlistAddBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		contact: i, direction: in,
-		group: i, direction: in,
-		node: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
+		contact:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1915,11 +2515,15 @@ class PurpleInterface(object):
 	def PurpleGroupNew(self, arg_name, *arg, **kw):
 		"""
 		PurpleGroupNew method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1928,10 +2532,12 @@ class PurpleInterface(object):
 	def PurpleGroupDestroy(self, arg_group, *arg, **kw):
 		"""
 		PurpleGroupDestroy method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
+		group:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1940,11 +2546,15 @@ class PurpleInterface(object):
 	def PurpleBlistAddGroup(self, arg_group, arg_node, *arg, **kw):
 		"""
 		PurpleBlistAddGroup method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
-		node: i, direction: in,
+		group:
+			type: i,
+			direction: in;
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1953,10 +2563,12 @@ class PurpleInterface(object):
 	def PurpleContactNew(self, *arg, **kw):
 		"""
 		PurpleContactNew method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1965,10 +2577,12 @@ class PurpleInterface(object):
 	def PurpleContactDestroy(self, arg_contact, *arg, **kw):
 		"""
 		PurpleContactDestroy method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
+		contact:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -1977,11 +2591,15 @@ class PurpleInterface(object):
 	def PurpleContactGetGroup(self, arg_contact, *arg, **kw):
 		"""
 		PurpleContactGetGroup method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -1990,12 +2608,18 @@ class PurpleInterface(object):
 	def PurpleBlistAddContact(self, arg_contact, arg_group, arg_node, *arg, **kw):
 		"""
 		PurpleBlistAddContact method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		group: i, direction: in,
-		node: i, direction: in,
+		contact:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2004,11 +2628,15 @@ class PurpleInterface(object):
 	def PurpleBlistMergeContact(self, arg_source, arg_node, *arg, **kw):
 		"""
 		PurpleBlistMergeContact method:
-		
+
 		Parameters
 		----------
-		source: i, direction: in,
-		node: i, direction: in,
+		source:
+			type: i,
+			direction: in;
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2017,11 +2645,15 @@ class PurpleInterface(object):
 	def PurpleContactGetPriorityBuddy(self, arg_contact, *arg, **kw):
 		"""
 		PurpleContactGetPriorityBuddy method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2030,11 +2662,15 @@ class PurpleInterface(object):
 	def PurpleContactSetAlias(self, arg_contact, arg_alias, *arg, **kw):
 		"""
 		PurpleContactSetAlias method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		alias: s, direction: in,
+		contact:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2043,11 +2679,15 @@ class PurpleInterface(object):
 	def PurpleContactGetAlias(self, arg_contact, *arg, **kw):
 		"""
 		PurpleContactGetAlias method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		RESULT: s, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2056,12 +2696,18 @@ class PurpleInterface(object):
 	def PurpleContactOnAccount(self, arg_contact, arg_account, *arg, **kw):
 		"""
 		PurpleContactOnAccount method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2070,10 +2716,12 @@ class PurpleInterface(object):
 	def PurpleContactInvalidatePriorityBuddy(self, arg_contact, *arg, **kw):
 		"""
 		PurpleContactInvalidatePriorityBuddy method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
+		contact:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2082,10 +2730,12 @@ class PurpleInterface(object):
 	def PurpleBlistRemoveBuddy(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBlistRemoveBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
+		buddy:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2094,10 +2744,12 @@ class PurpleInterface(object):
 	def PurpleBlistRemoveContact(self, arg_contact, *arg, **kw):
 		"""
 		PurpleBlistRemoveContact method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
+		contact:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2106,10 +2758,12 @@ class PurpleInterface(object):
 	def PurpleBlistRemoveChat(self, arg_chat, *arg, **kw):
 		"""
 		PurpleBlistRemoveChat method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2118,10 +2772,12 @@ class PurpleInterface(object):
 	def PurpleBlistRemoveGroup(self, arg_group, *arg, **kw):
 		"""
 		PurpleBlistRemoveGroup method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
+		group:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2130,11 +2786,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetAliasOnly(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetAliasOnly method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2143,11 +2803,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetServerAlias(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetServerAlias method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2156,11 +2820,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetContactAlias(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetContactAlias method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2169,11 +2837,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetLocalAlias(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetLocalAlias method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2182,11 +2854,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetAlias(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetAlias method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2195,11 +2871,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetLocalBuddyAlias(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetLocalBuddyAlias method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: s, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2208,11 +2888,15 @@ class PurpleInterface(object):
 	def PurpleChatGetName(self, arg_chat, *arg, **kw):
 		"""
 		PurpleChatGetName method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: s, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2221,12 +2905,18 @@ class PurpleInterface(object):
 	def PurpleFindBuddy(self, arg_account, arg_name, *arg, **kw):
 		"""
 		PurpleFindBuddy method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2235,13 +2925,21 @@ class PurpleInterface(object):
 	def PurpleFindBuddyInGroup(self, arg_account, arg_name, arg_group, *arg, **kw):
 		"""
 		PurpleFindBuddyInGroup method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		group: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2250,12 +2948,18 @@ class PurpleInterface(object):
 	def PurpleFindBuddies(self, arg_account, arg_name, *arg, **kw):
 		"""
 		PurpleFindBuddies method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		RESULT: ai, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -2264,11 +2968,15 @@ class PurpleInterface(object):
 	def PurpleFindGroup(self, arg_name, *arg, **kw):
 		"""
 		PurpleFindGroup method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2277,12 +2985,18 @@ class PurpleInterface(object):
 	def PurpleBlistFindChat(self, arg_account, arg_name, *arg, **kw):
 		"""
 		PurpleBlistFindChat method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2291,11 +3005,15 @@ class PurpleInterface(object):
 	def PurpleChatGetGroup(self, arg_chat, *arg, **kw):
 		"""
 		PurpleChatGetGroup method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2304,11 +3022,15 @@ class PurpleInterface(object):
 	def PurpleChatGetAccount(self, arg_chat, *arg, **kw):
 		"""
 		PurpleChatGetAccount method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2317,11 +3039,15 @@ class PurpleInterface(object):
 	def PurpleBuddyGetGroup(self, arg_buddy, *arg, **kw):
 		"""
 		PurpleBuddyGetGroup method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2330,11 +3056,15 @@ class PurpleInterface(object):
 	def PurpleGroupGetAccounts(self, arg_g, *arg, **kw):
 		"""
 		PurpleGroupGetAccounts method:
-		
+
 		Parameters
 		----------
-		g: i, direction: in,
-		RESULT: ai, direction: out,
+		g:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -2343,12 +3073,18 @@ class PurpleInterface(object):
 	def PurpleGroupOnAccount(self, arg_g, arg_account, *arg, **kw):
 		"""
 		PurpleGroupOnAccount method:
-		
+
 		Parameters
 		----------
-		g: i, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		g:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2357,11 +3093,15 @@ class PurpleInterface(object):
 	def PurpleGroupGetName(self, arg_group, *arg, **kw):
 		"""
 		PurpleGroupGetName method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
-		RESULT: s, direction: out,
+		group:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2370,10 +3110,12 @@ class PurpleInterface(object):
 	def PurpleBlistAddAccount(self, arg_account, *arg, **kw):
 		"""
 		PurpleBlistAddAccount method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2382,10 +3124,12 @@ class PurpleInterface(object):
 	def PurpleBlistRemoveAccount(self, arg_account, *arg, **kw):
 		"""
 		PurpleBlistRemoveAccount method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2394,12 +3138,18 @@ class PurpleInterface(object):
 	def PurpleBlistGetGroupSize(self, arg_group, arg_offline, *arg, **kw):
 		"""
 		PurpleBlistGetGroupSize method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
-		offline: i, direction: in,
-		RESULT: i, direction: out,
+		group:
+			type: i,
+			direction: in;
+		offline:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2408,11 +3158,15 @@ class PurpleInterface(object):
 	def PurpleBlistGetGroupOnlineCount(self, arg_group, *arg, **kw):
 		"""
 		PurpleBlistGetGroupOnlineCount method:
-		
+
 		Parameters
 		----------
-		group: i, direction: in,
-		RESULT: i, direction: out,
+		group:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2435,13 +3189,21 @@ class PurpleInterface(object):
 	def PurpleBlistRequestAddBuddy(self, arg_account, arg_username, arg_group, arg_alias, *arg, **kw):
 		"""
 		PurpleBlistRequestAddBuddy method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		username: s, direction: in,
-		group: s, direction: in,
-		alias: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		username:
+			type: s,
+			direction: in;
+		group:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2450,13 +3212,21 @@ class PurpleInterface(object):
 	def PurpleBlistRequestAddChat(self, arg_account, arg_group, arg_alias, arg_name, *arg, **kw):
 		"""
 		PurpleBlistRequestAddChat method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		group: i, direction: in,
-		alias: s, direction: in,
-		name: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		group:
+			type: i,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2472,12 +3242,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeSetBool(self, arg_node, arg_key, arg_value, *arg, **kw):
 		"""
 		PurpleBlistNodeSetBool method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		value: i, direction: in,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2486,12 +3262,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetBool(self, arg_node, arg_key, *arg, **kw):
 		"""
 		PurpleBlistNodeGetBool method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2500,12 +3282,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeSetInt(self, arg_node, arg_key, arg_value, *arg, **kw):
 		"""
 		PurpleBlistNodeSetInt method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		value: i, direction: in,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2514,12 +3302,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetInt(self, arg_node, arg_key, *arg, **kw):
 		"""
 		PurpleBlistNodeGetInt method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2528,12 +3322,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeSetString(self, arg_node, arg_key, arg_value, *arg, **kw):
 		"""
 		PurpleBlistNodeSetString method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		value: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2542,12 +3342,18 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetString(self, arg_node, arg_key, *arg, **kw):
 		"""
 		PurpleBlistNodeGetString method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2556,11 +3362,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeRemoveSetting(self, arg_node, arg_key, *arg, **kw):
 		"""
 		PurpleBlistNodeRemoveSetting method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		key: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2569,11 +3379,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeSetFlags(self, arg_node, arg_flags, *arg, **kw):
 		"""
 		PurpleBlistNodeSetFlags method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		flags: i, direction: in,
+		node:
+			type: i,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2582,11 +3396,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetFlags(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetFlags method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2595,11 +3413,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetType(self, arg_node, *arg, **kw):
 		"""
 		PurpleBlistNodeGetType method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2608,11 +3430,15 @@ class PurpleInterface(object):
 	def PurpleBlistNodeGetExtendedMenu(self, arg_n, *arg, **kw):
 		"""
 		PurpleBlistNodeGetExtendedMenu method:
-		
+
 		Parameters
 		----------
-		n: i, direction: in,
-		RESULT: ai, direction: out,
+		n:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -2621,10 +3447,12 @@ class PurpleInterface(object):
 	def PurpleBlistSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleBlistSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2633,10 +3461,12 @@ class PurpleInterface(object):
 	def PurpleBlistGetUiOps(self, *arg, **kw):
 		"""
 		PurpleBlistGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2659,15 +3489,27 @@ class PurpleInterface(object):
 	def PurpleBuddyIconNew(self, arg_account, arg_username, arg_icon_data, arg_icon_len, arg_checksum, *arg, **kw):
 		"""
 		PurpleBuddyIconNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		username: s, direction: in,
-		icon_data: i, direction: in,
-		icon_len: i, direction: in,
-		checksum: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		username:
+			type: s,
+			direction: in;
+		icon_data:
+			type: i,
+			direction: in;
+		icon_len:
+			type: i,
+			direction: in;
+		checksum:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2676,11 +3518,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconRef(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconRef method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: i, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2689,11 +3535,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconUnref(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconUnref method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: i, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2702,10 +3552,12 @@ class PurpleInterface(object):
 	def PurpleBuddyIconUpdate(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconUpdate method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
+		icon:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2714,13 +3566,21 @@ class PurpleInterface(object):
 	def PurpleBuddyIconSetData(self, arg_icon, arg_data, arg_len, arg_checksum, *arg, **kw):
 		"""
 		PurpleBuddyIconSetData method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		data: i, direction: in,
-		len: i, direction: in,
-		checksum: s, direction: in,
+		icon:
+			type: i,
+			direction: in;
+		data:
+			type: i,
+			direction: in;
+		len:
+			type: i,
+			direction: in;
+		checksum:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2729,11 +3589,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetAccount(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetAccount method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: i, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2742,11 +3606,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetUsername(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetUsername method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: s, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2755,11 +3623,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetChecksum(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetChecksum method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: s, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2768,11 +3640,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetData(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetData method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: ay, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ay,
+			direction: out;
 		
 		"""
 		pass
@@ -2781,11 +3657,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetExtension(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetExtension method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: s, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2794,11 +3674,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetFullPath(self, arg_icon, *arg, **kw):
 		"""
 		PurpleBuddyIconGetFullPath method:
-		
+
 		Parameters
 		----------
-		icon: i, direction: in,
-		RESULT: s, direction: out,
+		icon:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -2807,14 +3691,24 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsSetForUser(self, arg_account, arg_username, arg_icon_data, arg_icon_len, arg_checksum, *arg, **kw):
 		"""
 		PurpleBuddyIconsSetForUser method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		username: s, direction: in,
-		icon_data: i, direction: in,
-		icon_len: i, direction: in,
-		checksum: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		username:
+			type: s,
+			direction: in;
+		icon_data:
+			type: i,
+			direction: in;
+		icon_len:
+			type: i,
+			direction: in;
+		checksum:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -2823,12 +3717,18 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsFind(self, arg_account, arg_username, *arg, **kw):
 		"""
 		PurpleBuddyIconsFind method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		username: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		username:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2837,11 +3737,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsFindAccountIcon(self, arg_account, *arg, **kw):
 		"""
 		PurpleBuddyIconsFindAccountIcon method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2850,13 +3754,21 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsSetAccountIcon(self, arg_account, arg_icon_data, arg_icon_len, *arg, **kw):
 		"""
 		PurpleBuddyIconsSetAccountIcon method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		icon_data: i, direction: in,
-		icon_len: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		icon_data:
+			type: i,
+			direction: in;
+		icon_len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2865,11 +3777,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsGetAccountIconTimestamp(self, arg_account, *arg, **kw):
 		"""
 		PurpleBuddyIconsGetAccountIconTimestamp method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2878,11 +3794,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsNodeHasCustomIcon(self, arg_node, *arg, **kw):
 		"""
 		PurpleBuddyIconsNodeHasCustomIcon method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2891,11 +3811,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsNodeFindCustomIcon(self, arg_node, *arg, **kw):
 		"""
 		PurpleBuddyIconsNodeFindCustomIcon method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2904,13 +3828,21 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsNodeSetCustomIcon(self, arg_node, arg_icon_data, arg_icon_len, *arg, **kw):
 		"""
 		PurpleBuddyIconsNodeSetCustomIcon method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		icon_data: i, direction: in,
-		icon_len: i, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		icon_data:
+			type: i,
+			direction: in;
+		icon_len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2919,12 +3851,18 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsNodeSetCustomIconFromFile(self, arg_node, arg_filename, *arg, **kw):
 		"""
 		PurpleBuddyIconsNodeSetCustomIconFromFile method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		filename: s, direction: in,
-		RESULT: i, direction: out,
+		node:
+			type: i,
+			direction: in;
+		filename:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2933,11 +3871,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsHasCustomIcon(self, arg_contact, *arg, **kw):
 		"""
 		PurpleBuddyIconsHasCustomIcon method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2946,11 +3888,15 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsFindCustomIcon(self, arg_contact, *arg, **kw):
 		"""
 		PurpleBuddyIconsFindCustomIcon method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2959,13 +3905,21 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsSetCustomIcon(self, arg_contact, arg_icon_data, arg_icon_len, *arg, **kw):
 		"""
 		PurpleBuddyIconsSetCustomIcon method:
-		
+
 		Parameters
 		----------
-		contact: i, direction: in,
-		icon_data: i, direction: in,
-		icon_len: i, direction: in,
-		RESULT: i, direction: out,
+		contact:
+			type: i,
+			direction: in;
+		icon_data:
+			type: i,
+			direction: in;
+		icon_len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2974,10 +3928,12 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsSetCaching(self, arg_caching, *arg, **kw):
 		"""
 		PurpleBuddyIconsSetCaching method:
-		
+
 		Parameters
 		----------
-		caching: i, direction: in,
+		caching:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -2986,10 +3942,12 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsIsCaching(self, *arg, **kw):
 		"""
 		PurpleBuddyIconsIsCaching method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -2998,10 +3956,12 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsSetCacheDir(self, arg_cache_dir, *arg, **kw):
 		"""
 		PurpleBuddyIconsSetCacheDir method:
-		
+
 		Parameters
 		----------
-		cache_dir: s, direction: in,
+		cache_dir:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3010,10 +3970,12 @@ class PurpleInterface(object):
 	def PurpleBuddyIconsGetCacheDir(self, *arg, **kw):
 		"""
 		PurpleBuddyIconsGetCacheDir method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3036,12 +3998,18 @@ class PurpleInterface(object):
 	def PurpleBuddyIconGetScaleSize(self, arg_spec, arg_width, arg_height, *arg, **kw):
 		"""
 		PurpleBuddyIconGetScaleSize method:
-		
+
 		Parameters
 		----------
-		spec: i, direction: in,
-		width: i, direction: in,
-		height: i, direction: in,
+		spec:
+			type: i,
+			direction: in;
+		width:
+			type: i,
+			direction: in;
+		height:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3050,12 +4018,18 @@ class PurpleInterface(object):
 	def PurpleConnectionNew(self, arg_account, arg_regist, arg_password, *arg, **kw):
 		"""
 		PurpleConnectionNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		regist: i, direction: in,
-		password: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		regist:
+			type: i,
+			direction: in;
+		password:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3064,10 +4038,12 @@ class PurpleInterface(object):
 	def PurpleConnectionDestroy(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionDestroy method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3076,11 +4052,15 @@ class PurpleInterface(object):
 	def PurpleConnectionSetState(self, arg_gc, arg_state, *arg, **kw):
 		"""
 		PurpleConnectionSetState method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		state: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		state:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3089,11 +4069,15 @@ class PurpleInterface(object):
 	def PurpleConnectionSetAccount(self, arg_gc, arg_account, *arg, **kw):
 		"""
 		PurpleConnectionSetAccount method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		account: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3102,11 +4086,15 @@ class PurpleInterface(object):
 	def PurpleConnectionSetDisplayName(self, arg_gc, arg_name, *arg, **kw):
 		"""
 		PurpleConnectionSetDisplayName method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		name: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3115,11 +4103,15 @@ class PurpleInterface(object):
 	def PurpleConnectionSetProtocolData(self, arg_connection, arg_proto_data, *arg, **kw):
 		"""
 		PurpleConnectionSetProtocolData method:
-		
+
 		Parameters
 		----------
-		connection: i, direction: in,
-		proto_data: i, direction: in,
+		connection:
+			type: i,
+			direction: in;
+		proto_data:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3128,11 +4120,15 @@ class PurpleInterface(object):
 	def PurpleConnectionGetState(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionGetState method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3141,11 +4137,15 @@ class PurpleInterface(object):
 	def PurpleConnectionGetAccount(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionGetAccount method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3154,11 +4154,15 @@ class PurpleInterface(object):
 	def PurpleConnectionGetPrpl(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionGetPrpl method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3167,11 +4171,15 @@ class PurpleInterface(object):
 	def PurpleConnectionGetPassword(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionGetPassword method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: s, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3180,11 +4188,15 @@ class PurpleInterface(object):
 	def PurpleConnectionGetDisplayName(self, arg_gc, *arg, **kw):
 		"""
 		PurpleConnectionGetDisplayName method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: s, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3193,13 +4205,21 @@ class PurpleInterface(object):
 	def PurpleConnectionUpdateProgress(self, arg_gc, arg_text, arg_step, arg_count, *arg, **kw):
 		"""
 		PurpleConnectionUpdateProgress method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		text: s, direction: in,
-		step: i, direction: in,
-		count: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		text:
+			type: s,
+			direction: in;
+		step:
+			type: i,
+			direction: in;
+		count:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3208,11 +4228,15 @@ class PurpleInterface(object):
 	def PurpleConnectionNotice(self, arg_gc, arg_text, *arg, **kw):
 		"""
 		PurpleConnectionNotice method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		text: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		text:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3221,11 +4245,15 @@ class PurpleInterface(object):
 	def PurpleConnectionError(self, arg_gc, arg_reason, *arg, **kw):
 		"""
 		PurpleConnectionError method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		reason: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		reason:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3234,12 +4262,18 @@ class PurpleInterface(object):
 	def PurpleConnectionErrorReason(self, arg_gc, arg_reason, arg_description, *arg, **kw):
 		"""
 		PurpleConnectionErrorReason method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		reason: i, direction: in,
-		description: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		reason:
+			type: i,
+			direction: in;
+		description:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3248,11 +4282,15 @@ class PurpleInterface(object):
 	def PurpleConnectionSslError(self, arg_gc, arg_ssl_error, *arg, **kw):
 		"""
 		PurpleConnectionSslError method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		ssl_error: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		ssl_error:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3261,11 +4299,15 @@ class PurpleInterface(object):
 	def PurpleConnectionErrorIsFatal(self, arg_reason, *arg, **kw):
 		"""
 		PurpleConnectionErrorIsFatal method:
-		
+
 		Parameters
 		----------
-		reason: i, direction: in,
-		RESULT: i, direction: out,
+		reason:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3281,10 +4323,12 @@ class PurpleInterface(object):
 	def PurpleConnectionsGetAll(self, *arg, **kw):
 		"""
 		PurpleConnectionsGetAll method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3293,10 +4337,12 @@ class PurpleInterface(object):
 	def PurpleConnectionsGetConnecting(self, *arg, **kw):
 		"""
 		PurpleConnectionsGetConnecting method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3305,10 +4351,12 @@ class PurpleInterface(object):
 	def PurpleConnectionsSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleConnectionsSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3317,10 +4365,12 @@ class PurpleInterface(object):
 	def PurpleConnectionsGetUiOps(self, *arg, **kw):
 		"""
 		PurpleConnectionsGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3343,13 +4393,21 @@ class PurpleInterface(object):
 	def PurpleConversationNew(self, arg_type, arg_account, arg_name, *arg, **kw):
 		"""
 		PurpleConversationNew method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		account: i, direction: in,
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3358,10 +4416,12 @@ class PurpleInterface(object):
 	def PurpleConversationDestroy(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationDestroy method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3370,10 +4430,12 @@ class PurpleInterface(object):
 	def PurpleConversationPresent(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationPresent method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3382,11 +4444,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetType(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetType method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3395,11 +4461,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetUiOps(self, arg_conv, arg_ops, *arg, **kw):
 		"""
 		PurpleConversationSetUiOps method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		ops: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3408,10 +4478,12 @@ class PurpleInterface(object):
 	def PurpleConversationsSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleConversationsSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3420,11 +4492,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetUiOps(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetUiOps method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3433,11 +4509,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetAccount(self, arg_conv, arg_account, *arg, **kw):
 		"""
 		PurpleConversationSetAccount method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		account: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3446,11 +4526,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetAccount(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetAccount method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3459,11 +4543,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetGc(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetGc method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3472,11 +4560,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetTitle(self, arg_conv, arg_title, *arg, **kw):
 		"""
 		PurpleConversationSetTitle method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		title: s, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		title:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3485,11 +4577,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetTitle(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetTitle method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: s, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3498,10 +4594,12 @@ class PurpleInterface(object):
 	def PurpleConversationAutosetTitle(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationAutosetTitle method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3510,11 +4608,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetName(self, arg_conv, arg_name, *arg, **kw):
 		"""
 		PurpleConversationSetName method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		name: s, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3523,11 +4625,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetName(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetName method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: s, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3536,12 +4642,18 @@ class PurpleInterface(object):
 	def PurpleConvChatCbGetAttribute(self, arg_cb, arg_key, *arg, **kw):
 		"""
 		PurpleConvChatCbGetAttribute method:
-		
+
 		Parameters
 		----------
-		cb: i, direction: in,
-		key: s, direction: in,
-		RESULT: s, direction: out,
+		cb:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3550,11 +4662,15 @@ class PurpleInterface(object):
 	def PurpleConvChatCbGetAttributeKeys(self, arg_cb, *arg, **kw):
 		"""
 		PurpleConvChatCbGetAttributeKeys method:
-		
+
 		Parameters
 		----------
-		cb: i, direction: in,
-		RESULT: ai, direction: out,
+		cb:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3563,13 +4679,21 @@ class PurpleInterface(object):
 	def PurpleConvChatCbSetAttribute(self, arg_chat, arg_cb, arg_key, arg_value, *arg, **kw):
 		"""
 		PurpleConvChatCbSetAttribute method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		cb: i, direction: in,
-		key: s, direction: in,
-		value: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		cb:
+			type: i,
+			direction: in;
+		key:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -3578,13 +4702,21 @@ class PurpleInterface(object):
 	def PurpleConvChatCbSetAttributes(self, arg_chat, arg_cb, arg_keys, arg_values, *arg, **kw):
 		"""
 		PurpleConvChatCbSetAttributes method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		cb: i, direction: in,
-		keys: i, direction: in,
-		values: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		cb:
+			type: i,
+			direction: in;
+		keys:
+			type: i,
+			direction: in;
+		values:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3593,11 +4725,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetLogging(self, arg_conv, arg_log, *arg, **kw):
 		"""
 		PurpleConversationSetLogging method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		log: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		log:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3606,11 +4742,15 @@ class PurpleInterface(object):
 	def PurpleConversationIsLogging(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationIsLogging method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3619,11 +4759,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetImData(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetImData method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3632,11 +4776,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetChatData(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetChatData method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3645,10 +4793,12 @@ class PurpleInterface(object):
 	def PurpleGetConversations(self, *arg, **kw):
 		"""
 		PurpleGetConversations method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3657,10 +4807,12 @@ class PurpleInterface(object):
 	def PurpleGetIms(self, *arg, **kw):
 		"""
 		PurpleGetIms method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3669,10 +4821,12 @@ class PurpleInterface(object):
 	def PurpleGetChats(self, *arg, **kw):
 		"""
 		PurpleGetChats method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3681,13 +4835,21 @@ class PurpleInterface(object):
 	def PurpleFindConversationWithAccount(self, arg_type, arg_name, arg_account, *arg, **kw):
 		"""
 		PurpleFindConversationWithAccount method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3696,14 +4858,24 @@ class PurpleInterface(object):
 	def PurpleConversationWrite(self, arg_conv, arg_who, arg_message, arg_flags, arg_mtime, *arg, **kw):
 		"""
 		PurpleConversationWrite method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		who: s, direction: in,
-		message: s, direction: in,
-		flags: i, direction: in,
-		mtime: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		mtime:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3712,11 +4884,15 @@ class PurpleInterface(object):
 	def PurpleConversationSetFeatures(self, arg_conv, arg_features, *arg, **kw):
 		"""
 		PurpleConversationSetFeatures method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		features: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		features:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3725,11 +4901,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetFeatures(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetFeatures method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3738,11 +4918,15 @@ class PurpleInterface(object):
 	def PurpleConversationHasFocus(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationHasFocus method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3751,11 +4935,15 @@ class PurpleInterface(object):
 	def PurpleConversationUpdate(self, arg_conv, arg_type, *arg, **kw):
 		"""
 		PurpleConversationUpdate method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		type: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3764,11 +4952,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetMessageHistory(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetMessageHistory method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: ai, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -3777,10 +4969,12 @@ class PurpleInterface(object):
 	def PurpleConversationClearMessageHistory(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationClearMessageHistory method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
+		conv:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3789,11 +4983,15 @@ class PurpleInterface(object):
 	def PurpleConversationMessageGetSender(self, arg_msg, *arg, **kw):
 		"""
 		PurpleConversationMessageGetSender method:
-		
+
 		Parameters
 		----------
-		msg: i, direction: in,
-		RESULT: s, direction: out,
+		msg:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3802,11 +5000,15 @@ class PurpleInterface(object):
 	def PurpleConversationMessageGetMessage(self, arg_msg, *arg, **kw):
 		"""
 		PurpleConversationMessageGetMessage method:
-		
+
 		Parameters
 		----------
-		msg: i, direction: in,
-		RESULT: s, direction: out,
+		msg:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -3815,11 +5017,15 @@ class PurpleInterface(object):
 	def PurpleConversationMessageGetFlags(self, arg_msg, *arg, **kw):
 		"""
 		PurpleConversationMessageGetFlags method:
-		
+
 		Parameters
 		----------
-		msg: i, direction: in,
-		RESULT: i, direction: out,
+		msg:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3828,11 +5034,15 @@ class PurpleInterface(object):
 	def PurpleConversationMessageGetTimestamp(self, arg_msg, *arg, **kw):
 		"""
 		PurpleConversationMessageGetTimestamp method:
-		
+
 		Parameters
 		----------
-		msg: i, direction: in,
-		RESULT: i, direction: out,
+		msg:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3841,11 +5051,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetConversation(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetConversation method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3854,11 +5068,15 @@ class PurpleInterface(object):
 	def PurpleConvImSetIcon(self, arg_im, arg_icon, *arg, **kw):
 		"""
 		PurpleConvImSetIcon method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		icon: i, direction: in,
+		im:
+			type: i,
+			direction: in;
+		icon:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3867,11 +5085,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetIcon(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetIcon method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3880,11 +5102,15 @@ class PurpleInterface(object):
 	def PurpleConvImSetTypingState(self, arg_im, arg_state, *arg, **kw):
 		"""
 		PurpleConvImSetTypingState method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		state: i, direction: in,
+		im:
+			type: i,
+			direction: in;
+		state:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3893,11 +5119,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetTypingState(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetTypingState method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3906,11 +5136,15 @@ class PurpleInterface(object):
 	def PurpleConvImStartTypingTimeout(self, arg_im, arg_timeout, *arg, **kw):
 		"""
 		PurpleConvImStartTypingTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		timeout: i, direction: in,
+		im:
+			type: i,
+			direction: in;
+		timeout:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3919,10 +5153,12 @@ class PurpleInterface(object):
 	def PurpleConvImStopTypingTimeout(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImStopTypingTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
+		im:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3931,11 +5167,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetTypingTimeout(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetTypingTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3944,11 +5184,15 @@ class PurpleInterface(object):
 	def PurpleConvImSetTypeAgain(self, arg_im, arg_val, *arg, **kw):
 		"""
 		PurpleConvImSetTypeAgain method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		val: u, direction: in,
+		im:
+			type: i,
+			direction: in;
+		val:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -3957,11 +5201,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetTypeAgain(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetTypeAgain method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -3970,10 +5218,12 @@ class PurpleInterface(object):
 	def PurpleConvImStartSendTypedTimeout(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImStartSendTypedTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
+		im:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3982,10 +5232,12 @@ class PurpleInterface(object):
 	def PurpleConvImStopSendTypedTimeout(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImStopSendTypedTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
+		im:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -3994,11 +5246,15 @@ class PurpleInterface(object):
 	def PurpleConvImGetSendTypedTimeout(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImGetSendTypedTimeout method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		RESULT: i, direction: out,
+		im:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4007,10 +5263,12 @@ class PurpleInterface(object):
 	def PurpleConvImUpdateTyping(self, arg_im, *arg, **kw):
 		"""
 		PurpleConvImUpdateTyping method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
+		im:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4019,14 +5277,24 @@ class PurpleInterface(object):
 	def PurpleConvImWrite(self, arg_im, arg_who, arg_message, arg_flags, arg_mtime, *arg, **kw):
 		"""
 		PurpleConvImWrite method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		who: s, direction: in,
-		message: s, direction: in,
-		flags: i, direction: in,
-		mtime: i, direction: in,
+		im:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		mtime:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4035,13 +5303,21 @@ class PurpleInterface(object):
 	def PurpleConvPresentError(self, arg_who, arg_account, arg_what, *arg, **kw):
 		"""
 		PurpleConvPresentError method:
-		
+
 		Parameters
 		----------
-		who: s, direction: in,
-		account: i, direction: in,
-		what: s, direction: in,
-		RESULT: i, direction: out,
+		who:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		what:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4050,11 +5326,15 @@ class PurpleInterface(object):
 	def PurpleConvImSend(self, arg_im, arg_message, *arg, **kw):
 		"""
 		PurpleConvImSend method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		message: s, direction: in,
+		im:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4063,11 +5343,15 @@ class PurpleInterface(object):
 	def PurpleConvSendConfirm(self, arg_conv, arg_message, *arg, **kw):
 		"""
 		PurpleConvSendConfirm method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		message: s, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4076,12 +5360,18 @@ class PurpleInterface(object):
 	def PurpleConvImSendWithFlags(self, arg_im, arg_message, arg_flags, *arg, **kw):
 		"""
 		PurpleConvImSendWithFlags method:
-		
+
 		Parameters
 		----------
-		im: i, direction: in,
-		message: s, direction: in,
-		flags: i, direction: in,
+		im:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4090,15 +5380,27 @@ class PurpleInterface(object):
 	def PurpleConvCustomSmileyAdd(self, arg_conv, arg_smile, arg_cksum_type, arg_chksum, arg_remote, *arg, **kw):
 		"""
 		PurpleConvCustomSmileyAdd method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		smile: s, direction: in,
-		cksum_type: s, direction: in,
-		chksum: s, direction: in,
-		remote: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		smile:
+			type: s,
+			direction: in;
+		cksum_type:
+			type: s,
+			direction: in;
+		chksum:
+			type: s,
+			direction: in;
+		remote:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4107,11 +5409,15 @@ class PurpleInterface(object):
 	def PurpleConvCustomSmileyClose(self, arg_conv, arg_smile, *arg, **kw):
 		"""
 		PurpleConvCustomSmileyClose method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		smile: s, direction: in,
+		conv:
+			type: i,
+			direction: in;
+		smile:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4120,11 +5426,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetConversation(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetConversation method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4133,12 +5443,18 @@ class PurpleInterface(object):
 	def PurpleConvChatSetUsers(self, arg_chat, arg_users, *arg, **kw):
 		"""
 		PurpleConvChatSetUsers method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		users: i, direction: in,
-		RESULT: ai, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		users:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4147,11 +5463,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetUsers(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetUsers method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: ai, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4160,11 +5480,15 @@ class PurpleInterface(object):
 	def PurpleConvChatIgnore(self, arg_chat, arg_name, *arg, **kw):
 		"""
 		PurpleConvChatIgnore method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		name: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4173,11 +5497,15 @@ class PurpleInterface(object):
 	def PurpleConvChatUnignore(self, arg_chat, arg_name, *arg, **kw):
 		"""
 		PurpleConvChatUnignore method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		name: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4186,12 +5514,18 @@ class PurpleInterface(object):
 	def PurpleConvChatSetIgnored(self, arg_chat, arg_ignored, *arg, **kw):
 		"""
 		PurpleConvChatSetIgnored method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		ignored: i, direction: in,
-		RESULT: ai, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		ignored:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4200,11 +5534,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetIgnored(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetIgnored method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: ai, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4213,12 +5551,18 @@ class PurpleInterface(object):
 	def PurpleConvChatGetIgnoredUser(self, arg_chat, arg_user, *arg, **kw):
 		"""
 		PurpleConvChatGetIgnoredUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		RESULT: s, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4227,12 +5571,18 @@ class PurpleInterface(object):
 	def PurpleConvChatIsUserIgnored(self, arg_chat, arg_user, *arg, **kw):
 		"""
 		PurpleConvChatIsUserIgnored method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4241,12 +5591,18 @@ class PurpleInterface(object):
 	def PurpleConvChatSetTopic(self, arg_chat, arg_who, arg_topic, *arg, **kw):
 		"""
 		PurpleConvChatSetTopic method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		who: s, direction: in,
-		topic: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		topic:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4255,11 +5611,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetTopic(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetTopic method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: s, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4268,11 +5628,15 @@ class PurpleInterface(object):
 	def PurpleConvChatSetId(self, arg_chat, arg_id, *arg, **kw):
 		"""
 		PurpleConvChatSetId method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		id: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4281,11 +5645,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetId(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetId method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4294,14 +5662,24 @@ class PurpleInterface(object):
 	def PurpleConvChatWrite(self, arg_chat, arg_who, arg_message, arg_flags, arg_mtime, *arg, **kw):
 		"""
 		PurpleConvChatWrite method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		who: s, direction: in,
-		message: s, direction: in,
-		flags: i, direction: in,
-		mtime: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		mtime:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4310,11 +5688,15 @@ class PurpleInterface(object):
 	def PurpleConvChatSend(self, arg_chat, arg_message, *arg, **kw):
 		"""
 		PurpleConvChatSend method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		message: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4323,12 +5705,18 @@ class PurpleInterface(object):
 	def PurpleConvChatSendWithFlags(self, arg_chat, arg_message, arg_flags, *arg, **kw):
 		"""
 		PurpleConvChatSendWithFlags method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		message: s, direction: in,
-		flags: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4337,14 +5725,24 @@ class PurpleInterface(object):
 	def PurpleConvChatAddUser(self, arg_chat, arg_user, arg_extra_msg, arg_flags, arg_new_arrival, *arg, **kw):
 		"""
 		PurpleConvChatAddUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		extra_msg: s, direction: in,
-		flags: i, direction: in,
-		new_arrival: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		extra_msg:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		new_arrival:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4353,14 +5751,24 @@ class PurpleInterface(object):
 	def PurpleConvChatAddUsers(self, arg_chat, arg_users, arg_extra_msgs, arg_flags, arg_new_arrivals, *arg, **kw):
 		"""
 		PurpleConvChatAddUsers method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		users: i, direction: in,
-		extra_msgs: i, direction: in,
-		flags: i, direction: in,
-		new_arrivals: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		users:
+			type: i,
+			direction: in;
+		extra_msgs:
+			type: i,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		new_arrivals:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4369,12 +5777,18 @@ class PurpleInterface(object):
 	def PurpleConvChatRenameUser(self, arg_chat, arg_old_user, arg_new_user, *arg, **kw):
 		"""
 		PurpleConvChatRenameUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		old_user: s, direction: in,
-		new_user: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		old_user:
+			type: s,
+			direction: in;
+		new_user:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4383,12 +5797,18 @@ class PurpleInterface(object):
 	def PurpleConvChatRemoveUser(self, arg_chat, arg_user, arg_reason, *arg, **kw):
 		"""
 		PurpleConvChatRemoveUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		reason: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		reason:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4397,12 +5817,18 @@ class PurpleInterface(object):
 	def PurpleConvChatRemoveUsers(self, arg_chat, arg_users, arg_reason, *arg, **kw):
 		"""
 		PurpleConvChatRemoveUsers method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		users: i, direction: in,
-		reason: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		users:
+			type: i,
+			direction: in;
+		reason:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4411,12 +5837,18 @@ class PurpleInterface(object):
 	def PurpleConvChatFindUser(self, arg_chat, arg_user, *arg, **kw):
 		"""
 		PurpleConvChatFindUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4425,12 +5857,18 @@ class PurpleInterface(object):
 	def PurpleConvChatUserSetFlags(self, arg_chat, arg_user, arg_flags, *arg, **kw):
 		"""
 		PurpleConvChatUserSetFlags method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		flags: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4439,12 +5877,18 @@ class PurpleInterface(object):
 	def PurpleConvChatUserGetFlags(self, arg_chat, arg_user, *arg, **kw):
 		"""
 		PurpleConvChatUserGetFlags method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4453,10 +5897,12 @@ class PurpleInterface(object):
 	def PurpleConvChatClearUsers(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatClearUsers method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4465,11 +5911,15 @@ class PurpleInterface(object):
 	def PurpleConvChatSetNick(self, arg_chat, arg_nick, *arg, **kw):
 		"""
 		PurpleConvChatSetNick method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		nick: s, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		nick:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4478,11 +5928,15 @@ class PurpleInterface(object):
 	def PurpleConvChatGetNick(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatGetNick method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: s, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4491,12 +5945,18 @@ class PurpleInterface(object):
 	def PurpleFindChat(self, arg_gc, arg_id, *arg, **kw):
 		"""
 		PurpleFindChat method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		id: i, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4505,10 +5965,12 @@ class PurpleInterface(object):
 	def PurpleConvChatLeft(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatLeft method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4517,13 +5979,21 @@ class PurpleInterface(object):
 	def PurpleConvChatInviteUser(self, arg_chat, arg_user, arg_message, arg_confirm, *arg, **kw):
 		"""
 		PurpleConvChatInviteUser method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		user: s, direction: in,
-		message: s, direction: in,
-		confirm: i, direction: in,
+		chat:
+			type: i,
+			direction: in;
+		user:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		confirm:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4532,11 +6002,15 @@ class PurpleInterface(object):
 	def PurpleConvChatHasLeft(self, arg_chat, *arg, **kw):
 		"""
 		PurpleConvChatHasLeft method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4545,13 +6019,21 @@ class PurpleInterface(object):
 	def PurpleConvChatCbNew(self, arg_name, arg_alias, arg_flags, *arg, **kw):
 		"""
 		PurpleConvChatCbNew method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		alias: s, direction: in,
-		flags: i, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4560,12 +6042,18 @@ class PurpleInterface(object):
 	def PurpleConvChatCbFind(self, arg_chat, arg_name, *arg, **kw):
 		"""
 		PurpleConvChatCbFind method:
-		
+
 		Parameters
 		----------
-		chat: i, direction: in,
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		chat:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4574,11 +6062,15 @@ class PurpleInterface(object):
 	def PurpleConvChatCbGetName(self, arg_cb, *arg, **kw):
 		"""
 		PurpleConvChatCbGetName method:
-		
+
 		Parameters
 		----------
-		cb: i, direction: in,
-		RESULT: s, direction: out,
+		cb:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4587,10 +6079,12 @@ class PurpleInterface(object):
 	def PurpleConvChatCbDestroy(self, arg_cb, *arg, **kw):
 		"""
 		PurpleConvChatCbDestroy method:
-		
+
 		Parameters
 		----------
-		cb: i, direction: in,
+		cb:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4599,11 +6093,15 @@ class PurpleInterface(object):
 	def PurpleConversationGetExtendedMenu(self, arg_conv, *arg, **kw):
 		"""
 		PurpleConversationGetExtendedMenu method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: ai, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4626,11 +6124,15 @@ class PurpleInterface(object):
 	def PurpleCoreInit(self, arg_ui, *arg, **kw):
 		"""
 		PurpleCoreInit method:
-		
+
 		Parameters
 		----------
-		ui: s, direction: in,
-		RESULT: i, direction: out,
+		ui:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4646,10 +6148,12 @@ class PurpleInterface(object):
 	def PurpleCoreGetVersion(self, *arg, **kw):
 		"""
 		PurpleCoreGetVersion method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4658,10 +6162,12 @@ class PurpleInterface(object):
 	def PurpleCoreGetUi(self, *arg, **kw):
 		"""
 		PurpleCoreGetUi method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4670,10 +6176,12 @@ class PurpleInterface(object):
 	def PurpleGetCore(self, *arg, **kw):
 		"""
 		PurpleGetCore method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4682,10 +6190,12 @@ class PurpleInterface(object):
 	def PurpleCoreSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleCoreSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4694,10 +6204,12 @@ class PurpleInterface(object):
 	def PurpleCoreGetUiOps(self, *arg, **kw):
 		"""
 		PurpleCoreGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4706,10 +6218,12 @@ class PurpleInterface(object):
 	def PurpleCoreMigrate(self, *arg, **kw):
 		"""
 		PurpleCoreMigrate method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4718,10 +6232,12 @@ class PurpleInterface(object):
 	def PurpleCoreEnsureSingleInstance(self, *arg, **kw):
 		"""
 		PurpleCoreEnsureSingleInstance method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4730,13 +6246,21 @@ class PurpleInterface(object):
 	def PurpleXferNew(self, arg_account, arg_type, arg_who, *arg, **kw):
 		"""
 		PurpleXferNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		type: i, direction: in,
-		who: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4745,10 +6269,12 @@ class PurpleInterface(object):
 	def PurpleXfersGetAll(self, *arg, **kw):
 		"""
 		PurpleXfersGetAll method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -4757,10 +6283,12 @@ class PurpleInterface(object):
 	def PurpleXferRef(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferRef method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4769,10 +6297,12 @@ class PurpleInterface(object):
 	def PurpleXferUnref(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferUnref method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4781,10 +6311,12 @@ class PurpleInterface(object):
 	def PurpleXferRequest(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferRequest method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4793,11 +6325,15 @@ class PurpleInterface(object):
 	def PurpleXferRequestAccepted(self, arg_xfer, arg_filename, *arg, **kw):
 		"""
 		PurpleXferRequestAccepted method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		filename: s, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		filename:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -4806,10 +6342,12 @@ class PurpleInterface(object):
 	def PurpleXferRequestDenied(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferRequestDenied method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -4818,11 +6356,15 @@ class PurpleInterface(object):
 	def PurpleXferGetType(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetType method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4831,11 +6373,15 @@ class PurpleInterface(object):
 	def PurpleXferGetAccount(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetAccount method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4844,11 +6390,15 @@ class PurpleInterface(object):
 	def PurpleXferGetRemoteUser(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetRemoteUser method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: s, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4857,11 +6407,15 @@ class PurpleInterface(object):
 	def PurpleXferGetStatus(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetStatus method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4870,11 +6424,15 @@ class PurpleInterface(object):
 	def PurpleXferIsCanceled(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferIsCanceled method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4883,11 +6441,15 @@ class PurpleInterface(object):
 	def PurpleXferIsCompleted(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferIsCompleted method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4896,11 +6458,15 @@ class PurpleInterface(object):
 	def PurpleXferGetFilename(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetFilename method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: s, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4909,11 +6475,15 @@ class PurpleInterface(object):
 	def PurpleXferGetLocalFilename(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetLocalFilename method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: s, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4922,11 +6492,15 @@ class PurpleInterface(object):
 	def PurpleXferGetBytesSent(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetBytesSent method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4935,11 +6509,15 @@ class PurpleInterface(object):
 	def PurpleXferGetBytesRemaining(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetBytesRemaining method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4948,11 +6526,15 @@ class PurpleInterface(object):
 	def PurpleXferGetSize(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetSize method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -4961,11 +6543,15 @@ class PurpleInterface(object):
 	def PurpleXferGetLocalPort(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetLocalPort method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: u, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: u,
+			direction: out;
 		
 		"""
 		pass
@@ -4974,11 +6560,15 @@ class PurpleInterface(object):
 	def PurpleXferGetRemoteIp(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetRemoteIp method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: s, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -4987,11 +6577,15 @@ class PurpleInterface(object):
 	def PurpleXferGetRemotePort(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetRemotePort method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: u, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: u,
+			direction: out;
 		
 		"""
 		pass
@@ -5000,11 +6594,15 @@ class PurpleInterface(object):
 	def PurpleXferGetStartTime(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetStartTime method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5013,11 +6611,15 @@ class PurpleInterface(object):
 	def PurpleXferGetEndTime(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetEndTime method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5026,11 +6628,15 @@ class PurpleInterface(object):
 	def PurpleXferSetCompleted(self, arg_xfer, arg_completed, *arg, **kw):
 		"""
 		PurpleXferSetCompleted method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		completed: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		completed:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5039,11 +6645,15 @@ class PurpleInterface(object):
 	def PurpleXferSetMessage(self, arg_xfer, arg_message, *arg, **kw):
 		"""
 		PurpleXferSetMessage method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		message: s, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5052,11 +6662,15 @@ class PurpleInterface(object):
 	def PurpleXferSetFilename(self, arg_xfer, arg_filename, *arg, **kw):
 		"""
 		PurpleXferSetFilename method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		filename: s, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		filename:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5065,11 +6679,15 @@ class PurpleInterface(object):
 	def PurpleXferSetLocalFilename(self, arg_xfer, arg_filename, *arg, **kw):
 		"""
 		PurpleXferSetLocalFilename method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		filename: s, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		filename:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5078,11 +6696,15 @@ class PurpleInterface(object):
 	def PurpleXferSetSize(self, arg_xfer, arg_size, *arg, **kw):
 		"""
 		PurpleXferSetSize method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		size: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		size:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5091,11 +6713,15 @@ class PurpleInterface(object):
 	def PurpleXferSetBytesSent(self, arg_xfer, arg_bytes_sent, *arg, **kw):
 		"""
 		PurpleXferSetBytesSent method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		bytes_sent: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		bytes_sent:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5104,11 +6730,15 @@ class PurpleInterface(object):
 	def PurpleXferGetUiOps(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetUiOps method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: i, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5117,13 +6747,21 @@ class PurpleInterface(object):
 	def PurpleXferStart(self, arg_xfer, arg_fd, arg_ip, arg_port, *arg, **kw):
 		"""
 		PurpleXferStart method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		fd: i, direction: in,
-		ip: s, direction: in,
-		port: u, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		fd:
+			type: i,
+			direction: in;
+		ip:
+			type: s,
+			direction: in;
+		port:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -5132,10 +6770,12 @@ class PurpleInterface(object):
 	def PurpleXferEnd(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferEnd method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5144,10 +6784,12 @@ class PurpleInterface(object):
 	def PurpleXferAdd(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferAdd method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5156,10 +6798,12 @@ class PurpleInterface(object):
 	def PurpleXferCancelLocal(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferCancelLocal method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5168,10 +6812,12 @@ class PurpleInterface(object):
 	def PurpleXferCancelRemote(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferCancelRemote method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5180,13 +6826,21 @@ class PurpleInterface(object):
 	def PurpleXferError(self, arg_type, arg_account, arg_who, arg_msg, *arg, **kw):
 		"""
 		PurpleXferError method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		account: i, direction: in,
-		who: s, direction: in,
-		msg: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		msg:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5195,10 +6849,12 @@ class PurpleInterface(object):
 	def PurpleXferUpdateProgress(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferUpdateProgress method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
+		xfer:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5207,11 +6863,15 @@ class PurpleInterface(object):
 	def PurpleXferGetThumbnail(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetThumbnail method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: ay, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ay,
+			direction: out;
 		
 		"""
 		pass
@@ -5220,11 +6880,15 @@ class PurpleInterface(object):
 	def PurpleXferGetThumbnailMimetype(self, arg_xfer, *arg, **kw):
 		"""
 		PurpleXferGetThumbnailMimetype method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		RESULT: s, direction: out,
+		xfer:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5233,11 +6897,15 @@ class PurpleInterface(object):
 	def PurpleXferPrepareThumbnail(self, arg_xfer, arg_formats, *arg, **kw):
 		"""
 		PurpleXferPrepareThumbnail method:
-		
+
 		Parameters
 		----------
-		xfer: i, direction: in,
-		formats: s, direction: in,
+		xfer:
+			type: i,
+			direction: in;
+		formats:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5260,10 +6928,12 @@ class PurpleInterface(object):
 	def PurpleXfersSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleXfersSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5272,10 +6942,12 @@ class PurpleInterface(object):
 	def PurpleXfersGetUiOps(self, *arg, **kw):
 		"""
 		PurpleXfersGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5284,10 +6956,12 @@ class PurpleInterface(object):
 	def PurpleLogFree(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogFree method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
+		log:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5296,14 +6970,24 @@ class PurpleInterface(object):
 	def PurpleLogWrite(self, arg_log, arg_type, arg_from, arg_time, arg_message, *arg, **kw):
 		"""
 		PurpleLogWrite method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		type: i, direction: in,
-		from: s, direction: in,
-		time: i, direction: in,
-		message: s, direction: in,
+		log:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
+		from:
+			type: s,
+			direction: in;
+		time:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5312,13 +6996,21 @@ class PurpleInterface(object):
 	def PurpleLogGetLogs(self, arg_type, arg_name, arg_account, *arg, **kw):
 		"""
 		PurpleLogGetLogs method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		RESULT: ai, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5327,11 +7019,15 @@ class PurpleInterface(object):
 	def PurpleLogGetSystemLogs(self, arg_account, *arg, **kw):
 		"""
 		PurpleLogGetSystemLogs method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: ai, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5340,11 +7036,15 @@ class PurpleInterface(object):
 	def PurpleLogGetSize(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogGetSize method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5353,13 +7053,21 @@ class PurpleInterface(object):
 	def PurpleLogGetTotalSize(self, arg_type, arg_name, arg_account, *arg, **kw):
 		"""
 		PurpleLogGetTotalSize method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5368,13 +7076,21 @@ class PurpleInterface(object):
 	def PurpleLogGetActivityScore(self, arg_type, arg_name, arg_account, *arg, **kw):
 		"""
 		PurpleLogGetActivityScore method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5383,11 +7099,15 @@ class PurpleInterface(object):
 	def PurpleLogIsDeletable(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogIsDeletable method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5396,11 +7116,15 @@ class PurpleInterface(object):
 	def PurpleLogDelete(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogDelete method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5409,13 +7133,21 @@ class PurpleInterface(object):
 	def PurpleLogGetLogDir(self, arg_type, arg_name, arg_account, *arg, **kw):
 		"""
 		PurpleLogGetLogDir method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5424,10 +7156,12 @@ class PurpleInterface(object):
 	def PurpleLogSetFree(self, arg_set, *arg, **kw):
 		"""
 		PurpleLogSetFree method:
-		
+
 		Parameters
 		----------
-		set: i, direction: in,
+		set:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5436,11 +7170,15 @@ class PurpleInterface(object):
 	def PurpleLogCommonWriter(self, arg_log, arg_ext, *arg, **kw):
 		"""
 		PurpleLogCommonWriter method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		ext: s, direction: in,
+		log:
+			type: i,
+			direction: in;
+		ext:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5449,15 +7187,27 @@ class PurpleInterface(object):
 	def PurpleLogCommonLister(self, arg_type, arg_name, arg_account, arg_ext, arg_logger, *arg, **kw):
 		"""
 		PurpleLogCommonLister method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		ext: s, direction: in,
-		logger: i, direction: in,
-		RESULT: ai, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		ext:
+			type: s,
+			direction: in;
+		logger:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5466,14 +7216,24 @@ class PurpleInterface(object):
 	def PurpleLogCommonTotalSizer(self, arg_type, arg_name, arg_account, arg_ext, *arg, **kw):
 		"""
 		PurpleLogCommonTotalSizer method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		account: i, direction: in,
-		ext: s, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		ext:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5482,11 +7242,15 @@ class PurpleInterface(object):
 	def PurpleLogCommonSizer(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogCommonSizer method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5495,11 +7259,15 @@ class PurpleInterface(object):
 	def PurpleLogCommonDeleter(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogCommonDeleter method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5508,11 +7276,15 @@ class PurpleInterface(object):
 	def PurpleLogCommonIsDeletable(self, arg_log, *arg, **kw):
 		"""
 		PurpleLogCommonIsDeletable method:
-		
+
 		Parameters
 		----------
-		log: i, direction: in,
-		RESULT: i, direction: out,
+		log:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5521,10 +7293,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerFree(self, arg_logger, *arg, **kw):
 		"""
 		PurpleLogLoggerFree method:
-		
+
 		Parameters
 		----------
-		logger: i, direction: in,
+		logger:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5533,10 +7307,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerAdd(self, arg_logger, *arg, **kw):
 		"""
 		PurpleLogLoggerAdd method:
-		
+
 		Parameters
 		----------
-		logger: i, direction: in,
+		logger:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5545,10 +7321,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerRemove(self, arg_logger, *arg, **kw):
 		"""
 		PurpleLogLoggerRemove method:
-		
+
 		Parameters
 		----------
-		logger: i, direction: in,
+		logger:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5557,10 +7335,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerSet(self, arg_logger, *arg, **kw):
 		"""
 		PurpleLogLoggerSet method:
-		
+
 		Parameters
 		----------
-		logger: i, direction: in,
+		logger:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5569,10 +7349,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerGet(self, *arg, **kw):
 		"""
 		PurpleLogLoggerGet method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5581,10 +7363,12 @@ class PurpleInterface(object):
 	def PurpleLogLoggerGetOptions(self, *arg, **kw):
 		"""
 		PurpleLogLoggerGetOptions method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5607,10 +7391,12 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsFree(self, arg_results, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsFree method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
+		results:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5619,12 +7405,18 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsNewRows(self, arg_gc, arg_results, arg_data, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsNewRows method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		results: i, direction: in,
-		data: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		results:
+			type: i,
+			direction: in;
+		data:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5633,10 +7425,12 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsNew(self, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsNew method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5645,11 +7439,15 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsColumnNew(self, arg_title, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsColumnNew method:
-		
+
 		Parameters
 		----------
-		title: s, direction: in,
-		RESULT: i, direction: out,
+		title:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5658,11 +7456,15 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsColumnAdd(self, arg_results, arg_column, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsColumnAdd method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		column: i, direction: in,
+		results:
+			type: i,
+			direction: in;
+		column:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5671,11 +7473,15 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsRowAdd(self, arg_results, arg_row, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsRowAdd method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		row: i, direction: in,
+		results:
+			type: i,
+			direction: in;
+		row:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5684,11 +7490,15 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsGetRowsCount(self, arg_results, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsGetRowsCount method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		RESULT: i, direction: out,
+		results:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5697,11 +7507,15 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsGetColumnsCount(self, arg_results, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsGetColumnsCount method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		RESULT: i, direction: out,
+		results:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5710,12 +7524,18 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsRowGet(self, arg_results, arg_row_id, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsRowGet method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		row_id: u, direction: in,
-		RESULT: ai, direction: out,
+		results:
+			type: i,
+			direction: in;
+		row_id:
+			type: u,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5724,12 +7544,18 @@ class PurpleInterface(object):
 	def PurpleNotifySearchresultsColumnGetTitle(self, arg_results, arg_column_id, *arg, **kw):
 		"""
 		PurpleNotifySearchresultsColumnGetTitle method:
-		
+
 		Parameters
 		----------
-		results: i, direction: in,
-		column_id: u, direction: in,
-		RESULT: s, direction: out,
+		results:
+			type: i,
+			direction: in;
+		column_id:
+			type: u,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5738,10 +7564,12 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoNew(self, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoNew method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5750,10 +7578,12 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoDestroy(self, arg_user_info, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoDestroy method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
+		user_info:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5762,11 +7592,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoGetEntries(self, arg_user_info, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoGetEntries method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		RESULT: ai, direction: out,
+		user_info:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -5775,12 +7609,18 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoGetTextWithNewline(self, arg_user_info, arg_newline, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoGetTextWithNewline method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		newline: s, direction: in,
-		RESULT: s, direction: out,
+		user_info:
+			type: i,
+			direction: in;
+		newline:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5789,12 +7629,18 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoAddPair(self, arg_user_info, arg_label, arg_value, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoAddPair method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		label: s, direction: in,
-		value: s, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5803,12 +7649,18 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoAddPairPlaintext(self, arg_user_info, arg_label, arg_value, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoAddPairPlaintext method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		label: s, direction: in,
-		value: s, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5817,12 +7669,18 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoPrependPair(self, arg_user_info, arg_label, arg_value, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoPrependPair method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		label: s, direction: in,
-		value: s, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5831,11 +7689,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoRemoveEntry(self, arg_user_info, arg_user_info_entry, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoRemoveEntry method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		user_info_entry: i, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		user_info_entry:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5844,12 +7706,18 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntryNew(self, arg_label, arg_value, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntryNew method:
-		
+
 		Parameters
 		----------
-		label: s, direction: in,
-		value: s, direction: in,
-		RESULT: i, direction: out,
+		label:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5858,10 +7726,12 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoAddSectionBreak(self, arg_user_info, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoAddSectionBreak method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
+		user_info:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5870,10 +7740,12 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoPrependSectionBreak(self, arg_user_info, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoPrependSectionBreak method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
+		user_info:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5882,11 +7754,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoAddSectionHeader(self, arg_user_info, arg_label, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoAddSectionHeader method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		label: s, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5895,11 +7771,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoPrependSectionHeader(self, arg_user_info, arg_label, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoPrependSectionHeader method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
-		label: s, direction: in,
+		user_info:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5908,10 +7788,12 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoRemoveLastItem(self, arg_user_info, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoRemoveLastItem method:
-		
+
 		Parameters
 		----------
-		user_info: i, direction: in,
+		user_info:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5920,11 +7802,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntryGetLabel(self, arg_user_info_entry, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntryGetLabel method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		RESULT: s, direction: out,
+		user_info_entry:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5933,11 +7819,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntrySetLabel(self, arg_user_info_entry, arg_label, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntrySetLabel method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		label: s, direction: in,
+		user_info_entry:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5946,11 +7836,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntryGetValue(self, arg_user_info_entry, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntryGetValue method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		RESULT: s, direction: out,
+		user_info_entry:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -5959,11 +7853,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntrySetValue(self, arg_user_info_entry, arg_value, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntrySetValue method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		value: s, direction: in,
+		user_info_entry:
+			type: i,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -5972,11 +7870,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntryGetType(self, arg_user_info_entry, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntryGetType method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		RESULT: i, direction: out,
+		user_info_entry:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -5985,11 +7887,15 @@ class PurpleInterface(object):
 	def PurpleNotifyUserInfoEntrySetType(self, arg_user_info_entry, arg_type, *arg, **kw):
 		"""
 		PurpleNotifyUserInfoEntrySetType method:
-		
+
 		Parameters
 		----------
-		user_info_entry: i, direction: in,
-		type: i, direction: in,
+		user_info_entry:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -5998,11 +7904,15 @@ class PurpleInterface(object):
 	def PurpleNotifyClose(self, arg_type, arg_ui_handle, *arg, **kw):
 		"""
 		PurpleNotifyClose method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		ui_handle: i, direction: in,
+		type:
+			type: i,
+			direction: in;
+		ui_handle:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6011,10 +7921,12 @@ class PurpleInterface(object):
 	def PurpleNotifyCloseWithHandle(self, arg_handle, *arg, **kw):
 		"""
 		PurpleNotifyCloseWithHandle method:
-		
+
 		Parameters
 		----------
-		handle: i, direction: in,
+		handle:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6023,10 +7935,12 @@ class PurpleInterface(object):
 	def PurpleNotifySetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleNotifySetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6035,10 +7949,12 @@ class PurpleInterface(object):
 	def PurpleNotifyGetUiOps(self, *arg, **kw):
 		"""
 		PurpleNotifyGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6075,10 +7991,12 @@ class PurpleInterface(object):
 	def PurplePrefsAddNone(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsAddNone method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6087,11 +8005,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddBool(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddBool method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6100,11 +8022,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddInt(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddInt method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6113,11 +8039,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddString(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddString method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: s, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6126,11 +8056,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddStringList(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddStringList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6139,11 +8073,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddPath(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddPath method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: s, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6152,11 +8090,15 @@ class PurpleInterface(object):
 	def PurplePrefsAddPathList(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsAddPathList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6165,10 +8107,12 @@ class PurpleInterface(object):
 	def PurplePrefsRemove(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsRemove method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6177,11 +8121,15 @@ class PurpleInterface(object):
 	def PurplePrefsRename(self, arg_oldname, arg_newname, *arg, **kw):
 		"""
 		PurplePrefsRename method:
-		
+
 		Parameters
 		----------
-		oldname: s, direction: in,
-		newname: s, direction: in,
+		oldname:
+			type: s,
+			direction: in;
+		newname:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6190,11 +8138,15 @@ class PurpleInterface(object):
 	def PurplePrefsRenameBooleanToggle(self, arg_oldname, arg_newname, *arg, **kw):
 		"""
 		PurplePrefsRenameBooleanToggle method:
-		
+
 		Parameters
 		----------
-		oldname: s, direction: in,
-		newname: s, direction: in,
+		oldname:
+			type: s,
+			direction: in;
+		newname:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6210,11 +8162,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetBool(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetBool method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6223,11 +8179,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetInt(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetInt method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6236,11 +8196,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetString(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetString method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: s, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6249,11 +8213,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetStringList(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetStringList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6262,11 +8230,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetPath(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetPath method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: s, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6275,11 +8247,15 @@ class PurpleInterface(object):
 	def PurplePrefsSetPathList(self, arg_name, arg_value, *arg, **kw):
 		"""
 		PurplePrefsSetPathList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		value: i, direction: in,
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6288,11 +8264,15 @@ class PurpleInterface(object):
 	def PurplePrefsExists(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsExists method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6301,11 +8281,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetType(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetType method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6314,11 +8298,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetBool(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetBool method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6327,11 +8315,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetInt(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetInt method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6340,11 +8332,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetString(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetString method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: s, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -6353,11 +8349,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetStringList(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetStringList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: as, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -6366,11 +8366,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetPath(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetPath method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: s, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -6379,11 +8383,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetPathList(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetPathList method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: as, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -6392,11 +8400,15 @@ class PurpleInterface(object):
 	def PurplePrefsGetChildrenNames(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsGetChildrenNames method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
-		RESULT: as, direction: out,
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -6405,10 +8417,12 @@ class PurpleInterface(object):
 	def PurplePrefsDisconnectCallback(self, arg_callback_id, *arg, **kw):
 		"""
 		PurplePrefsDisconnectCallback method:
-		
+
 		Parameters
 		----------
-		callback_id: i, direction: in,
+		callback_id:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6417,10 +8431,12 @@ class PurpleInterface(object):
 	def PurplePrefsDisconnectByHandle(self, arg_handle, *arg, **kw):
 		"""
 		PurplePrefsDisconnectByHandle method:
-		
+
 		Parameters
 		----------
-		handle: i, direction: in,
+		handle:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6429,10 +8445,12 @@ class PurpleInterface(object):
 	def PurplePrefsTriggerCallback(self, arg_name, *arg, **kw):
 		"""
 		PurplePrefsTriggerCallback method:
-		
+
 		Parameters
 		----------
-		name: s, direction: in,
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6441,10 +8459,12 @@ class PurpleInterface(object):
 	def PurplePrefsLoad(self, *arg, **kw):
 		"""
 		PurplePrefsLoad method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6460,10 +8480,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistShowWithAccount(self, arg_account, *arg, **kw):
 		"""
 		PurpleRoomlistShowWithAccount method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6472,11 +8494,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistNew(self, arg_account, *arg, **kw):
 		"""
 		PurpleRoomlistNew method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6485,10 +8511,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistRef(self, arg_list, *arg, **kw):
 		"""
 		PurpleRoomlistRef method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
+		list:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6497,10 +8525,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistUnref(self, arg_list, *arg, **kw):
 		"""
 		PurpleRoomlistUnref method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
+		list:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6509,11 +8539,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistSetFields(self, arg_list, arg_fields, *arg, **kw):
 		"""
 		PurpleRoomlistSetFields method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		fields: i, direction: in,
+		list:
+			type: i,
+			direction: in;
+		fields:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6522,11 +8556,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistSetInProgress(self, arg_list, arg_in_progress, *arg, **kw):
 		"""
 		PurpleRoomlistSetInProgress method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		in_progress: i, direction: in,
+		list:
+			type: i,
+			direction: in;
+		in_progress:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6535,11 +8573,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistGetInProgress(self, arg_list, *arg, **kw):
 		"""
 		PurpleRoomlistGetInProgress method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		RESULT: i, direction: out,
+		list:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6548,11 +8590,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomAdd(self, arg_list, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomAdd method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		room: i, direction: in,
+		list:
+			type: i,
+			direction: in;
+		room:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6561,11 +8607,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistGetList(self, arg_gc, *arg, **kw):
 		"""
 		PurpleRoomlistGetList method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6574,10 +8624,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistCancelGetList(self, arg_list, *arg, **kw):
 		"""
 		PurpleRoomlistCancelGetList method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
+		list:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6586,11 +8638,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistExpandCategory(self, arg_list, arg_category, *arg, **kw):
 		"""
 		PurpleRoomlistExpandCategory method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		category: i, direction: in,
+		list:
+			type: i,
+			direction: in;
+		category:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6599,11 +8655,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistGetFields(self, arg_roomlist, *arg, **kw):
 		"""
 		PurpleRoomlistGetFields method:
-		
+
 		Parameters
 		----------
-		roomlist: i, direction: in,
-		RESULT: ai, direction: out,
+		roomlist:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -6612,13 +8672,21 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomNew(self, arg_type, arg_name, arg_parent, *arg, **kw):
 		"""
 		PurpleRoomlistRoomNew method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
-		parent: i, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		parent:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6627,11 +8695,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomJoin(self, arg_list, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomJoin method:
-		
+
 		Parameters
 		----------
-		list: i, direction: in,
-		room: i, direction: in,
+		list:
+			type: i,
+			direction: in;
+		room:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6640,11 +8712,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomGetType(self, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomGetType method:
-		
+
 		Parameters
 		----------
-		room: i, direction: in,
-		RESULT: i, direction: out,
+		room:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6653,11 +8729,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomGetName(self, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomGetName method:
-		
+
 		Parameters
 		----------
-		room: i, direction: in,
-		RESULT: s, direction: out,
+		room:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -6666,11 +8746,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomGetParent(self, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomGetParent method:
-		
+
 		Parameters
 		----------
-		room: i, direction: in,
-		RESULT: i, direction: out,
+		room:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6679,11 +8763,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistRoomGetFields(self, arg_room, *arg, **kw):
 		"""
 		PurpleRoomlistRoomGetFields method:
-		
+
 		Parameters
 		----------
-		room: i, direction: in,
-		RESULT: ai, direction: out,
+		room:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -6692,14 +8780,24 @@ class PurpleInterface(object):
 	def PurpleRoomlistFieldNew(self, arg_type, arg_label, arg_name, arg_hidden, *arg, **kw):
 		"""
 		PurpleRoomlistFieldNew method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		label: s, direction: in,
-		name: s, direction: in,
-		hidden: i, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		label:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		hidden:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6708,11 +8806,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistFieldGetType(self, arg_field, *arg, **kw):
 		"""
 		PurpleRoomlistFieldGetType method:
-		
+
 		Parameters
 		----------
-		field: i, direction: in,
-		RESULT: i, direction: out,
+		field:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6721,11 +8823,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistFieldGetLabel(self, arg_field, *arg, **kw):
 		"""
 		PurpleRoomlistFieldGetLabel method:
-		
+
 		Parameters
 		----------
-		field: i, direction: in,
-		RESULT: s, direction: out,
+		field:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -6734,11 +8840,15 @@ class PurpleInterface(object):
 	def PurpleRoomlistFieldGetHidden(self, arg_field, *arg, **kw):
 		"""
 		PurpleRoomlistFieldGetHidden method:
-		
+
 		Parameters
 		----------
-		field: i, direction: in,
-		RESULT: i, direction: out,
+		field:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6747,10 +8857,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistSetUiOps(self, arg_ops, *arg, **kw):
 		"""
 		PurpleRoomlistSetUiOps method:
-		
+
 		Parameters
 		----------
-		ops: i, direction: in,
+		ops:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6759,10 +8871,12 @@ class PurpleInterface(object):
 	def PurpleRoomlistGetUiOps(self, *arg, **kw):
 		"""
 		PurpleRoomlistGetUiOps method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6771,12 +8885,18 @@ class PurpleInterface(object):
 	def PurpleSavedstatusNew(self, arg_title, arg_type, *arg, **kw):
 		"""
 		PurpleSavedstatusNew method:
-		
+
 		Parameters
 		----------
-		title: s, direction: in,
-		type: i, direction: in,
-		RESULT: i, direction: out,
+		title:
+			type: s,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6785,11 +8905,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSetTitle(self, arg_status, arg_title, *arg, **kw):
 		"""
 		PurpleSavedstatusSetTitle method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		title: s, direction: in,
+		status:
+			type: i,
+			direction: in;
+		title:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6798,11 +8922,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSetType(self, arg_status, arg_type, *arg, **kw):
 		"""
 		PurpleSavedstatusSetType method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		type: i, direction: in,
+		status:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6811,11 +8939,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSetMessage(self, arg_status, arg_message, *arg, **kw):
 		"""
 		PurpleSavedstatusSetMessage method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		message: s, direction: in,
+		status:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6824,13 +8956,21 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSetSubstatus(self, arg_status, arg_account, arg_type, arg_message, *arg, **kw):
 		"""
 		PurpleSavedstatusSetSubstatus method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		account: i, direction: in,
-		type: i, direction: in,
-		message: s, direction: in,
+		status:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -6839,11 +8979,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusUnsetSubstatus(self, arg_saved_status, arg_account, *arg, **kw):
 		"""
 		PurpleSavedstatusUnsetSubstatus method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		account: i, direction: in,
+		saved_status:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6852,11 +8996,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusDelete(self, arg_title, *arg, **kw):
 		"""
 		PurpleSavedstatusDelete method:
-		
+
 		Parameters
 		----------
-		title: s, direction: in,
-		RESULT: i, direction: out,
+		title:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6865,10 +9013,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusDeleteByStatus(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusDeleteByStatus method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
+		saved_status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6877,10 +9027,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusesGetAll(self, *arg, **kw):
 		"""
 		PurpleSavedstatusesGetAll method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -6889,11 +9041,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusesGetPopular(self, arg_how_many, *arg, **kw):
 		"""
 		PurpleSavedstatusesGetPopular method:
-		
+
 		Parameters
 		----------
-		how_many: u, direction: in,
-		RESULT: ai, direction: out,
+		how_many:
+			type: u,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -6902,10 +9058,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetCurrent(self, *arg, **kw):
 		"""
 		PurpleSavedstatusGetCurrent method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6914,10 +9072,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetDefault(self, *arg, **kw):
 		"""
 		PurpleSavedstatusGetDefault method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6926,10 +9086,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetIdleaway(self, *arg, **kw):
 		"""
 		PurpleSavedstatusGetIdleaway method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6938,10 +9100,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusIsIdleaway(self, *arg, **kw):
 		"""
 		PurpleSavedstatusIsIdleaway method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6950,10 +9114,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSetIdleaway(self, arg_idleaway, *arg, **kw):
 		"""
 		PurpleSavedstatusSetIdleaway method:
-		
+
 		Parameters
 		----------
-		idleaway: i, direction: in,
+		idleaway:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -6962,10 +9128,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetStartup(self, *arg, **kw):
 		"""
 		PurpleSavedstatusGetStartup method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6974,11 +9142,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusFind(self, arg_title, *arg, **kw):
 		"""
 		PurpleSavedstatusFind method:
-		
+
 		Parameters
 		----------
-		title: s, direction: in,
-		RESULT: i, direction: out,
+		title:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -6987,11 +9159,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusFindByCreationTime(self, arg_creation_time, *arg, **kw):
 		"""
 		PurpleSavedstatusFindByCreationTime method:
-		
+
 		Parameters
 		----------
-		creation_time: i, direction: in,
-		RESULT: i, direction: out,
+		creation_time:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7000,12 +9176,18 @@ class PurpleInterface(object):
 	def PurpleSavedstatusFindTransientByTypeAndMessage(self, arg_type, arg_message, *arg, **kw):
 		"""
 		PurpleSavedstatusFindTransientByTypeAndMessage method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		message: s, direction: in,
-		RESULT: i, direction: out,
+		type:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7014,11 +9196,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusIsTransient(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusIsTransient method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: i, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7027,11 +9213,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetTitle(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusGetTitle method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: s, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7040,11 +9230,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetType(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusGetType method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: i, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7053,11 +9247,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetMessage(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusGetMessage method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: s, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7066,11 +9264,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetCreationTime(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusGetCreationTime method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: i, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7079,11 +9281,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusHasSubstatuses(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusHasSubstatuses method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		RESULT: i, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7092,12 +9298,18 @@ class PurpleInterface(object):
 	def PurpleSavedstatusGetSubstatus(self, arg_saved_status, arg_account, *arg, **kw):
 		"""
 		PurpleSavedstatusGetSubstatus method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		saved_status:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7106,11 +9318,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSubstatusGetType(self, arg_substatus, *arg, **kw):
 		"""
 		PurpleSavedstatusSubstatusGetType method:
-		
+
 		Parameters
 		----------
-		substatus: i, direction: in,
-		RESULT: i, direction: out,
+		substatus:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7119,11 +9335,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusSubstatusGetMessage(self, arg_substatus, *arg, **kw):
 		"""
 		PurpleSavedstatusSubstatusGetMessage method:
-		
+
 		Parameters
 		----------
-		substatus: i, direction: in,
-		RESULT: s, direction: out,
+		substatus:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7132,10 +9352,12 @@ class PurpleInterface(object):
 	def PurpleSavedstatusActivate(self, arg_saved_status, *arg, **kw):
 		"""
 		PurpleSavedstatusActivate method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
+		saved_status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7144,11 +9366,15 @@ class PurpleInterface(object):
 	def PurpleSavedstatusActivateForAccount(self, arg_saved_status, arg_account, *arg, **kw):
 		"""
 		PurpleSavedstatusActivateForAccount method:
-		
+
 		Parameters
 		----------
-		saved_status: i, direction: in,
-		account: i, direction: in,
+		saved_status:
+			type: i,
+			direction: in;
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7171,12 +9397,18 @@ class PurpleInterface(object):
 	def PurpleSmileyNew(self, arg_img, arg_shortcut, *arg, **kw):
 		"""
 		PurpleSmileyNew method:
-		
+
 		Parameters
 		----------
-		img: i, direction: in,
-		shortcut: s, direction: in,
-		RESULT: i, direction: out,
+		img:
+			type: i,
+			direction: in;
+		shortcut:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7185,12 +9417,18 @@ class PurpleInterface(object):
 	def PurpleSmileyNewFromFile(self, arg_shortcut, arg_filepath, *arg, **kw):
 		"""
 		PurpleSmileyNewFromFile method:
-		
+
 		Parameters
 		----------
-		shortcut: s, direction: in,
-		filepath: s, direction: in,
-		RESULT: i, direction: out,
+		shortcut:
+			type: s,
+			direction: in;
+		filepath:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7199,10 +9437,12 @@ class PurpleInterface(object):
 	def PurpleSmileyDelete(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyDelete method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
+		smiley:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7211,12 +9451,18 @@ class PurpleInterface(object):
 	def PurpleSmileySetShortcut(self, arg_smiley, arg_shortcut, *arg, **kw):
 		"""
 		PurpleSmileySetShortcut method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		shortcut: s, direction: in,
-		RESULT: i, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		shortcut:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7225,12 +9471,18 @@ class PurpleInterface(object):
 	def PurpleSmileySetData(self, arg_smiley, arg_smiley_data, arg_smiley_data_len, *arg, **kw):
 		"""
 		PurpleSmileySetData method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		smiley_data: i, direction: in,
-		smiley_data_len: i, direction: in,
+		smiley:
+			type: i,
+			direction: in;
+		smiley_data:
+			type: i,
+			direction: in;
+		smiley_data_len:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7239,11 +9491,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetShortcut(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetShortcut method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: s, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7252,11 +9508,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetChecksum(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetChecksum method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: s, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7265,11 +9525,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetStoredImage(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetStoredImage method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: i, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7278,11 +9542,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetData(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetData method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: ay, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ay,
+			direction: out;
 		
 		"""
 		pass
@@ -7291,11 +9559,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetExtension(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetExtension method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: s, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7304,11 +9576,15 @@ class PurpleInterface(object):
 	def PurpleSmileyGetFullPath(self, arg_smiley, *arg, **kw):
 		"""
 		PurpleSmileyGetFullPath method:
-		
+
 		Parameters
 		----------
-		smiley: i, direction: in,
-		RESULT: s, direction: out,
+		smiley:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7317,10 +9593,12 @@ class PurpleInterface(object):
 	def PurpleSmileysGetAll(self, *arg, **kw):
 		"""
 		PurpleSmileysGetAll method:
-		
+
 		Parameters
 		----------
-		RESULT: ai, direction: out,
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -7329,11 +9607,15 @@ class PurpleInterface(object):
 	def PurpleSmileysFindByShortcut(self, arg_shortcut, *arg, **kw):
 		"""
 		PurpleSmileysFindByShortcut method:
-		
+
 		Parameters
 		----------
-		shortcut: s, direction: in,
-		RESULT: i, direction: out,
+		shortcut:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7342,11 +9624,15 @@ class PurpleInterface(object):
 	def PurpleSmileysFindByChecksum(self, arg_checksum, *arg, **kw):
 		"""
 		PurpleSmileysFindByChecksum method:
-		
+
 		Parameters
 		----------
-		checksum: s, direction: in,
-		RESULT: i, direction: out,
+		checksum:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7355,10 +9641,12 @@ class PurpleInterface(object):
 	def PurpleSmileysGetStoringDir(self, *arg, **kw):
 		"""
 		PurpleSmileysGetStoringDir method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7381,11 +9669,15 @@ class PurpleInterface(object):
 	def PurplePrimitiveGetIdFromType(self, arg_type, *arg, **kw):
 		"""
 		PurplePrimitiveGetIdFromType method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7394,11 +9686,15 @@ class PurpleInterface(object):
 	def PurplePrimitiveGetNameFromType(self, arg_type, *arg, **kw):
 		"""
 		PurplePrimitiveGetNameFromType method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7407,11 +9703,15 @@ class PurpleInterface(object):
 	def PurplePrimitiveGetTypeFromId(self, arg_id, *arg, **kw):
 		"""
 		PurplePrimitiveGetTypeFromId method:
-		
+
 		Parameters
 		----------
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7420,16 +9720,30 @@ class PurpleInterface(object):
 	def PurpleStatusTypeNewFull(self, arg_primitive, arg_id, arg_name, arg_saveable, arg_user_settable, arg_independent, *arg, **kw):
 		"""
 		PurpleStatusTypeNewFull method:
-		
+
 		Parameters
 		----------
-		primitive: i, direction: in,
-		id: s, direction: in,
-		name: s, direction: in,
-		saveable: i, direction: in,
-		user_settable: i, direction: in,
-		independent: i, direction: in,
-		RESULT: i, direction: out,
+		primitive:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		saveable:
+			type: i,
+			direction: in;
+		user_settable:
+			type: i,
+			direction: in;
+		independent:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7438,14 +9752,24 @@ class PurpleInterface(object):
 	def PurpleStatusTypeNew(self, arg_primitive, arg_id, arg_name, arg_user_settable, *arg, **kw):
 		"""
 		PurpleStatusTypeNew method:
-		
+
 		Parameters
 		----------
-		primitive: i, direction: in,
-		id: s, direction: in,
-		name: s, direction: in,
-		user_settable: i, direction: in,
-		RESULT: i, direction: out,
+		primitive:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		user_settable:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7454,10 +9778,12 @@ class PurpleInterface(object):
 	def PurpleStatusTypeDestroy(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeDestroy method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
+		status_type:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7466,11 +9792,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeSetPrimaryAttr(self, arg_status_type, arg_attr_id, *arg, **kw):
 		"""
 		PurpleStatusTypeSetPrimaryAttr method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		attr_id: s, direction: in,
+		status_type:
+			type: i,
+			direction: in;
+		attr_id:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -7479,13 +9809,21 @@ class PurpleInterface(object):
 	def PurpleStatusTypeAddAttr(self, arg_status_type, arg_id, arg_name, arg_value, *arg, **kw):
 		"""
 		PurpleStatusTypeAddAttr method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		id: s, direction: in,
-		name: s, direction: in,
-		value: i, direction: in,
+		status_type:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7494,11 +9832,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetPrimitive(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeGetPrimitive method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7507,11 +9849,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetId(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeGetId method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: s, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7520,11 +9866,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetName(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeGetName method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: s, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7533,11 +9883,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeIsSaveable(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeIsSaveable method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7546,11 +9900,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeIsUserSettable(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeIsUserSettable method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7559,11 +9917,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeIsIndependent(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeIsIndependent method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7572,11 +9934,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeIsExclusive(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeIsExclusive method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7585,11 +9951,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeIsAvailable(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeIsAvailable method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7598,11 +9968,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetPrimaryAttr(self, arg_type, *arg, **kw):
 		"""
 		PurpleStatusTypeGetPrimaryAttr method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7611,12 +9985,18 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetAttr(self, arg_status_type, arg_id, *arg, **kw):
 		"""
 		PurpleStatusTypeGetAttr method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7625,11 +10005,15 @@ class PurpleInterface(object):
 	def PurpleStatusTypeGetAttrs(self, arg_status_type, *arg, **kw):
 		"""
 		PurpleStatusTypeGetAttrs method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		RESULT: ai, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -7638,12 +10022,18 @@ class PurpleInterface(object):
 	def PurpleStatusTypeFindWithId(self, arg_status_types, arg_id, *arg, **kw):
 		"""
 		PurpleStatusTypeFindWithId method:
-		
+
 		Parameters
 		----------
-		status_types: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		status_types:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7652,13 +10042,21 @@ class PurpleInterface(object):
 	def PurpleStatusAttrNew(self, arg_id, arg_name, arg_value_type, *arg, **kw):
 		"""
 		PurpleStatusAttrNew method:
-		
+
 		Parameters
 		----------
-		id: s, direction: in,
-		name: s, direction: in,
-		value_type: i, direction: in,
-		RESULT: i, direction: out,
+		id:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		value_type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7667,10 +10065,12 @@ class PurpleInterface(object):
 	def PurpleStatusAttrDestroy(self, arg_attr, *arg, **kw):
 		"""
 		PurpleStatusAttrDestroy method:
-		
+
 		Parameters
 		----------
-		attr: i, direction: in,
+		attr:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7679,11 +10079,15 @@ class PurpleInterface(object):
 	def PurpleStatusAttrGetId(self, arg_attr, *arg, **kw):
 		"""
 		PurpleStatusAttrGetId method:
-		
+
 		Parameters
 		----------
-		attr: i, direction: in,
-		RESULT: s, direction: out,
+		attr:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7692,11 +10096,15 @@ class PurpleInterface(object):
 	def PurpleStatusAttrGetName(self, arg_attr, *arg, **kw):
 		"""
 		PurpleStatusAttrGetName method:
-		
+
 		Parameters
 		----------
-		attr: i, direction: in,
-		RESULT: s, direction: out,
+		attr:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7705,11 +10113,15 @@ class PurpleInterface(object):
 	def PurpleStatusAttrGetValue(self, arg_attr, *arg, **kw):
 		"""
 		PurpleStatusAttrGetValue method:
-		
+
 		Parameters
 		----------
-		attr: i, direction: in,
-		RESULT: i, direction: out,
+		attr:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7718,12 +10130,18 @@ class PurpleInterface(object):
 	def PurpleStatusNew(self, arg_status_type, arg_presence, *arg, **kw):
 		"""
 		PurpleStatusNew method:
-		
+
 		Parameters
 		----------
-		status_type: i, direction: in,
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		status_type:
+			type: i,
+			direction: in;
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7732,10 +10150,12 @@ class PurpleInterface(object):
 	def PurpleStatusDestroy(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusDestroy method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
+		status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7744,11 +10164,15 @@ class PurpleInterface(object):
 	def PurpleStatusSetActive(self, arg_status, arg_active, *arg, **kw):
 		"""
 		PurpleStatusSetActive method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		active: i, direction: in,
+		status:
+			type: i,
+			direction: in;
+		active:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7757,12 +10181,18 @@ class PurpleInterface(object):
 	def PurpleStatusSetActiveWithAttrsList(self, arg_status, arg_active, arg_attrs, *arg, **kw):
 		"""
 		PurpleStatusSetActiveWithAttrsList method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		active: i, direction: in,
-		attrs: i, direction: in,
+		status:
+			type: i,
+			direction: in;
+		active:
+			type: i,
+			direction: in;
+		attrs:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7771,12 +10201,18 @@ class PurpleInterface(object):
 	def PurpleStatusSetAttrBoolean(self, arg_status, arg_id, arg_value, *arg, **kw):
 		"""
 		PurpleStatusSetAttrBoolean method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		value: i, direction: in,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7785,12 +10221,18 @@ class PurpleInterface(object):
 	def PurpleStatusSetAttrInt(self, arg_status, arg_id, arg_value, *arg, **kw):
 		"""
 		PurpleStatusSetAttrInt method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		value: i, direction: in,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		value:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -7799,12 +10241,18 @@ class PurpleInterface(object):
 	def PurpleStatusSetAttrString(self, arg_status, arg_id, arg_value, *arg, **kw):
 		"""
 		PurpleStatusSetAttrString method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		value: s, direction: in,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -7813,11 +10261,15 @@ class PurpleInterface(object):
 	def PurpleStatusGetType(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusGetType method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7826,11 +10278,15 @@ class PurpleInterface(object):
 	def PurpleStatusGetPresence(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusGetPresence method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7839,11 +10295,15 @@ class PurpleInterface(object):
 	def PurpleStatusGetId(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusGetId method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: s, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7852,11 +10312,15 @@ class PurpleInterface(object):
 	def PurpleStatusGetName(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusGetName method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: s, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7865,11 +10329,15 @@ class PurpleInterface(object):
 	def PurpleStatusIsIndependent(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusIsIndependent method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7878,11 +10346,15 @@ class PurpleInterface(object):
 	def PurpleStatusIsExclusive(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusIsExclusive method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7891,11 +10363,15 @@ class PurpleInterface(object):
 	def PurpleStatusIsAvailable(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusIsAvailable method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7904,11 +10380,15 @@ class PurpleInterface(object):
 	def PurpleStatusIsActive(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusIsActive method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7917,11 +10397,15 @@ class PurpleInterface(object):
 	def PurpleStatusIsOnline(self, arg_status, *arg, **kw):
 		"""
 		PurpleStatusIsOnline method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7930,12 +10414,18 @@ class PurpleInterface(object):
 	def PurpleStatusGetAttrValue(self, arg_status, arg_id, *arg, **kw):
 		"""
 		PurpleStatusGetAttrValue method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7944,12 +10434,18 @@ class PurpleInterface(object):
 	def PurpleStatusGetAttrBoolean(self, arg_status, arg_id, *arg, **kw):
 		"""
 		PurpleStatusGetAttrBoolean method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7958,12 +10454,18 @@ class PurpleInterface(object):
 	def PurpleStatusGetAttrInt(self, arg_status, arg_id, *arg, **kw):
 		"""
 		PurpleStatusGetAttrInt method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -7972,12 +10474,18 @@ class PurpleInterface(object):
 	def PurpleStatusGetAttrString(self, arg_status, arg_id, *arg, **kw):
 		"""
 		PurpleStatusGetAttrString method:
-		
+
 		Parameters
 		----------
-		status: i, direction: in,
-		id: s, direction: in,
-		RESULT: s, direction: out,
+		status:
+			type: i,
+			direction: in;
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -7986,12 +10494,18 @@ class PurpleInterface(object):
 	def PurpleStatusCompare(self, arg_status1, arg_status2, *arg, **kw):
 		"""
 		PurpleStatusCompare method:
-		
+
 		Parameters
 		----------
-		status1: i, direction: in,
-		status2: i, direction: in,
-		RESULT: i, direction: out,
+		status1:
+			type: i,
+			direction: in;
+		status2:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8000,11 +10514,15 @@ class PurpleInterface(object):
 	def PurplePresenceNew(self, arg_context, *arg, **kw):
 		"""
 		PurplePresenceNew method:
-		
+
 		Parameters
 		----------
-		context: i, direction: in,
-		RESULT: i, direction: out,
+		context:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8013,11 +10531,15 @@ class PurpleInterface(object):
 	def PurplePresenceNewForAccount(self, arg_account, *arg, **kw):
 		"""
 		PurplePresenceNewForAccount method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8026,11 +10548,15 @@ class PurpleInterface(object):
 	def PurplePresenceNewForConv(self, arg_conv, *arg, **kw):
 		"""
 		PurplePresenceNewForConv method:
-		
+
 		Parameters
 		----------
-		conv: i, direction: in,
-		RESULT: i, direction: out,
+		conv:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8039,11 +10565,15 @@ class PurpleInterface(object):
 	def PurplePresenceNewForBuddy(self, arg_buddy, *arg, **kw):
 		"""
 		PurplePresenceNewForBuddy method:
-		
+
 		Parameters
 		----------
-		buddy: i, direction: in,
-		RESULT: i, direction: out,
+		buddy:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8052,10 +10582,12 @@ class PurpleInterface(object):
 	def PurplePresenceDestroy(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceDestroy method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
+		presence:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8064,11 +10596,15 @@ class PurpleInterface(object):
 	def PurplePresenceAddStatus(self, arg_presence, arg_status, *arg, **kw):
 		"""
 		PurplePresenceAddStatus method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		status: i, direction: in,
+		presence:
+			type: i,
+			direction: in;
+		status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8077,12 +10613,18 @@ class PurpleInterface(object):
 	def PurplePresenceSetStatusActive(self, arg_presence, arg_status_id, arg_active, *arg, **kw):
 		"""
 		PurplePresenceSetStatusActive method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		status_id: s, direction: in,
-		active: i, direction: in,
+		presence:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		active:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8091,11 +10633,15 @@ class PurpleInterface(object):
 	def PurplePresenceSwitchStatus(self, arg_presence, arg_status_id, *arg, **kw):
 		"""
 		PurplePresenceSwitchStatus method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		status_id: s, direction: in,
+		presence:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8104,12 +10650,18 @@ class PurpleInterface(object):
 	def PurplePresenceSetIdle(self, arg_presence, arg_idle, arg_idle_time, *arg, **kw):
 		"""
 		PurplePresenceSetIdle method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		idle: i, direction: in,
-		idle_time: i, direction: in,
+		presence:
+			type: i,
+			direction: in;
+		idle:
+			type: i,
+			direction: in;
+		idle_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8118,11 +10670,15 @@ class PurpleInterface(object):
 	def PurplePresenceSetLoginTime(self, arg_presence, arg_login_time, *arg, **kw):
 		"""
 		PurplePresenceSetLoginTime method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		login_time: i, direction: in,
+		presence:
+			type: i,
+			direction: in;
+		login_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8131,11 +10687,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetContext(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetContext method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8144,11 +10704,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetAccount(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetAccount method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8157,11 +10721,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetConversation(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetConversation method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8170,11 +10738,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetChatUser(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetChatUser method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: s, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8183,11 +10755,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetBuddy(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetBuddy method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8196,11 +10772,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetStatuses(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetStatuses method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: ai, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -8209,12 +10789,18 @@ class PurpleInterface(object):
 	def PurplePresenceGetStatus(self, arg_presence, arg_status_id, *arg, **kw):
 		"""
 		PurplePresenceGetStatus method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		status_id: s, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8223,11 +10809,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetActiveStatus(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetActiveStatus method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8236,11 +10826,15 @@ class PurpleInterface(object):
 	def PurplePresenceIsAvailable(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceIsAvailable method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8249,11 +10843,15 @@ class PurpleInterface(object):
 	def PurplePresenceIsOnline(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceIsOnline method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8262,12 +10860,18 @@ class PurpleInterface(object):
 	def PurplePresenceIsStatusActive(self, arg_presence, arg_status_id, *arg, **kw):
 		"""
 		PurplePresenceIsStatusActive method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		status_id: s, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8276,12 +10880,18 @@ class PurpleInterface(object):
 	def PurplePresenceIsStatusPrimitiveActive(self, arg_presence, arg_primitive, *arg, **kw):
 		"""
 		PurplePresenceIsStatusPrimitiveActive method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		primitive: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		primitive:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8290,11 +10900,15 @@ class PurpleInterface(object):
 	def PurplePresenceIsIdle(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceIsIdle method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8303,11 +10917,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetIdleTime(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetIdleTime method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8316,11 +10934,15 @@ class PurpleInterface(object):
 	def PurplePresenceGetLoginTime(self, arg_presence, *arg, **kw):
 		"""
 		PurplePresenceGetLoginTime method:
-		
+
 		Parameters
 		----------
-		presence: i, direction: in,
-		RESULT: i, direction: out,
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8329,12 +10951,18 @@ class PurpleInterface(object):
 	def PurplePresenceCompare(self, arg_presence1, arg_presence2, *arg, **kw):
 		"""
 		PurplePresenceCompare method:
-		
+
 		Parameters
 		----------
-		presence1: i, direction: in,
-		presence2: i, direction: in,
-		RESULT: i, direction: out,
+		presence1:
+			type: i,
+			direction: in;
+		presence2:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8357,13 +10985,21 @@ class PurpleInterface(object):
 	def ServSendTyping(self, arg_gc, arg_name, arg_state, *arg, **kw):
 		"""
 		ServSendTyping method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		name: s, direction: in,
-		state: i, direction: in,
-		RESULT: u, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		state:
+			type: i,
+			direction: in;
+		RESULT:
+			type: u,
+			direction: out;
 		
 		"""
 		pass
@@ -8372,12 +11008,18 @@ class PurpleInterface(object):
 	def ServMoveBuddy(self, arg_param0, arg_param1, arg_param2, *arg, **kw):
 		"""
 		ServMoveBuddy method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: i, direction: in,
-		param2: i, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: i,
+			direction: in;
+		param2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8386,14 +11028,24 @@ class PurpleInterface(object):
 	def ServSendIm(self, arg_param0, arg_param1, arg_param2, arg_flags, *arg, **kw):
 		"""
 		ServSendIm method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
-		param2: s, direction: in,
-		flags: i, direction: in,
-		RESULT: i, direction: out,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
+		param2:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8402,12 +11054,18 @@ class PurpleInterface(object):
 	def PurpleGetAttentionTypeFromCode(self, arg_account, arg_type_code, *arg, **kw):
 		"""
 		PurpleGetAttentionTypeFromCode method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		type_code: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8416,12 +11074,18 @@ class PurpleInterface(object):
 	def ServSendAttention(self, arg_gc, arg_who, arg_type_code, *arg, **kw):
 		"""
 		ServSendAttention method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		type_code: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8430,12 +11094,18 @@ class PurpleInterface(object):
 	def ServGotAttention(self, arg_gc, arg_who, arg_type_code, *arg, **kw):
 		"""
 		ServGotAttention method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		type_code: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8444,11 +11114,15 @@ class PurpleInterface(object):
 	def ServGetInfo(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServGetInfo method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8457,11 +11131,15 @@ class PurpleInterface(object):
 	def ServSetInfo(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServSetInfo method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8470,11 +11148,15 @@ class PurpleInterface(object):
 	def ServAddPermit(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServAddPermit method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8483,11 +11165,15 @@ class PurpleInterface(object):
 	def ServAddDeny(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServAddDeny method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8496,11 +11182,15 @@ class PurpleInterface(object):
 	def ServRemPermit(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServRemPermit method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8509,11 +11199,15 @@ class PurpleInterface(object):
 	def ServRemDeny(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServRemDeny method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8522,10 +11216,12 @@ class PurpleInterface(object):
 	def ServSetPermitDeny(self, arg_param0, *arg, **kw):
 		"""
 		ServSetPermitDeny method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
+		param0:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8534,13 +11230,21 @@ class PurpleInterface(object):
 	def ServChatInvite(self, arg_param0, arg_param1, arg_param2, arg_param3, *arg, **kw):
 		"""
 		ServChatInvite method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: i, direction: in,
-		param2: s, direction: in,
-		param3: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: i,
+			direction: in;
+		param2:
+			type: s,
+			direction: in;
+		param3:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8549,11 +11253,15 @@ class PurpleInterface(object):
 	def ServChatLeave(self, arg_param0, arg_param1, *arg, **kw):
 		"""
 		ServChatLeave method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: i, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8562,13 +11270,21 @@ class PurpleInterface(object):
 	def ServChatWhisper(self, arg_param0, arg_param1, arg_param2, arg_param3, *arg, **kw):
 		"""
 		ServChatWhisper method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: i, direction: in,
-		param2: s, direction: in,
-		param3: s, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: i,
+			direction: in;
+		param2:
+			type: s,
+			direction: in;
+		param3:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8577,14 +11293,24 @@ class PurpleInterface(object):
 	def ServChatSend(self, arg_param0, arg_param1, arg_param2, arg_flags, *arg, **kw):
 		"""
 		ServChatSend method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		param1: i, direction: in,
-		param2: s, direction: in,
-		flags: i, direction: in,
-		RESULT: i, direction: out,
+		param0:
+			type: i,
+			direction: in;
+		param1:
+			type: i,
+			direction: in;
+		param2:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8593,10 +11319,12 @@ class PurpleInterface(object):
 	def ServAliasBuddy(self, arg_param0, *arg, **kw):
 		"""
 		ServAliasBuddy method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
+		param0:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8605,12 +11333,18 @@ class PurpleInterface(object):
 	def ServGotAlias(self, arg_gc, arg_who, arg_alias, *arg, **kw):
 		"""
 		ServGotAlias method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		alias: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8619,12 +11353,18 @@ class PurpleInterface(object):
 	def PurpleServGotPrivateAlias(self, arg_gc, arg_who, arg_alias, *arg, **kw):
 		"""
 		PurpleServGotPrivateAlias method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		alias: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		alias:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8633,13 +11373,21 @@ class PurpleInterface(object):
 	def ServGotTyping(self, arg_gc, arg_name, arg_timeout, arg_state, *arg, **kw):
 		"""
 		ServGotTyping method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		name: s, direction: in,
-		timeout: i, direction: in,
-		state: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		timeout:
+			type: i,
+			direction: in;
+		state:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8648,11 +11396,15 @@ class PurpleInterface(object):
 	def ServGotTypingStopped(self, arg_gc, arg_name, *arg, **kw):
 		"""
 		ServGotTypingStopped method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		name: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8661,14 +11413,24 @@ class PurpleInterface(object):
 	def ServGotIm(self, arg_gc, arg_who, arg_msg, arg_flags, arg_mtime, *arg, **kw):
 		"""
 		ServGotIm method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		msg: s, direction: in,
-		flags: i, direction: in,
-		mtime: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		msg:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		mtime:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8677,11 +11439,15 @@ class PurpleInterface(object):
 	def ServJoinChat(self, arg_param0, arg_data, *arg, **kw):
 		"""
 		ServJoinChat method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		data: a{ss}, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		data:
+			type: a{ss},
+			direction: in;
 		
 		"""
 		pass
@@ -8690,11 +11456,15 @@ class PurpleInterface(object):
 	def ServRejectChat(self, arg_param0, arg_data, *arg, **kw):
 		"""
 		ServRejectChat method:
-		
+
 		Parameters
 		----------
-		param0: i, direction: in,
-		data: a{ss}, direction: in,
+		param0:
+			type: i,
+			direction: in;
+		data:
+			type: a{ss},
+			direction: in;
 		
 		"""
 		pass
@@ -8703,14 +11473,24 @@ class PurpleInterface(object):
 	def ServGotChatInvite(self, arg_gc, arg_name, arg_who, arg_message, arg_data, *arg, **kw):
 		"""
 		ServGotChatInvite method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		name: s, direction: in,
-		who: s, direction: in,
-		message: s, direction: in,
-		data: a{ss}, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		data:
+			type: a{ss},
+			direction: in;
 		
 		"""
 		pass
@@ -8719,13 +11499,21 @@ class PurpleInterface(object):
 	def ServGotJoinedChat(self, arg_gc, arg_id, arg_name, *arg, **kw):
 		"""
 		ServGotJoinedChat method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		id: i, direction: in,
-		name: s, direction: in,
-		RESULT: i, direction: out,
+		gc:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8734,11 +11522,15 @@ class PurpleInterface(object):
 	def PurpleServGotJoinChatFailed(self, arg_gc, arg_data, *arg, **kw):
 		"""
 		PurpleServGotJoinChatFailed method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		data: a{ss}, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		data:
+			type: a{ss},
+			direction: in;
 		
 		"""
 		pass
@@ -8747,11 +11539,15 @@ class PurpleInterface(object):
 	def ServGotChatLeft(self, arg_g, arg_id, *arg, **kw):
 		"""
 		ServGotChatLeft method:
-		
+
 		Parameters
 		----------
-		g: i, direction: in,
-		id: i, direction: in,
+		g:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8760,15 +11556,27 @@ class PurpleInterface(object):
 	def ServGotChatIn(self, arg_g, arg_id, arg_who, arg_flags, arg_message, arg_mtime, *arg, **kw):
 		"""
 		ServGotChatIn method:
-		
+
 		Parameters
 		----------
-		g: i, direction: in,
-		id: i, direction: in,
-		who: s, direction: in,
-		flags: i, direction: in,
-		message: s, direction: in,
-		mtime: i, direction: in,
+		g:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		flags:
+			type: i,
+			direction: in;
+		message:
+			type: s,
+			direction: in;
+		mtime:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8777,12 +11585,18 @@ class PurpleInterface(object):
 	def ServSendFile(self, arg_gc, arg_who, arg_file, *arg, **kw):
 		"""
 		ServSendFile method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		file: s, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		file:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8791,10 +11605,12 @@ class PurpleInterface(object):
 	def PurpleMenuActionFree(self, arg_act, *arg, **kw):
 		"""
 		PurpleMenuActionFree method:
-		
+
 		Parameters
 		----------
-		act: i, direction: in,
+		act:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -8803,12 +11619,18 @@ class PurpleInterface(object):
 	def PurpleUtilSetCurrentSong(self, arg_title, arg_artist, arg_album, *arg, **kw):
 		"""
 		PurpleUtilSetCurrentSong method:
-		
+
 		Parameters
 		----------
-		title: s, direction: in,
-		artist: s, direction: in,
-		album: s, direction: in,
+		title:
+			type: s,
+			direction: in;
+		artist:
+			type: s,
+			direction: in;
+		album:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -8831,11 +11653,15 @@ class PurpleInterface(object):
 	def PurpleMimeDecodeField(self, arg_str, *arg, **kw):
 		"""
 		PurpleMimeDecodeField method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8844,16 +11670,30 @@ class PurpleInterface(object):
 	def PurpleTimeBuild(self, arg_year, arg_month, arg_day, arg_hour, arg_min, arg_sec, *arg, **kw):
 		"""
 		PurpleTimeBuild method:
-		
+
 		Parameters
 		----------
-		year: i, direction: in,
-		month: i, direction: in,
-		day: i, direction: in,
-		hour: i, direction: in,
-		min: i, direction: in,
-		sec: i, direction: in,
-		RESULT: i, direction: out,
+		year:
+			type: i,
+			direction: in;
+		month:
+			type: i,
+			direction: in;
+		day:
+			type: i,
+			direction: in;
+		hour:
+			type: i,
+			direction: in;
+		min:
+			type: i,
+			direction: in;
+		sec:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8862,12 +11702,18 @@ class PurpleInterface(object):
 	def PurpleMarkupEscapeText(self, arg_text, arg_length, *arg, **kw):
 		"""
 		PurpleMarkupEscapeText method:
-		
+
 		Parameters
 		----------
-		text: s, direction: in,
-		length: i, direction: in,
-		RESULT: s, direction: out,
+		text:
+			type: s,
+			direction: in;
+		length:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8876,11 +11722,15 @@ class PurpleInterface(object):
 	def PurpleMarkupStripHtml(self, arg_str, *arg, **kw):
 		"""
 		PurpleMarkupStripHtml method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8889,11 +11739,15 @@ class PurpleInterface(object):
 	def PurpleMarkupLinkify(self, arg_str, *arg, **kw):
 		"""
 		PurpleMarkupLinkify method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8902,11 +11756,15 @@ class PurpleInterface(object):
 	def PurpleUnescapeText(self, arg_text, *arg, **kw):
 		"""
 		PurpleUnescapeText method:
-		
+
 		Parameters
 		----------
-		text: s, direction: in,
-		RESULT: s, direction: out,
+		text:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8915,11 +11773,15 @@ class PurpleInterface(object):
 	def PurpleUnescapeHtml(self, arg_html, *arg, **kw):
 		"""
 		PurpleUnescapeHtml method:
-		
+
 		Parameters
 		----------
-		html: s, direction: in,
-		RESULT: s, direction: out,
+		html:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8928,13 +11790,21 @@ class PurpleInterface(object):
 	def PurpleMarkupSlice(self, arg_str, arg_x, arg_y, *arg, **kw):
 		"""
 		PurpleMarkupSlice method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		x: i, direction: in,
-		y: i, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		x:
+			type: i,
+			direction: in;
+		y:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8943,11 +11813,15 @@ class PurpleInterface(object):
 	def PurpleMarkupGetTagName(self, arg_tag, *arg, **kw):
 		"""
 		PurpleMarkupGetTagName method:
-		
+
 		Parameters
 		----------
-		tag: s, direction: in,
-		RESULT: s, direction: out,
+		tag:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8956,12 +11830,18 @@ class PurpleInterface(object):
 	def PurpleMarkupUnescapeEntity(self, arg_text, arg_length, *arg, **kw):
 		"""
 		PurpleMarkupUnescapeEntity method:
-		
+
 		Parameters
 		----------
-		text: s, direction: in,
-		length: i, direction: in,
-		RESULT: s, direction: out,
+		text:
+			type: s,
+			direction: in;
+		length:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8970,12 +11850,18 @@ class PurpleInterface(object):
 	def PurpleMarkupGetCssProperty(self, arg_style, arg_opt, *arg, **kw):
 		"""
 		PurpleMarkupGetCssProperty method:
-		
+
 		Parameters
 		----------
-		style: s, direction: in,
-		opt: s, direction: in,
-		RESULT: s, direction: out,
+		style:
+			type: s,
+			direction: in;
+		opt:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -8984,11 +11870,15 @@ class PurpleInterface(object):
 	def PurpleMarkupIsRtl(self, arg_html, *arg, **kw):
 		"""
 		PurpleMarkupIsRtl method:
-		
+
 		Parameters
 		----------
-		html: s, direction: in,
-		RESULT: i, direction: out,
+		html:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -8997,10 +11887,12 @@ class PurpleInterface(object):
 	def PurpleHomeDir(self, *arg, **kw):
 		"""
 		PurpleHomeDir method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9009,10 +11901,12 @@ class PurpleInterface(object):
 	def PurpleUserDir(self, *arg, **kw):
 		"""
 		PurpleUserDir method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9021,10 +11915,12 @@ class PurpleInterface(object):
 	def PurpleUtilSetUserDir(self, arg_dir, *arg, **kw):
 		"""
 		PurpleUtilSetUserDir method:
-		
+
 		Parameters
 		----------
-		dir: s, direction: in,
+		dir:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9033,12 +11929,18 @@ class PurpleInterface(object):
 	def PurpleBuildDir(self, arg_path, arg_mode, *arg, **kw):
 		"""
 		PurpleBuildDir method:
-		
+
 		Parameters
 		----------
-		path: s, direction: in,
-		mode: i, direction: in,
-		RESULT: i, direction: out,
+		path:
+			type: s,
+			direction: in;
+		mode:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9047,13 +11949,21 @@ class PurpleInterface(object):
 	def PurpleUtilWriteDataToFile(self, arg_filename, arg_data, arg_size, *arg, **kw):
 		"""
 		PurpleUtilWriteDataToFile method:
-		
+
 		Parameters
 		----------
-		filename: s, direction: in,
-		data: s, direction: in,
-		size: i, direction: in,
-		RESULT: i, direction: out,
+		filename:
+			type: s,
+			direction: in;
+		data:
+			type: s,
+			direction: in;
+		size:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9062,13 +11972,21 @@ class PurpleInterface(object):
 	def PurpleUtilWriteDataToFileAbsolute(self, arg_filename_full, arg_data, arg_size, *arg, **kw):
 		"""
 		PurpleUtilWriteDataToFileAbsolute method:
-		
+
 		Parameters
 		----------
-		filename_full: s, direction: in,
-		data: s, direction: in,
-		size: i, direction: in,
-		RESULT: i, direction: out,
+		filename_full:
+			type: s,
+			direction: in;
+		data:
+			type: s,
+			direction: in;
+		size:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9077,11 +11995,15 @@ class PurpleInterface(object):
 	def PurpleProgramIsValid(self, arg_program, *arg, **kw):
 		"""
 		PurpleProgramIsValid method:
-		
+
 		Parameters
 		----------
-		program: s, direction: in,
-		RESULT: i, direction: out,
+		program:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9090,10 +12012,12 @@ class PurpleInterface(object):
 	def PurpleRunningGnome(self, *arg, **kw):
 		"""
 		PurpleRunningGnome method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9102,10 +12026,12 @@ class PurpleInterface(object):
 	def PurpleRunningKde(self, *arg, **kw):
 		"""
 		PurpleRunningKde method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9114,10 +12040,12 @@ class PurpleInterface(object):
 	def PurpleRunningOsx(self, *arg, **kw):
 		"""
 		PurpleRunningOsx method:
-		
+
 		Parameters
 		----------
-		RESULT: i, direction: out,
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9126,11 +12054,15 @@ class PurpleInterface(object):
 	def PurpleFdGetIp(self, arg_fd, *arg, **kw):
 		"""
 		PurpleFdGetIp method:
-		
+
 		Parameters
 		----------
-		fd: i, direction: in,
-		RESULT: s, direction: out,
+		fd:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9139,11 +12071,15 @@ class PurpleInterface(object):
 	def PurpleSocketGetFamily(self, arg_fd, *arg, **kw):
 		"""
 		PurpleSocketGetFamily method:
-		
+
 		Parameters
 		----------
-		fd: i, direction: in,
-		RESULT: i, direction: out,
+		fd:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9152,11 +12088,15 @@ class PurpleInterface(object):
 	def PurpleSocketSpeaksIpv4(self, arg_fd, *arg, **kw):
 		"""
 		PurpleSocketSpeaksIpv4 method:
-		
+
 		Parameters
 		----------
-		fd: i, direction: in,
-		RESULT: i, direction: out,
+		fd:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9165,12 +12105,18 @@ class PurpleInterface(object):
 	def PurpleStrequal(self, arg_left, arg_right, *arg, **kw):
 		"""
 		PurpleStrequal method:
-		
+
 		Parameters
 		----------
-		left: s, direction: in,
-		right: s, direction: in,
-		RESULT: i, direction: out,
+		left:
+			type: s,
+			direction: in;
+		right:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9179,12 +12125,18 @@ class PurpleInterface(object):
 	def PurpleNormalize(self, arg_account, arg_str, *arg, **kw):
 		"""
 		PurpleNormalize method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9193,12 +12145,18 @@ class PurpleInterface(object):
 	def PurpleNormalizeNocase(self, arg_account, arg_str, *arg, **kw):
 		"""
 		PurpleNormalizeNocase method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		account:
+			type: i,
+			direction: in;
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9207,12 +12165,18 @@ class PurpleInterface(object):
 	def PurpleStrHasPrefix(self, arg_s, arg_p, *arg, **kw):
 		"""
 		PurpleStrHasPrefix method:
-		
+
 		Parameters
 		----------
-		s: s, direction: in,
-		p: s, direction: in,
-		RESULT: i, direction: out,
+		s:
+			type: s,
+			direction: in;
+		p:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9221,12 +12185,18 @@ class PurpleInterface(object):
 	def PurpleStrHasSuffix(self, arg_s, arg_x, *arg, **kw):
 		"""
 		PurpleStrHasSuffix method:
-		
+
 		Parameters
 		----------
-		s: s, direction: in,
-		x: s, direction: in,
-		RESULT: i, direction: out,
+		s:
+			type: s,
+			direction: in;
+		x:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9235,11 +12205,15 @@ class PurpleInterface(object):
 	def PurpleStrdupWithhtml(self, arg_src, *arg, **kw):
 		"""
 		PurpleStrdupWithhtml method:
-		
+
 		Parameters
 		----------
-		src: s, direction: in,
-		RESULT: s, direction: out,
+		src:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9248,11 +12222,15 @@ class PurpleInterface(object):
 	def PurpleStrAddCr(self, arg_str, *arg, **kw):
 		"""
 		PurpleStrAddCr method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9261,13 +12239,21 @@ class PurpleInterface(object):
 	def PurpleStrreplace(self, arg_string, arg_delimiter, arg_replacement, *arg, **kw):
 		"""
 		PurpleStrreplace method:
-		
+
 		Parameters
 		----------
-		string: s, direction: in,
-		delimiter: s, direction: in,
-		replacement: s, direction: in,
-		RESULT: s, direction: out,
+		string:
+			type: s,
+			direction: in;
+		delimiter:
+			type: s,
+			direction: in;
+		replacement:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9276,11 +12262,15 @@ class PurpleInterface(object):
 	def PurpleUtf8NcrEncode(self, arg_in, *arg, **kw):
 		"""
 		PurpleUtf8NcrEncode method:
-		
+
 		Parameters
 		----------
-		in: s, direction: in,
-		RESULT: s, direction: out,
+		in:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9289,11 +12279,15 @@ class PurpleInterface(object):
 	def PurpleUtf8NcrDecode(self, arg_in, *arg, **kw):
 		"""
 		PurpleUtf8NcrDecode method:
-		
+
 		Parameters
 		----------
-		in: s, direction: in,
-		RESULT: s, direction: out,
+		in:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9302,13 +12296,21 @@ class PurpleInterface(object):
 	def PurpleStrcasereplace(self, arg_string, arg_delimiter, arg_replacement, *arg, **kw):
 		"""
 		PurpleStrcasereplace method:
-		
+
 		Parameters
 		----------
-		string: s, direction: in,
-		delimiter: s, direction: in,
-		replacement: s, direction: in,
-		RESULT: s, direction: out,
+		string:
+			type: s,
+			direction: in;
+		delimiter:
+			type: s,
+			direction: in;
+		replacement:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9317,12 +12319,18 @@ class PurpleInterface(object):
 	def PurpleStrcasestr(self, arg_haystack, arg_needle, *arg, **kw):
 		"""
 		PurpleStrcasestr method:
-		
+
 		Parameters
 		----------
-		haystack: s, direction: in,
-		needle: s, direction: in,
-		RESULT: s, direction: out,
+		haystack:
+			type: s,
+			direction: in;
+		needle:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9331,11 +12339,15 @@ class PurpleInterface(object):
 	def PurpleStrSizeToUnits(self, arg_size, *arg, **kw):
 		"""
 		PurpleStrSizeToUnits method:
-		
+
 		Parameters
 		----------
-		size: i, direction: in,
-		RESULT: s, direction: out,
+		size:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9344,11 +12356,15 @@ class PurpleInterface(object):
 	def PurpleStrSecondsToString(self, arg_sec, *arg, **kw):
 		"""
 		PurpleStrSecondsToString method:
-		
+
 		Parameters
 		----------
-		sec: i, direction: in,
-		RESULT: s, direction: out,
+		sec:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9357,12 +12373,18 @@ class PurpleInterface(object):
 	def PurpleStrBinaryToAscii(self, arg_binary, arg_len, *arg, **kw):
 		"""
 		PurpleStrBinaryToAscii method:
-		
+
 		Parameters
 		----------
-		binary: s, direction: in,
-		len: i, direction: in,
-		RESULT: s, direction: out,
+		binary:
+			type: s,
+			direction: in;
+		len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9371,10 +12393,12 @@ class PurpleInterface(object):
 	def PurpleGotProtocolHandlerUri(self, arg_uri, *arg, **kw):
 		"""
 		PurpleGotProtocolHandlerUri method:
-		
+
 		Parameters
 		----------
-		uri: s, direction: in,
+		uri:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9383,10 +12407,12 @@ class PurpleInterface(object):
 	def PurpleUtilFetchUrlCancel(self, arg_url_data, *arg, **kw):
 		"""
 		PurpleUtilFetchUrlCancel method:
-		
+
 		Parameters
 		----------
-		url_data: i, direction: in,
+		url_data:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -9395,11 +12421,15 @@ class PurpleInterface(object):
 	def PurpleUrlDecode(self, arg_str, *arg, **kw):
 		"""
 		PurpleUrlDecode method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9408,11 +12438,15 @@ class PurpleInterface(object):
 	def PurpleUrlEncode(self, arg_str, *arg, **kw):
 		"""
 		PurpleUrlEncode method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9421,11 +12455,15 @@ class PurpleInterface(object):
 	def PurpleEmailIsValid(self, arg_address, *arg, **kw):
 		"""
 		PurpleEmailIsValid method:
-		
+
 		Parameters
 		----------
-		address: s, direction: in,
-		RESULT: i, direction: out,
+		address:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9434,11 +12472,15 @@ class PurpleInterface(object):
 	def PurpleIpAddressIsValid(self, arg_ip, *arg, **kw):
 		"""
 		PurpleIpAddressIsValid method:
-		
+
 		Parameters
 		----------
-		ip: s, direction: in,
-		RESULT: i, direction: out,
+		ip:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9447,11 +12489,15 @@ class PurpleInterface(object):
 	def PurpleIpv4AddressIsValid(self, arg_ip, *arg, **kw):
 		"""
 		PurpleIpv4AddressIsValid method:
-		
+
 		Parameters
 		----------
-		ip: s, direction: in,
-		RESULT: i, direction: out,
+		ip:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9460,11 +12506,15 @@ class PurpleInterface(object):
 	def PurpleIpv6AddressIsValid(self, arg_ip, *arg, **kw):
 		"""
 		PurpleIpv6AddressIsValid method:
-		
+
 		Parameters
 		----------
-		ip: s, direction: in,
-		RESULT: i, direction: out,
+		ip:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9473,11 +12523,15 @@ class PurpleInterface(object):
 	def PurpleUriListExtractUris(self, arg_uri_list, *arg, **kw):
 		"""
 		PurpleUriListExtractUris method:
-		
+
 		Parameters
 		----------
-		uri_list: s, direction: in,
-		RESULT: as, direction: out,
+		uri_list:
+			type: s,
+			direction: in;
+		RESULT:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -9486,11 +12540,15 @@ class PurpleInterface(object):
 	def PurpleUriListExtractFilenames(self, arg_uri_list, *arg, **kw):
 		"""
 		PurpleUriListExtractFilenames method:
-		
+
 		Parameters
 		----------
-		uri_list: s, direction: in,
-		RESULT: as, direction: out,
+		uri_list:
+			type: s,
+			direction: in;
+		RESULT:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -9499,11 +12557,15 @@ class PurpleInterface(object):
 	def PurpleUtf8TryConvert(self, arg_str, *arg, **kw):
 		"""
 		PurpleUtf8TryConvert method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9512,11 +12574,15 @@ class PurpleInterface(object):
 	def PurpleUtf8Salvage(self, arg_str, *arg, **kw):
 		"""
 		PurpleUtf8Salvage method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9525,11 +12591,15 @@ class PurpleInterface(object):
 	def PurpleUtf8StripUnprintables(self, arg_str, *arg, **kw):
 		"""
 		PurpleUtf8StripUnprintables method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9538,12 +12608,18 @@ class PurpleInterface(object):
 	def PurpleUtf8Strcasecmp(self, arg_a, arg_b, *arg, **kw):
 		"""
 		PurpleUtf8Strcasecmp method:
-		
+
 		Parameters
 		----------
-		a: s, direction: in,
-		b: s, direction: in,
-		RESULT: i, direction: out,
+		a:
+			type: s,
+			direction: in;
+		b:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9552,12 +12628,18 @@ class PurpleInterface(object):
 	def PurpleUtf8HasWord(self, arg_haystack, arg_needle, *arg, **kw):
 		"""
 		PurpleUtf8HasWord method:
-		
+
 		Parameters
 		----------
-		haystack: s, direction: in,
-		needle: s, direction: in,
-		RESULT: i, direction: out,
+		haystack:
+			type: s,
+			direction: in;
+		needle:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9566,11 +12648,15 @@ class PurpleInterface(object):
 	def PurpleTextStripMnemonic(self, arg_in, *arg, **kw):
 		"""
 		PurpleTextStripMnemonic method:
-		
+
 		Parameters
 		----------
-		in: s, direction: in,
-		RESULT: s, direction: out,
+		in:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9579,11 +12665,15 @@ class PurpleInterface(object):
 	def PurpleUnescapeFilename(self, arg_str, *arg, **kw):
 		"""
 		PurpleUnescapeFilename method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9592,11 +12682,15 @@ class PurpleInterface(object):
 	def PurpleEscapeFilename(self, arg_str, *arg, **kw):
 		"""
 		PurpleEscapeFilename method:
-		
+
 		Parameters
 		----------
-		str: s, direction: in,
-		RESULT: s, direction: out,
+		str:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9605,12 +12699,18 @@ class PurpleInterface(object):
 	def PurpleOscarConvert(self, arg_act, arg_protocol, *arg, **kw):
 		"""
 		PurpleOscarConvert method:
-		
+
 		Parameters
 		----------
-		act: s, direction: in,
-		protocol: s, direction: in,
-		RESULT: s, direction: out,
+		act:
+			type: s,
+			direction: in;
+		protocol:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9626,10 +12726,12 @@ class PurpleInterface(object):
 	def PurpleGetHostName(self, *arg, **kw):
 		"""
 		PurpleGetHostName method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9638,10 +12740,12 @@ class PurpleInterface(object):
 	def PurpleUuidRandom(self, *arg, **kw):
 		"""
 		PurpleUuidRandom method:
-		
+
 		Parameters
 		----------
-		RESULT: s, direction: out,
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9650,11 +12754,15 @@ class PurpleInterface(object):
 	def XmlnodeInsertChild(self, arg_parent, arg_child, *arg, **kw):
 		"""
 		XmlnodeInsertChild method:
-		
+
 		Parameters
 		----------
-		parent: i, direction: in,
-		child: i, direction: in,
+		parent:
+			type: i,
+			direction: in;
+		child:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -9663,12 +12771,18 @@ class PurpleInterface(object):
 	def XmlnodeInsertData(self, arg_node, arg_data, arg_size, *arg, **kw):
 		"""
 		XmlnodeInsertData method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		data: s, direction: in,
-		size: i, direction: in,
+		node:
+			type: i,
+			direction: in;
+		data:
+			type: s,
+			direction: in;
+		size:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -9677,11 +12791,15 @@ class PurpleInterface(object):
 	def XmlnodeGetData(self, arg_node, *arg, **kw):
 		"""
 		XmlnodeGetData method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9690,11 +12808,15 @@ class PurpleInterface(object):
 	def XmlnodeGetDataUnescaped(self, arg_node, *arg, **kw):
 		"""
 		XmlnodeGetDataUnescaped method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9703,12 +12825,18 @@ class PurpleInterface(object):
 	def XmlnodeSetAttrib(self, arg_node, arg_attr, arg_value, *arg, **kw):
 		"""
 		XmlnodeSetAttrib method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		value: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9717,13 +12845,21 @@ class PurpleInterface(object):
 	def XmlnodeSetAttribWithPrefix(self, arg_node, arg_attr, arg_prefix, arg_value, *arg, **kw):
 		"""
 		XmlnodeSetAttribWithPrefix method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		prefix: s, direction: in,
-		value: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		prefix:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9732,13 +12868,21 @@ class PurpleInterface(object):
 	def XmlnodeSetAttribWithNamespace(self, arg_node, arg_attr, arg_xmlns, arg_value, *arg, **kw):
 		"""
 		XmlnodeSetAttribWithNamespace method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		xmlns: s, direction: in,
-		value: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		xmlns:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9747,14 +12891,24 @@ class PurpleInterface(object):
 	def XmlnodeSetAttribFull(self, arg_node, arg_attr, arg_xmlns, arg_prefix, arg_value, *arg, **kw):
 		"""
 		XmlnodeSetAttribFull method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		xmlns: s, direction: in,
-		prefix: s, direction: in,
-		value: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		xmlns:
+			type: s,
+			direction: in;
+		prefix:
+			type: s,
+			direction: in;
+		value:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9763,12 +12917,18 @@ class PurpleInterface(object):
 	def XmlnodeGetAttrib(self, arg_node, arg_attr, *arg, **kw):
 		"""
 		XmlnodeGetAttrib method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9777,13 +12937,21 @@ class PurpleInterface(object):
 	def XmlnodeGetAttribWithNamespace(self, arg_node, arg_attr, arg_xmlns, *arg, **kw):
 		"""
 		XmlnodeGetAttribWithNamespace method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		xmlns: s, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		xmlns:
+			type: s,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9792,11 +12960,15 @@ class PurpleInterface(object):
 	def XmlnodeRemoveAttrib(self, arg_node, arg_attr, *arg, **kw):
 		"""
 		XmlnodeRemoveAttrib method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9805,12 +12977,18 @@ class PurpleInterface(object):
 	def XmlnodeRemoveAttribWithNamespace(self, arg_node, arg_attr, arg_xmlns, *arg, **kw):
 		"""
 		XmlnodeRemoveAttribWithNamespace method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		attr: s, direction: in,
-		xmlns: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		attr:
+			type: s,
+			direction: in;
+		xmlns:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9819,11 +12997,15 @@ class PurpleInterface(object):
 	def XmlnodeSetNamespace(self, arg_node, arg_xmlns, *arg, **kw):
 		"""
 		XmlnodeSetNamespace method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		xmlns: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		xmlns:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9832,11 +13014,15 @@ class PurpleInterface(object):
 	def XmlnodeGetNamespace(self, arg_node, *arg, **kw):
 		"""
 		XmlnodeGetNamespace method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9845,11 +13031,15 @@ class PurpleInterface(object):
 	def XmlnodeSetPrefix(self, arg_node, arg_prefix, *arg, **kw):
 		"""
 		XmlnodeSetPrefix method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		prefix: s, direction: in,
+		node:
+			type: i,
+			direction: in;
+		prefix:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9858,11 +13048,15 @@ class PurpleInterface(object):
 	def XmlnodeGetPrefix(self, arg_node, *arg, **kw):
 		"""
 		XmlnodeGetPrefix method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9871,12 +13065,18 @@ class PurpleInterface(object):
 	def XmlnodeToStr(self, arg_node, arg_len, *arg, **kw):
 		"""
 		XmlnodeToStr method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		len: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9885,12 +13085,18 @@ class PurpleInterface(object):
 	def XmlnodeToFormattedStr(self, arg_node, arg_len, *arg, **kw):
 		"""
 		XmlnodeToFormattedStr method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
-		len: i, direction: in,
-		RESULT: s, direction: out,
+		node:
+			type: i,
+			direction: in;
+		len:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -9899,10 +13105,12 @@ class PurpleInterface(object):
 	def XmlnodeFree(self, arg_node, *arg, **kw):
 		"""
 		XmlnodeFree method:
-		
+
 		Parameters
 		----------
-		node: i, direction: in,
+		node:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -9911,14 +13119,24 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeNew(self, arg_ulname, arg_name, arg_inc_desc, arg_out_desc, *arg, **kw):
 		"""
 		PurpleAttentionTypeNew method:
-		
+
 		Parameters
 		----------
-		ulname: s, direction: in,
-		name: s, direction: in,
-		inc_desc: s, direction: in,
-		out_desc: s, direction: in,
-		RESULT: i, direction: out,
+		ulname:
+			type: s,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		inc_desc:
+			type: s,
+			direction: in;
+		out_desc:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -9927,11 +13145,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeSetName(self, arg_type, arg_name, *arg, **kw):
 		"""
 		PurpleAttentionTypeSetName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9940,11 +13162,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeSetIncomingDesc(self, arg_type, arg_desc, *arg, **kw):
 		"""
 		PurpleAttentionTypeSetIncomingDesc method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		desc: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		desc:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9953,11 +13179,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeSetOutgoingDesc(self, arg_type, arg_desc, *arg, **kw):
 		"""
 		PurpleAttentionTypeSetOutgoingDesc method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		desc: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		desc:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9966,11 +13196,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeSetIconName(self, arg_type, arg_name, *arg, **kw):
 		"""
 		PurpleAttentionTypeSetIconName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		name: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9979,11 +13213,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeSetUnlocalizedName(self, arg_type, arg_ulname, *arg, **kw):
 		"""
 		PurpleAttentionTypeSetUnlocalizedName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		ulname: s, direction: in,
+		type:
+			type: i,
+			direction: in;
+		ulname:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -9992,11 +13230,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeGetName(self, arg_type, *arg, **kw):
 		"""
 		PurpleAttentionTypeGetName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -10005,11 +13247,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeGetIncomingDesc(self, arg_type, *arg, **kw):
 		"""
 		PurpleAttentionTypeGetIncomingDesc method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -10018,11 +13264,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeGetOutgoingDesc(self, arg_type, *arg, **kw):
 		"""
 		PurpleAttentionTypeGetOutgoingDesc method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -10031,11 +13281,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeGetIconName(self, arg_type, *arg, **kw):
 		"""
 		PurpleAttentionTypeGetIconName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -10044,11 +13298,15 @@ class PurpleInterface(object):
 	def PurpleAttentionTypeGetUnlocalizedName(self, arg_type, *arg, **kw):
 		"""
 		PurpleAttentionTypeGetUnlocalizedName method:
-		
+
 		Parameters
 		----------
-		type: i, direction: in,
-		RESULT: s, direction: out,
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
@@ -10057,12 +13315,18 @@ class PurpleInterface(object):
 	def PurplePrplGotAccountIdle(self, arg_account, arg_idle, arg_idle_time, *arg, **kw):
 		"""
 		PurplePrplGotAccountIdle method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		idle: i, direction: in,
-		idle_time: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		idle:
+			type: i,
+			direction: in;
+		idle_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10071,11 +13335,15 @@ class PurpleInterface(object):
 	def PurplePrplGotAccountLoginTime(self, arg_account, arg_login_time, *arg, **kw):
 		"""
 		PurplePrplGotAccountLoginTime method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		login_time: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		login_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10084,10 +13352,12 @@ class PurpleInterface(object):
 	def PurplePrplGotAccountActions(self, arg_account, *arg, **kw):
 		"""
 		PurplePrplGotAccountActions method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
+		account:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10096,13 +13366,21 @@ class PurpleInterface(object):
 	def PurplePrplGotUserIdle(self, arg_account, arg_name, arg_idle, arg_idle_time, *arg, **kw):
 		"""
 		PurplePrplGotUserIdle method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		idle: i, direction: in,
-		idle_time: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		idle:
+			type: i,
+			direction: in;
+		idle_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10111,12 +13389,18 @@ class PurpleInterface(object):
 	def PurplePrplGotUserLoginTime(self, arg_account, arg_name, arg_login_time, *arg, **kw):
 		"""
 		PurplePrplGotUserLoginTime method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		login_time: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		login_time:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10125,12 +13409,18 @@ class PurpleInterface(object):
 	def PurplePrplGotUserStatusDeactive(self, arg_account, arg_name, arg_status_id, *arg, **kw):
 		"""
 		PurplePrplGotUserStatusDeactive method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		name: s, direction: in,
-		status_id: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		name:
+			type: s,
+			direction: in;
+		status_id:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -10139,12 +13429,18 @@ class PurpleInterface(object):
 	def PurplePrplChangeAccountStatus(self, arg_account, arg_old_status, arg_new_status, *arg, **kw):
 		"""
 		PurplePrplChangeAccountStatus method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		old_status: i, direction: in,
-		new_status: i, direction: in,
+		account:
+			type: i,
+			direction: in;
+		old_status:
+			type: i,
+			direction: in;
+		new_status:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10153,12 +13449,18 @@ class PurpleInterface(object):
 	def PurplePrplGetStatuses(self, arg_account, arg_presence, *arg, **kw):
 		"""
 		PurplePrplGetStatuses method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		presence: i, direction: in,
-		RESULT: ai, direction: out,
+		account:
+			type: i,
+			direction: in;
+		presence:
+			type: i,
+			direction: in;
+		RESULT:
+			type: ai,
+			direction: out;
 		
 		"""
 		pass
@@ -10167,12 +13469,18 @@ class PurpleInterface(object):
 	def PurplePrplSendAttention(self, arg_gc, arg_who, arg_type_code, *arg, **kw):
 		"""
 		PurplePrplSendAttention method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		type_code: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10181,12 +13489,18 @@ class PurpleInterface(object):
 	def PurplePrplGotAttention(self, arg_gc, arg_who, arg_type_code, *arg, **kw):
 		"""
 		PurplePrplGotAttention method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		who: s, direction: in,
-		type_code: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10195,13 +13509,21 @@ class PurpleInterface(object):
 	def PurplePrplGotAttentionInChat(self, arg_gc, arg_id, arg_who, arg_type_code, *arg, **kw):
 		"""
 		PurplePrplGotAttentionInChat method:
-		
+
 		Parameters
 		----------
-		gc: i, direction: in,
-		id: i, direction: in,
-		who: s, direction: in,
-		type_code: i, direction: in,
+		gc:
+			type: i,
+			direction: in;
+		id:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type_code:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10210,12 +13532,18 @@ class PurpleInterface(object):
 	def PurplePrplGetMediaCaps(self, arg_account, arg_who, *arg, **kw):
 		"""
 		PurplePrplGetMediaCaps method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		who: s, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -10224,13 +13552,21 @@ class PurpleInterface(object):
 	def PurplePrplInitiateMedia(self, arg_account, arg_who, arg_type, *arg, **kw):
 		"""
 		PurplePrplInitiateMedia method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		who: s, direction: in,
-		type: i, direction: in,
-		RESULT: i, direction: out,
+		account:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
+		type:
+			type: i,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -10239,11 +13575,15 @@ class PurpleInterface(object):
 	def PurplePrplGotMediaCaps(self, arg_account, arg_who, *arg, **kw):
 		"""
 		PurplePrplGotMediaCaps method:
-		
+
 		Parameters
 		----------
-		account: i, direction: in,
-		who: s, direction: in,
+		account:
+			type: i,
+			direction: in;
+		who:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -10252,11 +13592,15 @@ class PurpleInterface(object):
 	def PurpleFindPrpl(self, arg_id, *arg, **kw):
 		"""
 		PurpleFindPrpl method:
-		
+
 		Parameters
 		----------
-		id: s, direction: in,
-		RESULT: i, direction: out,
+		id:
+			type: s,
+			direction: in;
+		RESULT:
+			type: i,
+			direction: out;
 		
 		"""
 		pass
@@ -10265,11 +13609,12 @@ class PurpleInterface(object):
 	def AccountConnecting(self, *arg, **kw):
 		"""
 		AccountConnecting signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10278,11 +13623,12 @@ class PurpleInterface(object):
 	def AccountDisabled(self, *arg, **kw):
 		"""
 		AccountDisabled signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10291,11 +13637,12 @@ class PurpleInterface(object):
 	def AccountEnabled(self, *arg, **kw):
 		"""
 		AccountEnabled signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10304,13 +13651,15 @@ class PurpleInterface(object):
 	def AccountSettingInfo(self, *arg, **kw):
 		"""
 		AccountSettingInfo signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10319,13 +13668,15 @@ class PurpleInterface(object):
 	def AccountSetInfo(self, *arg, **kw):
 		"""
 		AccountSetInfo signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10334,11 +13685,12 @@ class PurpleInterface(object):
 	def AccountCreated(self, *arg, **kw):
 		"""
 		AccountCreated signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10347,11 +13699,12 @@ class PurpleInterface(object):
 	def AccountDestroying(self, *arg, **kw):
 		"""
 		AccountDestroying signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10360,11 +13713,12 @@ class PurpleInterface(object):
 	def AccountAdded(self, *arg, **kw):
 		"""
 		AccountAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10373,11 +13727,12 @@ class PurpleInterface(object):
 	def AccountRemoved(self, *arg, **kw):
 		"""
 		AccountRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10386,15 +13741,18 @@ class PurpleInterface(object):
 	def AccountStatusChanged(self, *arg, **kw):
 		"""
 		AccountStatusChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10403,11 +13761,12 @@ class PurpleInterface(object):
 	def AccountActionsChanged(self, *arg, **kw):
 		"""
 		AccountActionsChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10416,13 +13775,15 @@ class PurpleInterface(object):
 	def AccountAliasChanged(self, *arg, **kw):
 		"""
 		AccountAliasChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10431,13 +13792,15 @@ class PurpleInterface(object):
 	def AccountAuthorizationRequested(self, *arg, **kw):
 		"""
 		AccountAuthorizationRequested signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10446,15 +13809,18 @@ class PurpleInterface(object):
 	def AccountAuthorizationRequestedWithMessage(self, *arg, **kw):
 		"""
 		AccountAuthorizationRequestedWithMessage signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10463,13 +13829,15 @@ class PurpleInterface(object):
 	def AccountAuthorizationDenied(self, *arg, **kw):
 		"""
 		AccountAuthorizationDenied signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10478,13 +13846,15 @@ class PurpleInterface(object):
 	def AccountAuthorizationGranted(self, *arg, **kw):
 		"""
 		AccountAuthorizationGranted signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10493,15 +13863,18 @@ class PurpleInterface(object):
 	def AccountErrorChanged(self, *arg, **kw):
 		"""
 		AccountErrorChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10510,11 +13883,12 @@ class PurpleInterface(object):
 	def AccountSignedOn(self, *arg, **kw):
 		"""
 		AccountSignedOn signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10523,11 +13897,12 @@ class PurpleInterface(object):
 	def AccountSignedOff(self, *arg, **kw):
 		"""
 		AccountSignedOff signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10536,15 +13911,18 @@ class PurpleInterface(object):
 	def AccountConnectionError(self, *arg, **kw):
 		"""
 		AccountConnectionError signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10553,15 +13931,18 @@ class PurpleInterface(object):
 	def BuddyStatusChanged(self, *arg, **kw):
 		"""
 		BuddyStatusChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10570,11 +13951,12 @@ class PurpleInterface(object):
 	def BuddyPrivacyChanged(self, *arg, **kw):
 		"""
 		BuddyPrivacyChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10583,15 +13965,18 @@ class PurpleInterface(object):
 	def BuddyIdleChanged(self, *arg, **kw):
 		"""
 		BuddyIdleChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10600,11 +13985,12 @@ class PurpleInterface(object):
 	def BuddySignedOn(self, *arg, **kw):
 		"""
 		BuddySignedOn signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10613,11 +13999,12 @@ class PurpleInterface(object):
 	def BuddySignedOff(self, *arg, **kw):
 		"""
 		BuddySignedOff signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10626,11 +14013,12 @@ class PurpleInterface(object):
 	def BuddyGotLoginTime(self, *arg, **kw):
 		"""
 		BuddyGotLoginTime signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10639,11 +14027,12 @@ class PurpleInterface(object):
 	def BlistNodeAdded(self, *arg, **kw):
 		"""
 		BlistNodeAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10652,11 +14041,12 @@ class PurpleInterface(object):
 	def BlistNodeRemoved(self, *arg, **kw):
 		"""
 		BlistNodeRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10665,11 +14055,12 @@ class PurpleInterface(object):
 	def BuddyAdded(self, *arg, **kw):
 		"""
 		BuddyAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10678,11 +14069,12 @@ class PurpleInterface(object):
 	def BuddyRemoved(self, *arg, **kw):
 		"""
 		BuddyRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10691,11 +14083,12 @@ class PurpleInterface(object):
 	def BuddyIconChanged(self, *arg, **kw):
 		"""
 		BuddyIconChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10711,13 +14104,15 @@ class PurpleInterface(object):
 	def BlistNodeExtendedMenu(self, *arg, **kw):
 		"""
 		BlistNodeExtendedMenu signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10726,13 +14121,15 @@ class PurpleInterface(object):
 	def BlistNodeAliased(self, *arg, **kw):
 		"""
 		BlistNodeAliased signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10741,15 +14138,18 @@ class PurpleInterface(object):
 	def BuddyCapsChanged(self, *arg, **kw):
 		"""
 		BuddyCapsChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10758,13 +14158,15 @@ class PurpleInterface(object):
 	def CertificateStored(self, *arg, **kw):
 		"""
 		CertificateStored signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10773,13 +14175,15 @@ class PurpleInterface(object):
 	def CertificateDeleted(self, *arg, **kw):
 		"""
 		CertificateDeleted signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10788,11 +14192,12 @@ class PurpleInterface(object):
 	def CipherAdded(self, *arg, **kw):
 		"""
 		CipherAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10801,11 +14206,12 @@ class PurpleInterface(object):
 	def CipherRemoved(self, *arg, **kw):
 		"""
 		CipherRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10814,15 +14220,18 @@ class PurpleInterface(object):
 	def CmdAdded(self, *arg, **kw):
 		"""
 		CmdAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10831,11 +14240,12 @@ class PurpleInterface(object):
 	def CmdRemoved(self, *arg, **kw):
 		"""
 		CmdRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10844,11 +14254,12 @@ class PurpleInterface(object):
 	def SigningOn(self, *arg, **kw):
 		"""
 		SigningOn signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10857,11 +14268,12 @@ class PurpleInterface(object):
 	def SignedOn(self, *arg, **kw):
 		"""
 		SignedOn signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10870,11 +14282,12 @@ class PurpleInterface(object):
 	def SigningOff(self, *arg, **kw):
 		"""
 		SigningOff signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10883,11 +14296,12 @@ class PurpleInterface(object):
 	def SignedOff(self, *arg, **kw):
 		"""
 		SignedOff signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10896,15 +14310,18 @@ class PurpleInterface(object):
 	def ConnectionError(self, *arg, **kw):
 		"""
 		ConnectionError signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10913,11 +14330,12 @@ class PurpleInterface(object):
 	def Autojoin(self, *arg, **kw):
 		"""
 		Autojoin signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -10926,19 +14344,24 @@ class PurpleInterface(object):
 	def WritingImMsg(self, *arg, **kw):
 		"""
 		WritingImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -10947,19 +14370,24 @@ class PurpleInterface(object):
 	def WroteImMsg(self, *arg, **kw):
 		"""
 		WroteImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -10968,17 +14396,21 @@ class PurpleInterface(object):
 	def SentAttention(self, *arg, **kw):
 		"""
 		SentAttention signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -10987,17 +14419,21 @@ class PurpleInterface(object):
 	def GotAttention(self, *arg, **kw):
 		"""
 		GotAttention signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11006,15 +14442,18 @@ class PurpleInterface(object):
 	def SendingImMsg(self, *arg, **kw):
 		"""
 		SendingImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11023,15 +14462,18 @@ class PurpleInterface(object):
 	def SentImMsg(self, *arg, **kw):
 		"""
 		SentImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11040,19 +14482,24 @@ class PurpleInterface(object):
 	def ReceivingImMsg(self, *arg, **kw):
 		"""
 		ReceivingImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11061,19 +14508,24 @@ class PurpleInterface(object):
 	def ReceivedImMsg(self, *arg, **kw):
 		"""
 		ReceivedImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11082,19 +14534,24 @@ class PurpleInterface(object):
 	def BlockedImMsg(self, *arg, **kw):
 		"""
 		BlockedImMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: u, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: u,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11103,19 +14560,24 @@ class PurpleInterface(object):
 	def WritingChatMsg(self, *arg, **kw):
 		"""
 		WritingChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11124,19 +14586,24 @@ class PurpleInterface(object):
 	def WroteChatMsg(self, *arg, **kw):
 		"""
 		WroteChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11145,15 +14612,18 @@ class PurpleInterface(object):
 	def SendingChatMsg(self, *arg, **kw):
 		"""
 		SendingChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11162,15 +14632,18 @@ class PurpleInterface(object):
 	def SentChatMsg(self, *arg, **kw):
 		"""
 		SentChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11179,19 +14652,24 @@ class PurpleInterface(object):
 	def ReceivingChatMsg(self, *arg, **kw):
 		"""
 		ReceivingChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11200,19 +14678,24 @@ class PurpleInterface(object):
 	def ReceivedChatMsg(self, *arg, **kw):
 		"""
 		ReceivedChatMsg signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11221,11 +14704,12 @@ class PurpleInterface(object):
 	def ConversationCreated(self, *arg, **kw):
 		"""
 		ConversationCreated signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11234,13 +14718,15 @@ class PurpleInterface(object):
 	def ConversationUpdated(self, *arg, **kw):
 		"""
 		ConversationUpdated signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11249,11 +14735,12 @@ class PurpleInterface(object):
 	def DeletingConversation(self, *arg, **kw):
 		"""
 		DeletingConversation signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11262,13 +14749,15 @@ class PurpleInterface(object):
 	def BuddyTyping(self, *arg, **kw):
 		"""
 		BuddyTyping signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11277,13 +14766,15 @@ class PurpleInterface(object):
 	def BuddyTyped(self, *arg, **kw):
 		"""
 		BuddyTyped signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11292,13 +14783,15 @@ class PurpleInterface(object):
 	def BuddyTypingStopped(self, *arg, **kw):
 		"""
 		BuddyTypingStopped signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11307,15 +14800,18 @@ class PurpleInterface(object):
 	def ChatBuddyJoining(self, *arg, **kw):
 		"""
 		ChatBuddyJoining signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11324,17 +14820,21 @@ class PurpleInterface(object):
 	def ChatBuddyJoined(self, *arg, **kw):
 		"""
 		ChatBuddyJoined signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: u, direction: in,
-		
-		    arg4: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: u,
+			direction: in;
+		 arg4:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11343,17 +14843,21 @@ class PurpleInterface(object):
 	def ChatBuddyFlags(self, *arg, **kw):
 		"""
 		ChatBuddyFlags signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: u, direction: in,
-		
-		    arg4: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: u,
+			direction: in;
+		 arg4:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11362,15 +14866,18 @@ class PurpleInterface(object):
 	def ChatBuddyLeaving(self, *arg, **kw):
 		"""
 		ChatBuddyLeaving signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11379,15 +14886,18 @@ class PurpleInterface(object):
 	def ChatBuddyLeft(self, *arg, **kw):
 		"""
 		ChatBuddyLeft signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11396,11 +14906,12 @@ class PurpleInterface(object):
 	def DeletingChatBuddy(self, *arg, **kw):
 		"""
 		DeletingChatBuddy signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11409,15 +14920,18 @@ class PurpleInterface(object):
 	def ChatInvitingUser(self, *arg, **kw):
 		"""
 		ChatInvitingUser signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11426,15 +14940,18 @@ class PurpleInterface(object):
 	def ChatInvitedUser(self, *arg, **kw):
 		"""
 		ChatInvitedUser signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11443,19 +14960,24 @@ class PurpleInterface(object):
 	def ChatInvited(self, *arg, **kw):
 		"""
 		ChatInvited signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11464,19 +14986,24 @@ class PurpleInterface(object):
 	def ChatInviteBlocked(self, *arg, **kw):
 		"""
 		ChatInviteBlocked signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11485,11 +15012,12 @@ class PurpleInterface(object):
 	def ChatJoined(self, *arg, **kw):
 		"""
 		ChatJoined signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11498,13 +15026,15 @@ class PurpleInterface(object):
 	def ChatJoinFailed(self, *arg, **kw):
 		"""
 		ChatJoinFailed signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11513,11 +15043,12 @@ class PurpleInterface(object):
 	def ChatLeft(self, *arg, **kw):
 		"""
 		ChatLeft signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11526,15 +15057,18 @@ class PurpleInterface(object):
 	def ChatTopicChanged(self, *arg, **kw):
 		"""
 		ChatTopicChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11543,11 +15077,12 @@ class PurpleInterface(object):
 	def ClearedMessageHistory(self, *arg, **kw):
 		"""
 		ClearedMessageHistory signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11556,13 +15091,15 @@ class PurpleInterface(object):
 	def ConversationExtendedMenu(self, *arg, **kw):
 		"""
 		ConversationExtendedMenu signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11571,15 +15108,18 @@ class PurpleInterface(object):
 	def UriHandler(self, *arg, **kw):
 		"""
 		UriHandler signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11595,11 +15135,12 @@ class PurpleInterface(object):
 	def FileRecvAccept(self, *arg, **kw):
 		"""
 		FileRecvAccept signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11608,11 +15149,12 @@ class PurpleInterface(object):
 	def FileSendAccept(self, *arg, **kw):
 		"""
 		FileSendAccept signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11621,11 +15163,12 @@ class PurpleInterface(object):
 	def FileRecvStart(self, *arg, **kw):
 		"""
 		FileRecvStart signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11634,11 +15177,12 @@ class PurpleInterface(object):
 	def FileSendStart(self, *arg, **kw):
 		"""
 		FileSendStart signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11647,11 +15191,12 @@ class PurpleInterface(object):
 	def FileSendCancel(self, *arg, **kw):
 		"""
 		FileSendCancel signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11660,11 +15205,12 @@ class PurpleInterface(object):
 	def FileRecvCancel(self, *arg, **kw):
 		"""
 		FileRecvCancel signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11673,11 +15219,12 @@ class PurpleInterface(object):
 	def FileSendComplete(self, *arg, **kw):
 		"""
 		FileSendComplete signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11686,11 +15233,12 @@ class PurpleInterface(object):
 	def FileRecvComplete(self, *arg, **kw):
 		"""
 		FileRecvComplete signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11699,11 +15247,12 @@ class PurpleInterface(object):
 	def FileRecvRequest(self, *arg, **kw):
 		"""
 		FileRecvRequest signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11712,11 +15261,12 @@ class PurpleInterface(object):
 	def ImageDeleting(self, *arg, **kw):
 		"""
 		ImageDeleting signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11725,15 +15275,18 @@ class PurpleInterface(object):
 	def LogTimestamp(self, *arg, **kw):
 		"""
 		LogTimestamp signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: x, direction: in,
-		
-		    arg3: b, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: x,
+			direction: in;
+		 arg3:
+			type: b,
+			direction: in;
 		
 		"""
 		pass
@@ -11749,17 +15302,21 @@ class PurpleInterface(object):
 	def DisplayingEmailNotification(self, *arg, **kw):
 		"""
 		DisplayingEmailNotification signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11768,19 +15325,24 @@ class PurpleInterface(object):
 	def DisplayingEmailsNotification(self, *arg, **kw):
 		"""
 		DisplayingEmailsNotification signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
-		
-		    arg4: i, direction: in,
-		
-		    arg5: u, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
+		 arg4:
+			type: i,
+			direction: in;
+		 arg5:
+			type: u,
+			direction: in;
 		
 		"""
 		pass
@@ -11789,15 +15351,18 @@ class PurpleInterface(object):
 	def DisplayingUserinfo(self, *arg, **kw):
 		"""
 		DisplayingUserinfo signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
-		
-		    arg3: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
+		 arg3:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11806,11 +15371,12 @@ class PurpleInterface(object):
 	def PluginLoad(self, *arg, **kw):
 		"""
 		PluginLoad signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11819,11 +15385,12 @@ class PurpleInterface(object):
 	def PluginUnload(self, *arg, **kw):
 		"""
 		PluginUnload signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11832,13 +15399,15 @@ class PurpleInterface(object):
 	def SavedstatusChanged(self, *arg, **kw):
 		"""
 		SavedstatusChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11847,11 +15416,12 @@ class PurpleInterface(object):
 	def SavedstatusAdded(self, *arg, **kw):
 		"""
 		SavedstatusAdded signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11860,11 +15430,12 @@ class PurpleInterface(object):
 	def SavedstatusDeleted(self, *arg, **kw):
 		"""
 		SavedstatusDeleted signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11873,11 +15444,12 @@ class PurpleInterface(object):
 	def SavedstatusModified(self, *arg, **kw):
 		"""
 		SavedstatusModified signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11886,13 +15458,15 @@ class PurpleInterface(object):
 	def PlayingSoundEvent(self, *arg, **kw):
 		"""
 		PlayingSoundEvent signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11901,13 +15475,15 @@ class PurpleInterface(object):
 	def IrcSendingText(self, *arg, **kw):
 		"""
 		IrcSendingText signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass
@@ -11916,13 +15492,15 @@ class PurpleInterface(object):
 	def IrcReceivingText(self, *arg, **kw):
 		"""
 		IrcReceivingText signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: i, direction: in,
-		
-		    arg2: i, direction: in,
+		 arg1:
+			type: i,
+			direction: in;
+		 arg2:
+			type: i,
+			direction: in;
 		
 		"""
 		pass

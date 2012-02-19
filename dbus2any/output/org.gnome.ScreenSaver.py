@@ -15,41 +15,42 @@ Parameters:
 
 '''
 from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
-        
+		
 class Introspectable(object):
-    '''
-    Introspectable
-    
-    Usage:
-    ------
-    
-    >> myIntrospectable = Introspectable()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myIntrospectable.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myIntrospectable.bar
-    >>> myIntrospectable.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	Introspectable
+
+	Usage:
+	------
+
+	>> myIntrospectable = Introspectable()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myIntrospectable.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myIntrospectable.bar
+	>>> myIntrospectable.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myIntrospectable.spam = lambda eggs: do_something(eggs)
+	every time that Introspectable
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/", "org.gnome.ScreenSaver")
 	def __init__(self, *arg, **kw):
 		pass
@@ -58,48 +59,51 @@ class Introspectable(object):
 	def Introspect(self, *arg, **kw):
 		"""
 		Introspect method:
-		
+
 		Parameters
 		----------
-		data: s, direction: out,
+		data:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
   
 class ScreenSaver(object):
-    '''
-    ScreenSaver
-    
-    Usage:
-    ------
-    
-    >> myScreenSaver = ScreenSaver()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myScreenSaver.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myScreenSaver.bar
-    >>> myScreenSaver.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myScreenSaver.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	ScreenSaver
+
+	Usage:
+	------
+
+	>> myScreenSaver = ScreenSaver()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myScreenSaver.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myScreenSaver.bar
+	>>> myScreenSaver.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myScreenSaver.spam = lambda eggs: do_something(eggs)
+	every time that ScreenSaver
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.gnome.ScreenSaver", "/", "org.gnome.ScreenSaver")
 	def __init__(self, *arg, **kw):
 		pass
@@ -122,10 +126,12 @@ class ScreenSaver(object):
 	def GetActive(self, *arg, **kw):
 		"""
 		GetActive method:
-		
+
 		Parameters
 		----------
-		value: b, direction: out,
+		value:
+			type: b,
+			direction: out;
 		
 		"""
 		pass
@@ -134,10 +140,12 @@ class ScreenSaver(object):
 	def GetActiveTime(self, *arg, **kw):
 		"""
 		GetActiveTime method:
-		
+
 		Parameters
 		----------
-		seconds: u, direction: out,
+		seconds:
+			type: u,
+			direction: out;
 		
 		"""
 		pass
@@ -146,10 +154,12 @@ class ScreenSaver(object):
 	def SetActive(self, arg_value, *arg, **kw):
 		"""
 		SetActive method:
-		
+
 		Parameters
 		----------
-		value: b, direction: in,
+		value:
+			type: b,
+			direction: in;
 		
 		"""
 		pass
@@ -158,12 +168,18 @@ class ScreenSaver(object):
 	def ShowMessage(self, arg_summary, arg_body, arg_icon, *arg, **kw):
 		"""
 		ShowMessage method:
-		
+
 		Parameters
 		----------
-		summary: s, direction: in,
-		body: s, direction: in,
-		icon: s, direction: in,
+		summary:
+			type: s,
+			direction: in;
+		body:
+			type: s,
+			direction: in;
+		icon:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -172,10 +188,12 @@ class ScreenSaver(object):
 	def ActiveChanged(self, *arg, **kw):
 		"""
 		ActiveChanged signal:
-		
+
 		Parameters
 		----------
-		new_value: b, direction: in,
+		new_value:
+			type: b,
+			direction: in;
 		
 		"""
 		pass

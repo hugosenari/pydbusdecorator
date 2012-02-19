@@ -15,41 +15,42 @@ Parameters:
 
 '''
 from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
-        
+		
 class Introspectable(object):
-    '''
-    Introspectable
-    
-    Usage:
-    ------
-    
-    >> myIntrospectable = Introspectable()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myIntrospectable.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myIntrospectable.bar
-    >>> myIntrospectable.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	Introspectable
+
+	Usage:
+	------
+
+	>> myIntrospectable = Introspectable()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myIntrospectable.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myIntrospectable.bar
+	>>> myIntrospectable.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myIntrospectable.spam = lambda eggs: do_something(eggs)
+	every time that Introspectable
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/org/xfce/Xfconf", "org.xfce.Xfconf")
 	def __init__(self, *arg, **kw):
 		pass
@@ -58,48 +59,51 @@ class Introspectable(object):
 	def Introspect(self, *arg, **kw):
 		"""
 		Introspect method:
-		
+
 		Parameters
 		----------
-		data: s, direction: out,
+		data:
+			type: s,
+			direction: out;
 		
 		"""
 		pass
   
 class Properties(object):
-    '''
-    Properties
-    
-    Usage:
-    ------
-    
-    >> myProperties = Properties()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myProperties.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myProperties.bar
-    >>> myProperties.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myProperties.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	Properties
+
+	Usage:
+	------
+
+	>> myProperties = Properties()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myProperties.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myProperties.bar
+	>>> myProperties.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myProperties.spam = lambda eggs: do_something(eggs)
+	every time that Properties
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.freedesktop.DBus.Properties", "/org/xfce/Xfconf", "org.xfce.Xfconf")
 	def __init__(self, *arg, **kw):
 		pass
@@ -108,12 +112,18 @@ class Properties(object):
 	def Get(self, arg_interface, arg_propname, *arg, **kw):
 		"""
 		Get method:
-		
+
 		Parameters
 		----------
-		interface: s, direction: in,
-		propname: s, direction: in,
-		value: v, direction: out,
+		interface:
+			type: s,
+			direction: in;
+		propname:
+			type: s,
+			direction: in;
+		value:
+			type: v,
+			direction: out;
 		
 		"""
 		pass
@@ -122,12 +132,18 @@ class Properties(object):
 	def Set(self, arg_interface, arg_propname, arg_value, *arg, **kw):
 		"""
 		Set method:
-		
+
 		Parameters
 		----------
-		interface: s, direction: in,
-		propname: s, direction: in,
-		value: v, direction: in,
+		interface:
+			type: s,
+			direction: in;
+		propname:
+			type: s,
+			direction: in;
+		value:
+			type: v,
+			direction: in;
 		
 		"""
 		pass
@@ -136,49 +152,54 @@ class Properties(object):
 	def GetAll(self, arg_interface, *arg, **kw):
 		"""
 		GetAll method:
-		
+
 		Parameters
 		----------
-		interface: s, direction: in,
-		props: a{sv}, direction: out,
+		interface:
+			type: s,
+			direction: in;
+		props:
+			type: a{sv},
+			direction: out;
 		
 		"""
 		pass
   
 class Xfconf(object):
-    '''
-    Xfconf
-    
-    Usage:
-    ------
-    
-    >> myXfconf = Xfconf()
-    since this you can access any method, attribute or signal defined below this.
-    
-    if this class (and dbus object) define
-    >>> @DbusMethod
-    >>> def foo (self, x): pass
-    
-    you can call
-    >>> myXfconf.foo(x)
-    and the program will be called by dbus
-    
-    if  something like
-    >>> @DbusAttr
-    >>> def bar(self): pass
-    
-    you can get or set (see __doc__ of attr to know if is read-only)
-    >>> bar = myXfconf.bar
-    >>> myXfconf.bar = bar
-    
-    and where is a
-    >>> @DbusSignal
-    >>> def spam(self, eggs): pass
-    
-    is possible do set handler of signal like
-    >> myXfconf.spam = lambda eggs: do_something(eggs)
-    
-    '''
+	'''
+	Xfconf
+
+	Usage:
+	------
+
+	>> myXfconf = Xfconf()
+	since this you can access any method, attribute or signal defined here.
+	
+	if this class (and dbus object) define
+	>>> @DbusMethod
+	>>> def foo (self, x): pass
+	
+	you can call
+	>>> myXfconf.foo(x)
+	and the program will be called by dbus
+	
+	if  something like
+	>>> @DbusAttr
+	>>> def bar(self): pass
+	
+	you can get or set (see __doc__ of attr to know if is read-only)
+	>>> bar = myXfconf.bar
+	>>> myXfconf.bar = bar
+	
+	and where is a
+	>>> @DbusSignal
+	>>> def spam(self, eggs): pass
+	
+	is possible do set handler of signal like
+	>> myXfconf.spam = lambda eggs: do_something(eggs)
+	every time that Xfconf
+	dispatch one spam signal your lambda (or another function) will be called
+	'''
 	@DbusInterface("org.xfce.Xfconf", "/org/xfce/Xfconf", "org.xfce.Xfconf")
 	def __init__(self, *arg, **kw):
 		pass
@@ -187,12 +208,18 @@ class Xfconf(object):
 	def IsPropertyLocked(self, arg_channel, arg_property, *arg, **kw):
 		"""
 		IsPropertyLocked method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property: s, direction: in,
-		locked: b, direction: out,
+		channel:
+			type: s,
+			direction: in;
+		property:
+			type: s,
+			direction: in;
+		locked:
+			type: b,
+			direction: out;
 		
 		"""
 		pass
@@ -201,10 +228,12 @@ class Xfconf(object):
 	def ListChannels(self, *arg, **kw):
 		"""
 		ListChannels method:
-		
+
 		Parameters
 		----------
-		channels: as, direction: out,
+		channels:
+			type: as,
+			direction: out;
 		
 		"""
 		pass
@@ -213,12 +242,18 @@ class Xfconf(object):
 	def ResetProperty(self, arg_channel, arg_property, arg_recursive, *arg, **kw):
 		"""
 		ResetProperty method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property: s, direction: in,
-		recursive: b, direction: in,
+		channel:
+			type: s,
+			direction: in;
+		property:
+			type: s,
+			direction: in;
+		recursive:
+			type: b,
+			direction: in;
 		
 		"""
 		pass
@@ -227,12 +262,18 @@ class Xfconf(object):
 	def PropertyExists(self, arg_channel, arg_property, *arg, **kw):
 		"""
 		PropertyExists method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property: s, direction: in,
-		exists: b, direction: out,
+		channel:
+			type: s,
+			direction: in;
+		property:
+			type: s,
+			direction: in;
+		exists:
+			type: b,
+			direction: out;
 		
 		"""
 		pass
@@ -241,12 +282,18 @@ class Xfconf(object):
 	def GetAllProperties(self, arg_channel, arg_property_base, *arg, **kw):
 		"""
 		GetAllProperties method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property_base: s, direction: in,
-		properties: a{sv}, direction: out,
+		channel:
+			type: s,
+			direction: in;
+		property_base:
+			type: s,
+			direction: in;
+		properties:
+			type: a{sv},
+			direction: out;
 		
 		"""
 		pass
@@ -255,12 +302,18 @@ class Xfconf(object):
 	def GetProperty(self, arg_channel, arg_property, *arg, **kw):
 		"""
 		GetProperty method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property: s, direction: in,
-		value: v, direction: out,
+		channel:
+			type: s,
+			direction: in;
+		property:
+			type: s,
+			direction: in;
+		value:
+			type: v,
+			direction: out;
 		
 		"""
 		pass
@@ -269,12 +322,18 @@ class Xfconf(object):
 	def SetProperty(self, arg_channel, arg_property, arg_value, *arg, **kw):
 		"""
 		SetProperty method:
-		
+
 		Parameters
 		----------
-		channel: s, direction: in,
-		property: s, direction: in,
-		value: v, direction: in,
+		channel:
+			type: s,
+			direction: in;
+		property:
+			type: s,
+			direction: in;
+		value:
+			type: v,
+			direction: in;
 		
 		"""
 		pass
@@ -283,13 +342,15 @@ class Xfconf(object):
 	def PropertyRemoved(self, *arg, **kw):
 		"""
 		PropertyRemoved signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: s, direction: in,
-		
-		    arg2: s, direction: in,
+		 arg1:
+			type: s,
+			direction: in;
+		 arg2:
+			type: s,
+			direction: in;
 		
 		"""
 		pass
@@ -298,15 +359,18 @@ class Xfconf(object):
 	def PropertyChanged(self, *arg, **kw):
 		"""
 		PropertyChanged signal:
-		
+
 		Parameters
 		----------
-		
-		    arg1: s, direction: in,
-		
-		    arg2: s, direction: in,
-		
-		    arg3: v, direction: in,
+		 arg1:
+			type: s,
+			direction: in;
+		 arg2:
+			type: s,
+			direction: in;
+		 arg3:
+			type: v,
+			direction: in;
 		
 		"""
 		pass

@@ -26,7 +26,7 @@ Command line example:
 ----------------------
 >>> #this exemple require gmusicbrowser to be running
 >>> python dbus2any/dbus2any.py "xslt/pydbusdecorator.xsl" "org.mpris.MediaPlayer2.gmusicbrowser" "org/mpris/MediaPlayer2"
-
+>>> python dbus2any/dbus2any.py "xslt/pydbusdecorator.xsl" "im.pidgin.purple.PurpleService" "/im/pidgin/purple/PurpleObject"
 
 Code examples:
 --------------
