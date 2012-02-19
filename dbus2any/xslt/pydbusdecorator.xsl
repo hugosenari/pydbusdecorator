@@ -41,7 +41,7 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
     ------
     
     >> my<xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/> = <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/>()
-    since this you can access any method, attribute or signal defined below this.
+    since this you can access any method, attribute or signal defined here.
     
     if this class (and dbus object) define
     >>> @DbusMethod
