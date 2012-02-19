@@ -14,9 +14,42 @@ Parameters:
 * 
 
 '''
-from pydbusdecorator import DbusInterface
+from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
         
 class Introspectable(object):
+    '''
+    Introspectable
+    
+    Usage:
+    ------
+    
+    >> myIntrospectable = Introspectable()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myIntrospectable.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myIntrospectable.bar
+    >>> myIntrospectable.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/", "org.gnome.ScreenSaver")
 	def __init__(self, *arg, **kw):
 		pass
@@ -34,6 +67,39 @@ class Introspectable(object):
 		pass
   
 class ScreenSaver(object):
+    '''
+    ScreenSaver
+    
+    Usage:
+    ------
+    
+    >> myScreenSaver = ScreenSaver()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myScreenSaver.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myScreenSaver.bar
+    >>> myScreenSaver.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myScreenSaver.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.gnome.ScreenSaver", "/", "org.gnome.ScreenSaver")
 	def __init__(self, *arg, **kw):
 		pass

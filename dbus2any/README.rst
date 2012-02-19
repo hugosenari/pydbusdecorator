@@ -24,8 +24,8 @@ python dbus2any.py "xslt" "bus name" "object path"
 
 Command line example:
 ----------------------
-
->>> python dbus2any/dbus2any.py "xslt/pydbusdecorator.xsl" "org.mpris.MediaPlayer2.gmusicbrowser" "org/mpris/MediaPlaye2"
+>>> #this exemple require gmusicbrowser to be running
+>>> python dbus2any/dbus2any.py "xslt/pydbusdecorator.xsl" "org.mpris.MediaPlayer2.gmusicbrowser" "org/mpris/MediaPlayer2"
 
 
 Code examples:
@@ -37,3 +37,4 @@ Code examples:
 >>> xml2any = Xml2Any(dbus2xml, "xslt/pydbusdecorator.xsl")
 
 >>> print "All class: ", xml2any
+

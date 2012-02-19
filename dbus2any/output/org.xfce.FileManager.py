@@ -14,9 +14,42 @@ Parameters:
 * 
 
 '''
-from pydbusdecorator import DbusInterface
+from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
         
 class Introspectable(object):
+    '''
+    Introspectable
+    
+    Usage:
+    ------
+    
+    >> myIntrospectable = Introspectable()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myIntrospectable.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myIntrospectable.bar
+    >>> myIntrospectable.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/org/xfce/FileManager", "org.xfce.FileManager")
 	def __init__(self, *arg, **kw):
 		pass
@@ -34,6 +67,39 @@ class Introspectable(object):
 		pass
   
 class Properties(object):
+    '''
+    Properties
+    
+    Usage:
+    ------
+    
+    >> myProperties = Properties()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myProperties.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myProperties.bar
+    >>> myProperties.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myProperties.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Properties", "/org/xfce/FileManager", "org.xfce.FileManager")
 	def __init__(self, *arg, **kw):
 		pass
@@ -80,6 +146,39 @@ class Properties(object):
 		pass
   
 class FileManager(object):
+    '''
+    FileManager
+    
+    Usage:
+    ------
+    
+    >> myFileManager = FileManager()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myFileManager.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myFileManager.bar
+    >>> myFileManager.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myFileManager.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.xfce.FileManager", "/org/xfce/FileManager", "org.xfce.FileManager")
 	def __init__(self, *arg, **kw):
 		pass
@@ -324,6 +423,39 @@ class FileManager(object):
 		pass
   
 class Thunar(object):
+    '''
+    Thunar
+    
+    Usage:
+    ------
+    
+    >> myThunar = Thunar()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myThunar.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myThunar.bar
+    >>> myThunar.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myThunar.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.xfce.Thunar", "/org/xfce/FileManager", "org.xfce.FileManager")
 	def __init__(self, *arg, **kw):
 		pass
@@ -352,6 +484,39 @@ class Thunar(object):
 		pass
   
 class Trash(object):
+    '''
+    Trash
+    
+    Usage:
+    ------
+    
+    >> myTrash = Trash()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myTrash.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myTrash.bar
+    >>> myTrash.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myTrash.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.xfce.Trash", "/org/xfce/FileManager", "org.xfce.FileManager")
 	def __init__(self, *arg, **kw):
 		pass

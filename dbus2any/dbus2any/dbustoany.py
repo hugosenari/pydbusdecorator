@@ -1,3 +1,4 @@
+#!/usr/bin/python
 '''
 Converts dbus to any using xslt
 
@@ -14,6 +15,7 @@ from libxml2 import xmlDoc
 
 def replace(ctx, string, pattern, repl, *args, **kwargs):
     return re.sub(pattern, repl, string)
+
 libxslt.registerExtModuleFunction("replace", "https://github.com/hugosenari", replace)
 
 class XmlHelper(object):
@@ -36,7 +38,7 @@ class XmlHelper(object):
                 result = libxml2.parseFile(_xml)
             return result
         return xml
-    
+
     @staticmethod
     def xmlTo(xml, xslt, *args, **kwargs):
         '''
@@ -47,18 +49,18 @@ class XmlHelper(object):
         result = xsl.applyStylesheet(xml, kwargs)
         xsl.freeStylesheet()
         return result
-    
+
     @staticmethod
     def freeDoc(*args):
         pass
 #        for arg in args:
 #            arg.freeDoc()
-    
+
 class Dbus2Xml(object):
     '''
     Get information from dbus introspection
     '''
-    
+
     def __init__(self, bus_name, object_path, interface="", bus=None, obj=None, *args, **kwargs):
         '''
         Contructor
@@ -70,10 +72,10 @@ class Dbus2Xml(object):
         self.interface = interface
         self.bus_name = bus_name
         self.obj_path = object_path
-       
+
     def match_interface(self, iface, *args, **kwargs):
         return self.match("//%s[name=%s]" % ("interface", iface), *args, **kwargs)
-    
+
     def match(self, xpath, *args, **kwargs):
         return self.__iter__(xpath=xpath, *args, **kwargs)
 
@@ -93,18 +95,18 @@ class Dbus2Xml(object):
                 yield node
                 node = node.next
             XmlHelper.freeDoc(nodes, xslt, xml)
-                
+
     def _get_current_dir(self):
         return re.split("dbustoany.py", str(__file__))[0]
-    
+
     @property
     def xml(self, *args, **kwargs):
         return XmlHelper.toXmlDoc(self._xml, *args, **kwargs)
-    
+
     @property
     def content(self):
         return self.xml.content
-    
+
     def __str__(self, *args, **kwargs):
         return str(self.content)
 
@@ -122,7 +124,7 @@ class Xml2Any(object):
         self._args = args
         self._kwargs.update(kwargs)
         self._xslt = xslt
-    
+
     def convert(self, *args, **kwargs):
         ar = []
         ar.extend(args)
@@ -134,30 +136,30 @@ class Xml2Any(object):
         result = XmlHelper.xmlTo(xml, xslt, *ar, **kw)
         XmlHelper.freeDoc(xslt, xml)
         return result
-    
+
     @property
     def xml(self, *args, **kwargs):
         return XmlHelper.toXmlDoc(self._xml, *args, **kwargs)
-    
+
     @property
     def xslt(self, *args, **kwargs):
         return XmlHelper.toXmlDoc(self._xslt, *args, **kwargs)
-    
+
     @property
     def content(self):
         return self.convert()
-    
+
     def __str__(self, *args, **kwargs):
         doc = self.convert(*args, **kwargs)
         result = doc.content if doc and hasattr(doc, "content") else ""
         XmlHelper.freeDoc(doc)
         return result
-        
+
 
 
 if __name__ == '__main__':
     import argparse
-    
+
     parser = argparse.ArgumentParser(description='Convert dbus interfaces xml in code', prog='dbustoany')
     parser.add_argument('xslt', type=str,
                        help='xslt stylesheet path')
@@ -169,11 +171,10 @@ if __name__ == '__main__':
 #                       help='interface if you want show to especific interface')
 #    parser.add_argument('--xml', '-x', metavar='xml', type=str,
 #                       help='xml path of dbus object interfaces')
-    
+
     args = parser.parse_args()
     dbus2xml = Dbus2Xml(args.busName, args.objectPath)
 
     xml2any = Xml2Any(dbus2xml, args.xslt)
-    print "All class: ", xml2any
-        
-        
+    print xml2any
+

@@ -14,9 +14,42 @@ Parameters:
 * 
 
 '''
-from pydbusdecorator import DbusInterface
+from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
         
 class Properties(object):
+    '''
+    Properties
+    
+    Usage:
+    ------
+    
+    >> myProperties = Properties()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myProperties.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myProperties.bar
+    >>> myProperties.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myProperties.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Properties", "/org/gnome/gedit", "org.gnome.gedit")
 	def __init__(self, *arg, **kw):
 		pass
@@ -77,6 +110,39 @@ class Properties(object):
 		pass
   
 class Introspectable(object):
+    '''
+    Introspectable
+    
+    Usage:
+    ------
+    
+    >> myIntrospectable = Introspectable()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myIntrospectable.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myIntrospectable.bar
+    >>> myIntrospectable.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/org/gnome/gedit", "org.gnome.gedit")
 	def __init__(self, *arg, **kw):
 		pass
@@ -94,6 +160,39 @@ class Introspectable(object):
 		pass
   
 class Peer(object):
+    '''
+    Peer
+    
+    Usage:
+    ------
+    
+    >> myPeer = Peer()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myPeer.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myPeer.bar
+    >>> myPeer.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myPeer.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Peer", "/org/gnome/gedit", "org.gnome.gedit")
 	def __init__(self, *arg, **kw):
 		pass
@@ -118,6 +217,39 @@ class Peer(object):
 		pass
   
 class CommandLine(object):
+    '''
+    CommandLine
+    
+    Usage:
+    ------
+    
+    >> myCommandLine = CommandLine()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myCommandLine.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myCommandLine.bar
+    >>> myCommandLine.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myCommandLine.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.gnome.gedit.CommandLine", "/org/gnome/gedit", "org.gnome.gedit")
 	def __init__(self, *arg, **kw):
 		pass

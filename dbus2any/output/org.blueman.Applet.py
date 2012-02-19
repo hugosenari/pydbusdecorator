@@ -14,9 +14,42 @@ Parameters:
 * 
 
 '''
-from pydbusdecorator import DbusInterface
+from pydbusdecorator import DbusInterface, DbusMethod, DbusSignal, DbusAttr
         
 class Applet(object):
+    '''
+    Applet
+    
+    Usage:
+    ------
+    
+    >> myApplet = Applet()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myApplet.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myApplet.bar
+    >>> myApplet.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myApplet.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.blueman.Applet", "/", "org.blueman.Applet")
 	def __init__(self, *arg, **kw):
 		pass
@@ -232,6 +265,39 @@ class Applet(object):
 		pass
   
 class Introspectable(object):
+    '''
+    Introspectable
+    
+    Usage:
+    ------
+    
+    >> myIntrospectable = Introspectable()
+    since this you can access any method, attribute or signal defined below this.
+    
+    if this class (and dbus object) define
+    >>> @DbusMethod
+    >>> def foo (self, x): pass
+    
+    you can call
+    >>> myIntrospectable.foo(x)
+    and the program will be called by dbus
+    
+    if  something like
+    >>> @DbusAttr
+    >>> def bar(self): pass
+    
+    you can get or set (see __doc__ of attr to know if is read-only)
+    >>> bar = myIntrospectable.bar
+    >>> myIntrospectable.bar = bar
+    
+    and where is a
+    >>> @DbusSignal
+    >>> def spam(self, eggs): pass
+    
+    is possible do set handler of signal like
+    >> myIntrospectable.spam = lambda eggs: do_something(eggs)
+    
+    '''
 	@DbusInterface("org.freedesktop.DBus.Introspectable", "/", "org.blueman.Applet")
 	def __init__(self, *arg, **kw):
 		pass
