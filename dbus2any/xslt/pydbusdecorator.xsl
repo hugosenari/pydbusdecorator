@@ -9,7 +9,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  
 	xmlns:dta='https://github.com/hugosenari'
 	xsl:exclude-result-prefixes='dbustoany'>
-<xsl:output encoding="UTF-8" indent="yes" method="text" />
+<xsl:output encoding="UTF-8" indent="no" method="text" />
 	
 	<xsl:param name='interface'></xsl:param>
 	<xsl:param name='object_path'></xsl:param>
