@@ -55,8 +55,7 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
     <xsl:apply-templates/>
 </xsl:for-each>
 </xsl:template>
-<xsl:template match="method">@DbusMethod
-    def <xsl:value-of select="@name"/>(self,<xsl:apply-templates select="arg"/> *arg, **kw):
+<xsl:template match="method">def <xsl:value-of select="@name"/>(self,<xsl:apply-templates select="arg"/> *arg, **kw):
         """
         <xsl:call-template name="doc"/>
         """
@@ -76,7 +75,7 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
         pass</xsl:template>
 
 <xsl:template match="property">@property
-def <xsl:value-of select="@name"/>(self, *arg, **kw):
+	def <xsl:value-of select="@name"/>(self, *arg, **kw):
         """
         <xsl:call-template name="doc"/>
         """
@@ -85,8 +84,8 @@ def <xsl:value-of select="@name"/>(self, *arg, **kw):
         		self._dbus_interface))
         return properties.Get(iface, <xsl:value-of select="@name"/>)
 
-@<xsl:value-of select="@name"/>.setter
-def <xsl:value-of select="@name"/>(self, value, *arg, **kw):
+	@<xsl:value-of select="@name"/>.setter
+	def <xsl:value-of select="@name"/>(self, value, *arg, **kw):
         """
         <xsl:call-template name="doc"/>
         """

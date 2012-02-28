@@ -16,7 +16,11 @@ from libxml2 import xmlDoc
 def replace(ctx, string, pattern, repl, *args, **kwargs):
     return re.sub(pattern, repl, string)
 
+def lower_case(ctx, string, *args, **kwargs):
+    return string.lower()
+
 libxslt.registerExtModuleFunction("replace", "https://github.com/hugosenari", replace)
+libxslt.registerExtModuleFunction("lower-case", "https://github.com/hugosenari", lower_case)
 
 class XmlHelper(object):
     '''
