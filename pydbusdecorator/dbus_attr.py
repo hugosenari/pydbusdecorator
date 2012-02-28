@@ -14,8 +14,8 @@ class DbusAttr(DbusDecorator):
     
     Works like @property, but for dbus
     '''
-    
-    def __init__(self, meth=None, iface=None, 
+
+    def __init__(self, meth=None, iface=None,
                   produces=lambda resp: resp,
                   to_primitive=lambda resp: resp,
                   override_none_val=UNDEFINED_PARAM,
@@ -46,15 +46,14 @@ class DbusAttr(DbusDecorator):
         self.override_return = override_none_return
 
     def __call__(self, meth, *args, **kw):
-        self.attr=meth
+        self.attr = meth
         return self
-    
+
     def _get_set_dbus(self, obj, val=UNDEFINED_PARAM, *args, **kw):
         properties = DbusInterface.get_bus_properties(obj)
         iface = self.iface or DbusInterface.get_bus_iface(obj)
         #vals is UndefinedParam, try to get val from object
         if val is UNDEFINED_PARAM:
-            print iface, self.attr.__name__
             mval = properties.Get(iface, self.attr.__name__)
             DbusInterface.store_result(obj, mval)
             if self.override_val:
@@ -66,7 +65,7 @@ class DbusAttr(DbusDecorator):
             DbusInterface.store_result(obj, to_primitve(val))
         result = self.attr(val, *args, **kw)
         if result is None and self.override_return:
-            result =  properties.Get(iface, self.attr.__name__)
+            result = properties.Get(iface, self.attr.__name__)
         produces = self.produces
         return produces(result)
 
@@ -79,19 +78,18 @@ class DbusAttr(DbusDecorator):
         if obj:
             self._get_set_dbus(obj, value)
         else:
-            self.attr=value
+            self.attr = value
 
     def __delete__(self, obj):
         raise AttributeError, "can't delete attribute"
-    
+
     @property
     def attr(self):
         return self._attr
-    
+
     @attr.setter
     def attr(self, value):
         self._attr = value
         if hasattr(value, "__doc__"):
             self.__doc__ = value.__doc__
-            
-            
+

@@ -88,7 +88,7 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
         pass</xsl:template>
 
 <xsl:template match="property">@DbusAttr
-	def <xsl:value-of select="@name"/>(self, *arg, **kw):
+    def <xsl:value-of select="@name"/>(self, *arg, **kw):
         """
         <xsl:call-template name="doc"/>
         """
@@ -124,7 +124,7 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
         </xsl:for-each>
         </xsl:when>
         <xsl:when test="name(.) = 'property'"> property:
-		    <xsl:value-of select="@type"/>,<xsl:value-of select="@access"/></xsl:when>
+            <xsl:value-of select="@type"/>,<xsl:value-of select="@access"/></xsl:when>
     </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>
