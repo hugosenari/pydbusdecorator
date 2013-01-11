@@ -77,7 +77,8 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
         """
         <xsl:call-template name="doc"/>
         """
-        pass</xsl:template>
+        pass
+</xsl:template>
 
 <xsl:template match="signal">@DbusSignal
     def <xsl:value-of select="@name"/>(self<xsl:apply-templates select="arg"/>, *arg, **kw):
@@ -85,14 +86,16 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
 
         <xsl:call-template name="doc"/>
         """
-        pass</xsl:template>
+        pass
+</xsl:template>
 
 <xsl:template match="property">@DbusAttr
     def <xsl:value-of select="@name"/>(self, *arg, **kw):
         """
         <xsl:call-template name="doc"/>
         """
-        pass</xsl:template>
+        pass
+</xsl:template>
 
 <xsl:template match="arg">
     <xsl:if test="(@direction = 'in' and name(..) = 'method')
@@ -119,12 +122,16 @@ class <xsl:value-of select="dta:replace(string(@name), '^.+\.([^\.]+)$', '\1')"/
         ----------
 
         </xsl:if><xsl:choose><xsl:when test="@name"><xsl:value-of select="@name"/>:</xsl:when><xsl:otherwise>arg<xsl:value-of select="position()"/>:</xsl:otherwise></xsl:choose>
-            type: <xsl:value-of select="@type"/>,
+            type: <xsl:value-of select="dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(string(@type),'y', 'BYTE, '), 'b', 'BOOLEAN, '),'n', 'INT16, '),'q', 'UINT16, '),'i', 'INT32, '),'u', 'UINT32, '),'x', 'INT64, '),'t', 'UINT64, '),'d', 'DOUBLE, '),'s', 'STRING, '),'o', 'OBJECT_PATH, '),'g', 'SIGNATURE, '),'v','VARIANT, '),'e','DICT_ENTRY, '),'a', 'ARRAY:'),'r','STRUCT:'),'\(', 'STRUCT:( '),'\)', '), '),'{', 'KEY-VALUE:{ '),'}', '}, '),', }', ' }'),', \)' ,' )')"/>
+            signature: <xsl:value-of select="@type"/>,
             direction: <xsl:value-of select="@direction"/>;
         </xsl:for-each>
         </xsl:when>
         <xsl:when test="name(.) = 'property'"> property:
-            <xsl:value-of select="@type"/>,<xsl:value-of select="@access"/></xsl:when>
+            type: <xsl:value-of select="dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(dta:replace(string(@type),'y', 'BYTE, '), 'b', 'BOOLEAN, '),'n', 'INT16, '),'q', 'UINT16, '),'i', 'INT32, '),'u', 'UINT32, '),'x', 'INT64, '),'t', 'UINT64, '),'d', 'DOUBLE, '),'s', 'STRING, '),'o', 'OBJECT_PATH, '),'g', 'SIGNATURE, '),'v','VARIANT, '),'e','DICT_ENTRY, '),'a', 'ARRAY:'),'r','STRUCT:'),'\(', 'STRUCT:( '),'\)', '), '),'{', 'KEY-VALUE:{ '),'}', '}, '),', }', ' }'),', \)' ,' )')"/>
+            signature: <xsl:value-of select="@type"/>,
+            access: <xsl:value-of select="@access"/></xsl:when>
     </xsl:choose>
 </xsl:template>
+
 </xsl:stylesheet>
