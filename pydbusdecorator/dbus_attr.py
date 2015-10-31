@@ -81,7 +81,7 @@ class DbusAttr(DbusDecorator):
             self.attr = value
 
     def __delete__(self, obj):
-        raise AttributeError, "can't delete attribute"
+        raise AttributeError("can't delete attribute")
 
     @property
     def attr(self):

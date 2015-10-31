@@ -22,4 +22,4 @@ UNDEFINED = Undefined()
 UNDEFINED_PARAM = UndefinedParam()
 
 if __name__ == "__main__":
-    print "True" if bool(UNDEFINED_PARAM) else "False"
+    print(bool(UNDEFINED_PARAM))

@@ -45,3 +45,10 @@ Use your definition
 >>> print mediaplayer2.Volume
 >>> mediaplayer2.Volume = 1
 >>> print mediaplayer2.Volume # integer = 1 :P
+
+
+See also:
+---------
+
+dbus2any was a subproject now I created a project only for this
+(https://github.com/hugosenari/dbus2any)

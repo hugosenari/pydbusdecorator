@@ -56,7 +56,6 @@ class DbusMethod(DbusDecorator):
         self.override_return = True
         
     def _call_dbus(self, obj, *args, **kw):
-#        print self.meth.__name__, args, kw
         bus_obj = DbusInterface.get_bus_obj(obj)
         bus_interface = self.iface if self.iface else\
             DbusInterface.get_bus_iface(obj)           
