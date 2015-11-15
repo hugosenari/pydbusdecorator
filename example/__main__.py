@@ -9,7 +9,7 @@ sys.path = [my_dir + "/../"] + sys.path
 #Import decorators
 #-----------------
 
-from dbusdecorator import DbusAttr, DbusInterface, DbusMethod
+from dbusdecorator import DbusAttr, DbusInterface, DbusMethod, get_uri
 
 #Define dbus interface
 #----------------------
@@ -32,12 +32,16 @@ class Player(object):
         Your attribute
         '''
 
+# use this if you don't know your object name
+#----------------------
+uri = [player for player in get_uri('org.mpris.MediaPlayer2.+')] 
+
 #Use your definition
 #-------------------
 mediaplayer2 = Player(
-   dbus_interface_info={
-      'dbus_uri': 'org.mpris.MediaPlayer2.gmusicbrowser'})
+   dbus_interface_info={'dbus_uri': uri[0]})
 mediaplayer2.Next()
+vol = mediaplayer2.Volume
 print(mediaplayer2.Volume)
-mediaplayer2.Volume = 1
+mediaplayer2.Volume = vol - 0.1
 print(mediaplayer2.Volume) # integer = 1 :P
