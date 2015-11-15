@@ -5,7 +5,7 @@ Python decorator for dbus interface client definition
 Python decorators to define dbus
 interface, then use it as lib.
 
-For examples see tests or mpris2
+For examples see mpris2
 (https://github.com/hugosenari/mpris2)
 
 
@@ -21,7 +21,7 @@ Example:
 Import decorators
 -----------------
 
->>> from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
+>>> from dbusdecorator import DbusAttr, DbusInterface, DbusMethod
 
 
 Define dbus interface
@@ -45,3 +45,10 @@ Use your definition
 >>> print mediaplayer2.Volume
 >>> mediaplayer2.Volume = 1
 >>> print mediaplayer2.Volume # integer = 1 :P
+
+
+See also:
+---------
+
+dbus2any is a subproject now I created a project only for this
+(https://github.com/hugosenari/dbus2any)

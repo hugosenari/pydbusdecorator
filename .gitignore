@@ -1,3 +1,10 @@
 *.pyc
 *.komodoproject
 build
+.project
+.pydevproject
+.settings
+.idea
+.pypirc
+MANIFEST
+dist/
