@@ -11,7 +11,7 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 setup(name='pydbusdecorator',
-      version='1.0',
+      version='1.1',
       description='Python decorator for dbus interface client definition',
       author='hugosenari',
       author_email='hugosenari@gmail.com',
