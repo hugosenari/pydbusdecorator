@@ -21,7 +21,7 @@ Example:
 Import decorators
 -----------------
 
->>> from pydbusdecorator import DbusAttr, DbusInterface, DbusMethod
+>>> from dbusdecorator import DbusAttr, DbusInterface, DbusMethod
 
 
 Define dbus interface
@@ -50,5 +50,5 @@ Use your definition
 See also:
 ---------
 
-dbus2any was a subproject now I created a project only for this
+dbus2any is a subproject now I created a project only for this
 (https://github.com/hugosenari/dbus2any)

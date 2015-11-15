@@ -1,2 +1,9 @@
 *.pyc
+build
+.project
+.pydevproject
+.settings
 .idea
+.pypirc
+MANIFEST
+dist/

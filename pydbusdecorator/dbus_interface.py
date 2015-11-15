@@ -4,8 +4,8 @@ Created on Nov 5, 2011
 @author: hugosenari
 '''
 
-from pydbusdecorator.dbus_decorator import DbusDecorator
-from pydbusdecorator.undefined_param import UNDEFINED_PARAM
+from .dbus_decorator import DbusDecorator
+from .undefined_param import UNDEFINED_PARAM
 from functools import wraps
 
 
@@ -48,8 +48,7 @@ class DbusInterfaceInfo(DbusDecorator):
            dbus_session=DBUS_DEFAULT_ATTRS.session,
            last_fn_return=DBUS_DEFAULT_ATTRS.retur,
            on_change=DBUS_DEFAULT_ATTRS.on_change,
-           dbus_prop_iface=DBUS_DEFAULT_ATTRS.iface,
-           *args, **kw):
+           dbus_prop_iface=DBUS_DEFAULT_ATTRS.iface):
         ''' Constructor '''
         
         self.dbus_interfaces = {}
