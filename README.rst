@@ -6,7 +6,12 @@ Python decorators to define dbus
 interface, then use it as lib.
 
 For examples see mpris2
-(https://github.com/hugosenari/mpris2)
+( https://github.com/hugosenari/mpris2 )
+
+See also:
+=========
+dbus2any: Convert dbus instrospection into code
+( https://github.com/hugosenari/dbus2any )
 
 
 Require:
