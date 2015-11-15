@@ -5,7 +5,7 @@ Python decorator for dbus interface client definition
 Python decorators to define dbus
 interface, then use it as lib.
 
-For examples see tests or mpris2
+For examples see mpris2
 (https://github.com/hugosenari/mpris2)
 
 

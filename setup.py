@@ -11,13 +11,13 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 setup(name='pydbusdecorator',
-      version='1.1',
+      version='2.0',
       description='Python decorator for dbus interface client definition',
       author='hugosenari',
       author_email='hugosenari@gmail.com',
       url='https://github.com/hugosenari/pydbusdecorator',
       keywords = ["dbus"],
-      packages=('pydbusdecorator', 'dbusdecorator'),
+      packages=('dbusdecorator'),
       requires=(),
       license = "GPL",
       classifiers=[
